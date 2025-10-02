@@ -125,7 +125,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
             }}
           >
             <Image
-              src="/logo/vrvo_logo.png"
+              src="/logo/vrvo_wordmark_white.png"
               alt="Vrvo - Next-Generation Marketing"
               width={320}
               height={100}

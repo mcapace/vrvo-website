@@ -119,7 +119,7 @@ export default function Home() {
                   className="cursor-pointer"
                 >
                   <Image
-                    src="/logo/vrvo_logo.png"
+                    src="/logo/vrvo_wordmark_white.png"
                     alt="Vrvo - Next-Generation Marketing"
                     width={130}
                     height={40}
@@ -1254,7 +1254,7 @@ export default function Home() {
             className="mb-4 cursor-pointer"
           >
             <Image
-              src="/logo/vrvo_logo.png"
+              src="/logo/vrvo_wordmark_white.png"
               alt="Vrvo - Next-Generation Marketing"
               width={160}
               height={50}
