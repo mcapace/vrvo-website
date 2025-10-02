@@ -617,8 +617,7 @@ export default function Home() {
                   'MarTech stack audit and optimization',
                   'CRM setup and integration (HubSpot, Salesforce, etc.)',
                   'Custom dashboards for real-time performance tracking',
-                  'Team training and ongoing strategic support',
-                  'Change management and adoption strategies'
+                  'Team training and ongoing strategic support'
                 ],
                 outcome: 'Make data-driven decisions with confidence. Scale without chaos.'
               }
