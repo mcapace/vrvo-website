@@ -1,20 +1,20 @@
-&apos;use client&apos;
+'use client'
 
-import { motion, useScroll, useSpring } from &apos;framer-motion&apos;
-import { ArrowRight, Zap, Target, TrendingUp, Lightbulb, Users } from &apos;lucide-react&apos;
-import Image from &apos;next/image&apos;
-import LazyParticleNetwork from &apos;./components/LazyParticleNetwork&apos;
-import AdaptiveCursor from &apos;./components/AdaptiveCursor&apos;
-import AnimatedCounter from &apos;./components/AnimatedCounter&apos;
-import AdaptiveMagneticButton from &apos;./components/AdaptiveMagneticButton&apos;
-import AnimatedGrid from &apos;./components/AnimatedGrid&apos;
-import SpotlightCard from &apos;./components/SpotlightCard&apos;
-import ShimmerText from &apos;./components/ShimmerText&apos;
-import AnimatedIcon from &apos;./components/AnimatedIcon&apos;
-import TextReveal from &apos;./components/TextReveal&apos;
-import AdaptiveFloatingElement from &apos;./components/AdaptiveFloatingElement&apos;
-import SectionTransition from &apos;./components/SectionTransition&apos;
-import MobileNav from &apos;./components/MobileNav&apos;
+import { motion, useScroll, useSpring } from 'framer-motion'
+import { ArrowRight, Zap, Target, TrendingUp, Lightbulb, Users } from 'lucide-react'
+import Image from 'next/image'
+import LazyParticleNetwork from './components/LazyParticleNetwork'
+import AdaptiveCursor from './components/AdaptiveCursor'
+import AnimatedCounter from './components/AnimatedCounter'
+import AdaptiveMagneticButton from './components/AdaptiveMagneticButton'
+import AnimatedGrid from './components/AnimatedGrid'
+import SpotlightCard from './components/SpotlightCard'
+import ShimmerText from './components/ShimmerText'
+import AnimatedIcon from './components/AnimatedIcon'
+import TextReveal from './components/TextReveal'
+import AdaptiveFloatingElement from './components/AdaptiveFloatingElement'
+import SectionTransition from './components/SectionTransition'
+import MobileNav from './components/MobileNav'
 
 export default function Home() {
   const { scrollYProgress } = useScroll()
@@ -40,7 +40,7 @@ export default function Home() {
         className="fixed top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 z-50 origin-left shadow-lg"
         style={{ 
           scaleX,
-          boxShadow: &apos;0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(6, 182, 212, 0.4)&apos;
+          boxShadow: '0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(6, 182, 212, 0.4)'
         }}
       />
       {/* Navigation */}
@@ -55,14 +55,14 @@ export default function Home() {
         }}
         className="fixed top-0 w-full z-40 hidden md:block"
         style={{
-          background: &apos;rgba(15, 23, 42, 0.8)&apos;,
-          backdropFilter: &apos;blur(24px)&apos;,
-          WebkitBackdropFilter: &apos;blur(24px)&apos;,
-          borderBottom: &apos;1px solid transparent&apos;,
-          backgroundImage: &apos;linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), linear-gradient(90deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))&apos;,
-          backgroundOrigin: &apos;border-box&apos;,
-          backgroundClip: &apos;padding-box, border-box&apos;,
-          boxShadow: &apos;0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 20px rgba(59, 130, 246, 0.1)&apos;
+          background: 'rgba(15, 23, 42, 0.8)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          borderBottom: '1px solid transparent',
+          backgroundImage: 'linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), linear-gradient(90deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))',
+          backgroundOrigin: 'border-box',
+          backgroundClip: 'padding-box, border-box',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 20px rgba(59, 130, 246, 0.1)'
         }}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -118,17 +118,17 @@ export default function Home() {
                 }}
                 className="relative px-4 py-2 rounded-full transition-all duration-300 text-slate-300 hover:text-white"
                 style={{
-                  background: &apos;rgba(148, 163, 184, 0.1)&apos;,
-                  backdropFilter: &apos;blur(10px)&apos;,
-                  WebkitBackdropFilter: &apos;blur(10px)&apos;,
-                  border: &apos;1px solid rgba(148, 163, 184, 0.2)&apos;
+                  background: 'rgba(148, 163, 184, 0.1)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(148, 163, 184, 0.2)'
                 }}
               >
                 <motion.div
                   className="absolute inset-0 rounded-full"
                   whileHover={{
-                    background: &apos;linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(34, 197, 94, 0.2))&apos;,
-                    boxShadow: &apos;0 8px 32px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)&apos;
+                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(34, 197, 94, 0.2))',
+                    boxShadow: '0 8px 32px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
                   }}
                   transition={{ duration: 0.3 }}
                 />
@@ -155,18 +155,18 @@ export default function Home() {
             magneticDistance={80}
             className="relative px-6 py-2 rounded-full text-white font-medium transition-all duration-300 overflow-hidden"
             style={{
-              background: &apos;linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(37, 99, 235, 0.9))&apos;,
-              backdropFilter: &apos;blur(10px)&apos;,
-              WebkitBackdropFilter: &apos;blur(10px)&apos;,
-              border: &apos;1px solid rgba(59, 130, 246, 0.3)&apos;,
-              boxShadow: &apos;0 8px 32px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)&apos;
+              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(37, 99, 235, 0.9))',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+              border: '1px solid rgba(59, 130, 246, 0.3)',
+              boxShadow: '0 8px 32px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
             }}
           >
             <motion.div
               className="absolute inset-0 rounded-full"
               whileHover={{
-                background: &apos;linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(37, 99, 235, 1))&apos;,
-                boxShadow: &apos;0 12px 40px rgba(59, 130, 246, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3)&apos;
+                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(37, 99, 235, 1))',
+                boxShadow: '0 12px 40px rgba(59, 130, 246, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3)'
               }}
               transition={{ duration: 0.3 }}
             />
@@ -311,9 +311,9 @@ export default function Home() {
             className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
           >
             {[
-              { label: &apos;Average ROI Increase&apos;, value: 340, suffix: &apos;%&apos; },
-              { label: &apos;Client Retention Rate&apos;, value: 94, suffix: &apos;%&apos; },
-              { label: &apos;Campaigns Optimized&apos;, value: 500, suffix: &apos;+&apos; }
+              { label: 'Average ROI Increase', value: 340, suffix: '%' },
+              { label: 'Client Retention Rate', value: 94, suffix: '%' },
+              { label: 'Campaigns Optimized', value: 500, suffix: '+' }
             ].map((stat, index) => (
               <SpotlightCard
                 key={index}
@@ -336,11 +336,11 @@ export default function Home() {
                   }}
                   className="relative rounded-xl p-6 text-center overflow-hidden"
                   style={{
-                    background: &apos;rgba(30, 41, 59, 0.3)&apos;,
-                    backdropFilter: &apos;blur(15px)&apos;,
-                    WebkitBackdropFilter: &apos;blur(15px)&apos;,
-                    border: &apos;1px solid rgba(148, 163, 184, 0.2)&apos;,
-                    boxShadow: &apos;0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)&apos;
+                    background: 'rgba(30, 41, 59, 0.3)',
+                    backdropFilter: 'blur(15px)',
+                    WebkitBackdropFilter: 'blur(15px)',
+                    border: '1px solid rgba(148, 163, 184, 0.2)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                   }}
                 >
                 {/* Glassmorphism overlay */}
@@ -349,8 +349,8 @@ export default function Home() {
                   initial={{ opacity: 0 }}
                   whileHover={{
                     opacity: 1,
-                    background: &apos;linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(34, 197, 94, 0.1))&apos;,
-                    boxShadow: &apos;0 20px 40px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)&apos;
+                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(34, 197, 94, 0.1))',
+                    boxShadow: '0 20px 40px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
                   }}
                   transition={{ duration: 0.3 }}
                 />
@@ -412,7 +412,7 @@ export default function Home() {
                 }}
                 className="text-blue-400"
               >
-                <ShimmerText shimmerColors={[&apos;#60a5fa&apos;, &apos;#34d399&apos;, &apos;#14b8a6&apos;]}>
+                <ShimmerText shimmerColors={['#60a5fa', '#34d399', '#14b8a6']}>
                   Digital Excellence
                 </ShimmerText>
               </motion.span>
@@ -444,39 +444,39 @@ export default function Home() {
             {[
               {
                 icon: <Target className="w-12 h-12" />,
-                title: &apos;Programmatic Advertising&apos;,
-                subtitle: &apos;Precision-Targeted Campaigns That Scale&apos;,
+                title: 'Programmatic Advertising',
+                subtitle: 'Precision-Targeted Campaigns That Scale',
                 features: [
-                  &apos;Automated bidding strategies&apos;,
-                  &apos;Real-time optimization&apos;,
-                  &apos;Cross-platform reach&apos;,
-                  &apos;Advanced audience segmentation&apos;
+                  'Automated bidding strategies',
+                  'Real-time optimization',
+                  'Cross-platform reach',
+                  'Advanced audience segmentation'
                 ],
-                outcome: &apos;Lower acquisition costs, higher ROI, smarter spend&apos;
+                outcome: 'Lower acquisition costs, higher ROI, smarter spend'
               },
               {
                 icon: <TrendingUp className="w-12 h-12" />,
-                title: &apos;Digital Marketing Strategy&apos;,
-                subtitle: &apos;Integrated Campaigns That Convert&apos;,
+                title: 'Digital Marketing Strategy',
+                subtitle: 'Integrated Campaigns That Convert',
                 features: [
-                  &apos;Multi-channel strategy&apos;,
-                  &apos;Content marketing & SEO/SEM&apos;,
-                  &apos;Social media management&apos;,
-                  &apos;Analytics & reporting&apos;
+                  'Multi-channel strategy',
+                  'Content marketing & SEO/SEM',
+                  'Social media management',
+                  'Analytics & reporting'
                 ],
-                outcome: &apos;Consistent brand presence, qualified leads, measurable growth&apos;
+                outcome: 'Consistent brand presence, qualified leads, measurable growth'
               },
               {
                 icon: <Lightbulb className="w-12 h-12" />,
-                title: &apos;Business Transformation&apos;,
-                subtitle: &apos;Digital Infrastructure That Empowers&apos;,
+                title: 'Business Transformation',
+                subtitle: 'Digital Infrastructure That Empowers',
                 features: [
-                  &apos;MarTech stack optimization&apos;,
-                  &apos;CRM implementation&apos;,
-                  &apos;Data analytics setup&apos;,
-                  &apos;Process automation&apos;
+                  'MarTech stack optimization',
+                  'CRM implementation',
+                  'Data analytics setup',
+                  'Process automation'
                 ],
-                outcome: &apos;Scalable systems, data-driven decisions, efficiency&apos;
+                outcome: 'Scalable systems, data-driven decisions, efficiency'
               }
             ].map((service, index) => (
               <SpotlightCard
@@ -504,14 +504,14 @@ export default function Home() {
                   className="relative rounded-2xl p-8 perspective-1000 overflow-hidden"
                   style={{ 
                     transformStyle: "preserve-3d",
-                    background: &apos;rgba(30, 41, 59, 0.6)&apos;,
-                    backdropFilter: &apos;blur(24px)&apos;,
-                    WebkitBackdropFilter: &apos;blur(24px)&apos;,
-                    border: &apos;1px solid transparent&apos;,
-                    backgroundImage: &apos;linear-gradient(rgba(30, 41, 59, 0.6), rgba(30, 41, 59, 0.6)), linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))&apos;,
-                    backgroundOrigin: &apos;border-box&apos;,
-                    backgroundClip: &apos;padding-box, border-box&apos;,
-                    boxShadow: &apos;0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 20px rgba(59, 130, 246, 0.05)&apos;
+                    background: 'rgba(30, 41, 59, 0.6)',
+                    backdropFilter: 'blur(24px)',
+                    WebkitBackdropFilter: 'blur(24px)',
+                    border: '1px solid transparent',
+                    backgroundImage: 'linear-gradient(rgba(30, 41, 59, 0.6), rgba(30, 41, 59, 0.6)), linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))',
+                    backgroundOrigin: 'border-box',
+                    backgroundClip: 'padding-box, border-box',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 20px rgba(59, 130, 246, 0.05)'
                   }}
                 >
                 {/* Glassmorphism overlay */}
@@ -520,8 +520,8 @@ export default function Home() {
                   initial={{ opacity: 0 }}
                   whileHover={{
                     opacity: 1,
-                    background: &apos;linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(34, 197, 94, 0.15))&apos;,
-                    boxShadow: &apos;0 25px 50px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 30px rgba(6, 182, 212, 0.2)&apos;
+                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(34, 197, 94, 0.15))',
+                    boxShadow: '0 25px 50px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 30px rgba(6, 182, 212, 0.2)'
                   }}
                   transition={{ duration: 0.3 }}
                 />
@@ -687,7 +687,7 @@ export default function Home() {
                 }}
               >
                 Data-Driven.
-              </motion.span>{&apos; &apos;}
+              </motion.span>{' '}
               <motion.span
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -701,7 +701,7 @@ export default function Home() {
                 }}
               >
                 Human-Centered.
-              </motion.span>{&apos; &apos;}
+              </motion.span>{' '}
               <motion.span 
                 initial={{ opacity: 0, scale: 0.8, y: 20 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -728,11 +728,11 @@ export default function Home() {
             className="grid md:grid-cols-5 gap-4"
           >
             {[
-              { step: &apos;01&apos;, title: &apos;Discovery&apos;, desc: &apos;Deep-dive into your business, audience, and goals&apos; },
-              { step: &apos;02&apos;, title: &apos;Strategy&apos;, desc: &apos;Custom roadmap blending programmatic, marketing, and transformation&apos; },
-              { step: &apos;03&apos;, title: &apos;Execution&apos;, desc: &apos;Launch campaigns with precision and agility&apos; },
-              { step: &apos;04&apos;, title: &apos;Optimization&apos;, desc: &apos;Continuous testing, learning, and scaling&apos; },
-              { step: &apos;05&apos;, title: &apos;Growth&apos;, desc: &apos;Long-term partnership for sustained results&apos; }
+              { step: '01', title: 'Discovery', desc: 'Deep-dive into your business, audience, and goals' },
+              { step: '02', title: 'Strategy', desc: 'Custom roadmap blending programmatic, marketing, and transformation' },
+              { step: '03', title: 'Execution', desc: 'Launch campaigns with precision and agility' },
+              { step: '04', title: 'Optimization', desc: 'Continuous testing, learning, and scaling' },
+              { step: '05', title: 'Growth', desc: 'Long-term partnership for sustained results' }
             ].map((phase, index) => (
               <motion.div
                 key={index}
@@ -752,11 +752,11 @@ export default function Home() {
                 }}
                 className="relative rounded-xl p-6 overflow-hidden"
                 style={{
-                  background: &apos;rgba(30, 41, 59, 0.3)&apos;,
-                  backdropFilter: &apos;blur(15px)&apos;,
-                  WebkitBackdropFilter: &apos;blur(15px)&apos;,
-                  border: &apos;1px solid rgba(148, 163, 184, 0.2)&apos;,
-                  boxShadow: &apos;0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)&apos;
+                  background: 'rgba(30, 41, 59, 0.3)',
+                  backdropFilter: 'blur(15px)',
+                  WebkitBackdropFilter: 'blur(15px)',
+                  border: '1px solid rgba(148, 163, 184, 0.2)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                 }}
               >
                 {/* Glassmorphism overlay */}
@@ -765,8 +765,8 @@ export default function Home() {
                   initial={{ opacity: 0 }}
                   whileHover={{
                     opacity: 1,
-                    background: &apos;linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(34, 197, 94, 0.1))&apos;,
-                    boxShadow: &apos;0 20px 40px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)&apos;
+                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(34, 197, 94, 0.1))',
+                    boxShadow: '0 20px 40px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
                   }}
                   transition={{ duration: 0.3 }}
                 />
@@ -936,7 +936,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="flex flex-wrap justify-center gap-4"
             >
-              {[&apos;Professional Services&apos;, &apos;Healthcare&apos;, &apos;E-commerce&apos;, &apos;B2B SaaS&apos;, &apos;Retail&apos;, &apos;Financial Services&apos;].map((industry, i) => (
+              {['Professional Services', 'Healthcare', 'E-commerce', 'B2B SaaS', 'Retail', 'Financial Services'].map((industry, i) => (
                 <motion.span 
                   key={i}
                   initial={{ opacity: 0, y: 20, scale: 0.8 }}
@@ -952,15 +952,15 @@ export default function Home() {
                   whileHover={{ 
                     y: -5,
                     scale: 1.1,
-                    boxShadow: &apos;0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(6, 182, 212, 0.2)&apos;
+                    boxShadow: '0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(6, 182, 212, 0.2)'
                   }}
                   className="relative px-6 py-3 rounded-full text-slate-300 transition-all duration-300 cursor-pointer overflow-hidden"
                   style={{
-                    background: &apos;rgba(30, 41, 59, 0.4)&apos;,
-                    backdropFilter: &apos;blur(10px)&apos;,
-                    WebkitBackdropFilter: &apos;blur(10px)&apos;,
-                    border: &apos;1px solid rgba(148, 163, 184, 0.3)&apos;,
-                    boxShadow: &apos;0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)&apos;
+                    background: 'rgba(30, 41, 59, 0.4)',
+                    backdropFilter: 'blur(10px)',
+                    WebkitBackdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(148, 163, 184, 0.3)',
+                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                   }}
                 >
                   <motion.div
@@ -968,8 +968,8 @@ export default function Home() {
                     initial={{ opacity: 0 }}
                     whileHover={{
                       opacity: 1,
-                      background: &apos;linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(34, 197, 94, 0.2))&apos;,
-                      boxShadow: &apos;0 8px 25px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)&apos;
+                      background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(34, 197, 94, 0.2))',
+                      boxShadow: '0 8px 25px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
                     }}
                     transition={{ duration: 0.3 }}
                   />
