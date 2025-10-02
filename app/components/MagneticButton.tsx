@@ -101,7 +101,7 @@ const MagneticButton = memo(function MagneticButton({
       }}
       whileHover={{
         scale: 1.05,
-        ...whileHover
+        ...(whileHover as Record<string, unknown>)
       }}
       whileTap={whileTap}
       onClick={onClick}
