@@ -18,7 +18,7 @@ const CustomCursor = memo(function CustomCursor() {
     const target = e.target as HTMLElement
     const isInteractive = target.matches('button, a, [role="button"], input, textarea, select, [tabindex]') ||
                          target.closest('button, a, [role="button"], input, textarea, select, [tabindex]')
-    setIsHovering(isInteractive)
+    setIsHovering(!!isInteractive)
   }, [])
 
   const checkIsDesktop = useCallback(() => {
