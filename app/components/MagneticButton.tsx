@@ -103,7 +103,7 @@ const MagneticButton = memo(function MagneticButton({
         scale: 1.05,
         ...(whileHover as Record<string, unknown>)
       }}
-      whileTap={whileTap}
+      whileTap={whileTap as any}
       onClick={onClick}
       transition={{
         type: "spring",
