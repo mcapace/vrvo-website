@@ -248,7 +248,7 @@ export default function Home() {
               </span>
             </motion.div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight text-balance">
               <div className="block mb-4">
                 <TextReveal 
                   delay={0.5}
@@ -503,7 +503,7 @@ export default function Home() {
             }}
             className="text-center mb-16"
           >
-            <ParallaxText speed={0.6} className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <ParallaxText speed={0.6} className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight text-balance">
               Three Pillars of <motion.span 
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -769,7 +769,7 @@ export default function Home() {
             }}
             className="text-center mb-16"
           >
-            <ParallaxText speed={0.5} className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <ParallaxText speed={0.5} className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
               <motion.span
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -989,7 +989,7 @@ export default function Home() {
               </AdaptiveFloatingElement>
             </motion.div>
             
-            <ParallaxText speed={0.4} className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <ParallaxText speed={0.4} className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
               <ShimmerText>
               Built for SMBs Ready to Think Bigger
               </ShimmerText>
@@ -1300,7 +1300,7 @@ export default function Home() {
             }}
             className="text-center mb-16"
           >
-            <ParallaxText speed={0.5} className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <ParallaxText speed={0.5} className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
               Results That Speak
             </ParallaxText>
             <motion.p 
@@ -1518,7 +1518,7 @@ export default function Home() {
               damping: 20
             }}
           >
-            <ParallaxText speed={0.3} className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <ParallaxText speed={0.3} className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
               Why Vrvo Exists
             </ParallaxText>
             
@@ -1690,7 +1690,7 @@ export default function Home() {
                 damping: 20,
                 delay: 0.2
               }}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight"
             >
               Ready to Transform Your Growth?
             </motion.h2>
@@ -1706,7 +1706,7 @@ export default function Home() {
                 damping: 20,
                 delay: 0.4
               }}
-              className="text-xl text-slate-400 mb-10"
+              className="text-xl text-slate-400 mb-10 leading-relaxed"
             >
               Let&apos;s talk about your goals, your challenges, and how Vrvo can help you compete—and win.
             </motion.p>
