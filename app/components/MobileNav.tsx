@@ -3,6 +3,7 @@
 import { useState, useEffect, memo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
 import { useDeviceDetection } from '../hooks/useDeviceDetection'
 
 const MobileNav = memo(function MobileNav() {
@@ -34,6 +35,23 @@ const MobileNav = memo(function MobileNav() {
 
   return (
     <>
+      {/* Mobile Logo */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="fixed top-4 left-4 z-50"
+      >
+        <Image
+          src="/logo/vrvo_wordmark_white.png"
+          alt="Vrvo - Next-Generation Marketing"
+          width={100}
+          height={30}
+          priority
+          className="w-auto h-auto max-w-[100px]"
+        />
+      </motion.div>
+
       {/* Mobile Menu Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
@@ -88,6 +106,21 @@ const MobileNav = memo(function MobileNav() {
               className="fixed top-0 right-0 z-50 w-72 h-full bg-slate-900/95 backdrop-blur-xl border-l border-slate-700/50"
             >
               <div className="flex flex-col h-full pt-20 px-6">
+                {/* Mobile Menu Logo */}
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  className="mb-8"
+                >
+                  <Image
+                    src="/logo/vrvo_wordmark_white.png"
+                    alt="Vrvo - Next-Generation Marketing"
+                    width={120}
+                    height={35}
+                    className="w-auto h-auto max-w-[120px]"
+                  />
+                </motion.div>
                 {/* Navigation Items */}
                 <nav className="flex-1 space-y-6">
                   {navItems.map((item, index) => (

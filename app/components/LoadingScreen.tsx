@@ -71,7 +71,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center">
+      <div className={`relative z-10 flex flex-col items-center ${isMobile ? 'px-4 py-8' : 'py-0'}`}>
         {/* Animated Logo */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -82,7 +82,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
             stiffness: 100,
             damping: 15
           }}
-          className="relative mb-12"
+          className={`relative ${isMobile ? 'mb-8' : 'mb-12'}`}
         >
           {/* Logo Background Glow */}
           <motion.div
