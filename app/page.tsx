@@ -1116,7 +1116,7 @@ export default function Home() {
       </SectionTransition>
 
       {/* How It Works Section */}
-      <SectionTransition sectionId="how-it-works" className="py-20 px-6 bg-slate-800/30 relative z-10">
+      <SectionTransition sectionId="how-it-works" className="py-20 px-6 bg-slate-100 relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -1130,7 +1130,7 @@ export default function Home() {
             }}
             className="text-center mb-16"
           >
-            <ParallaxText speed={0.5} className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <ParallaxText speed={0.5} className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
               Enterprise Technology, SMB Accessibility
             </ParallaxText>
             <motion.p 
@@ -1144,7 +1144,7 @@ export default function Home() {
                 damping: 20,
                 delay: 0.2
               }}
-              className="text-slate-400 text-lg max-w-3xl mx-auto"
+              className="text-slate-600 text-lg max-w-3xl mx-auto"
             >
               We leverage the same programmatic platforms and data intelligence as Fortune 500 companies—without the enterprise complexity or cost.
             </motion.p>
@@ -1250,14 +1250,14 @@ export default function Home() {
                     delay: 0.4 + index * 0.1,
                     duration: 0.6
                   }}
-                  className="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-slate-700/50 hover:border-blue-500/30 transition-all duration-300"
+                  className="flex items-start gap-4 p-4 rounded-lg bg-white/80 backdrop-blur-sm border border-slate-200 hover:border-blue-500/50 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="flex-shrink-0 w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400">
+                  <div className="flex-shrink-0 w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center text-blue-600">
                     {benefit.icon}
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold mb-1">{benefit.title}</h3>
-                    <p className="text-slate-400 text-sm">{benefit.description}</p>
+                    <h3 className="text-slate-900 font-semibold mb-1">{benefit.title}</h3>
+                    <p className="text-slate-600 text-sm">{benefit.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -1505,7 +1505,7 @@ export default function Home() {
       <AnimatedDivider />
 
       {/* About Section */}
-      <SectionTransition sectionId="about" className="py-20 px-6 relative z-10">
+      <SectionTransition sectionId="about" className="py-20 px-6 bg-slate-900/20 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -1610,7 +1610,7 @@ export default function Home() {
       </SectionTransition>
 
       {/* Enhanced CTA Section */}
-      <SectionTransition sectionId="cta" className="py-20 px-6 bg-gradient-to-b from-slate-900 to-slate-950 relative overflow-hidden z-10">
+      <SectionTransition sectionId="cta" className="py-20 px-6 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 relative overflow-hidden z-10">
         {/* Animated Background Glow */}
         <motion.div
           className="absolute inset-0 pointer-events-none"
