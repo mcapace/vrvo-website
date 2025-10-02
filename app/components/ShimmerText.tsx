@@ -36,12 +36,17 @@ export default function ShimmerText({
           backgroundSize: '200% 100%',
           backgroundPosition: '-200% 0',
         }}
-        whileHover={{
-          backgroundPosition: '200% 0',
+        animate={{
+          backgroundPosition: ['200% 0', '-200% 0'],
         }}
         transition={{
-          duration: 0.8,
-          ease: "easeInOut"
+          duration: 3,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatDelay: 2,
+        }}
+        whileHover={{
+          backgroundPosition: '200% 0',
         }}
       />
       

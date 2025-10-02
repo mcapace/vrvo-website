@@ -5,7 +5,7 @@ import { ReactNode } from 'react'
 
 interface AnimatedIconProps {
   children: ReactNode
-  animationType?: 'rotate' | 'bounce' | 'pulse' | 'scale' | 'float'
+  animationType?: 'rotate' | 'bounce' | 'pulse' | 'scale' | 'float' | 'glow'
   className?: string
   floatDuration?: number
   floatDelay?: number
@@ -94,6 +94,21 @@ export default function AnimatedIcon({
             color: "rgb(59, 130, 246)",
             y: 0,
             rotate: 0
+          }
+        }
+      case 'glow':
+        return {
+          whileHover: {
+            scale: 1.15,
+            color: "rgb(59, 130, 246)",
+            filter: "drop-shadow(0 0 20px rgba(59, 130, 246, 0.8))",
+            rotate: 5
+          },
+          transition: {
+            type: "spring" as const,
+            stiffness: 400,
+            damping: 15,
+            color: { duration: 0.2 }
           }
         }
       default:

@@ -17,6 +17,7 @@ import SectionTransition from './components/SectionTransition'
 import MobileNav from './components/MobileNav'
 import AnimatedGradientOverlay from './components/AnimatedGradientOverlay'
 import AnimatedDivider from './components/AnimatedDivider'
+import ParallaxText from './components/ParallaxText'
 
 export default function Home() {
   const { scrollYProgress } = useScroll()
@@ -405,19 +406,7 @@ export default function Home() {
             }}
             className="text-center mb-16"
           >
-            <motion.h2 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                duration: 0.8,
-                type: "spring",
-                stiffness: 80,
-                damping: 20,
-                delay: 0.2
-              }}
-              className="text-4xl md:text-5xl font-bold text-white mb-4"
-            >
+            <ParallaxText speed={0.6} className="text-4xl md:text-5xl font-bold text-white mb-4">
               Three Pillars of <motion.span 
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -435,7 +424,7 @@ export default function Home() {
                   Digital Excellence
                 </ShimmerText>
               </motion.span>
-            </motion.h2>
+            </ParallaxText>
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -462,7 +451,7 @@ export default function Home() {
           >
             {[
               {
-                icon: <Target className="w-12 h-12" />,
+                icon: <AnimatedIcon animationType="glow"><Target className="w-12 h-12" /></AnimatedIcon>,
                 title: 'Programmatic Advertising',
                 subtitle: 'Precision-Targeted Campaigns That Scale',
                 features: [
@@ -474,7 +463,7 @@ export default function Home() {
                 outcome: 'Lower acquisition costs, higher ROI, smarter spend'
               },
               {
-                icon: <TrendingUp className="w-12 h-12" />,
+                icon: <AnimatedIcon animationType="glow"><TrendingUp className="w-12 h-12" /></AnimatedIcon>,
                 title: 'Digital Marketing Strategy',
                 subtitle: 'Integrated Campaigns That Convert',
                 features: [
@@ -486,7 +475,7 @@ export default function Home() {
                 outcome: 'Consistent brand presence, qualified leads, measurable growth'
               },
               {
-                icon: <Lightbulb className="w-12 h-12" />,
+                icon: <AnimatedIcon animationType="glow"><Lightbulb className="w-12 h-12" /></AnimatedIcon>,
                 title: 'Business Transformation',
                 subtitle: 'Digital Infrastructure That Empowers',
                 features: [
@@ -683,19 +672,7 @@ export default function Home() {
             }}
             className="text-center mb-16"
           >
-            <motion.h2 
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                duration: 0.8,
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-                delay: 0.2
-              }}
-              className="text-4xl md:text-5xl font-bold text-white mb-4"
-            >
+            <ParallaxText speed={0.5} className="text-4xl md:text-5xl font-bold text-white mb-4">
               <motion.span
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -739,7 +716,7 @@ export default function Home() {
               >
                 Results-Obsessed.
               </motion.span>
-            </motion.h2>
+            </ParallaxText>
           </motion.div>
 
           <motion.div 
@@ -911,29 +888,15 @@ export default function Home() {
                 duration={4.5}
                 delay={1.5}
               >
-                <AnimatedIcon animationType="rotate">
-                  <Users className="w-16 h-16 text-blue-400" />
-                </AnimatedIcon>
+                <AnimatedIcon animationType="rotate"><Users className="w-16 h-16 text-blue-400" /></AnimatedIcon>
               </AdaptiveFloatingElement>
             </motion.div>
             
-            <motion.h2 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                duration: 0.8,
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-                delay: 0.4
-              }}
-              className="text-3xl md:text-4xl font-bold text-white mb-4"
-            >
+            <ParallaxText speed={0.4} className="text-3xl md:text-4xl font-bold text-white mb-4">
               <ShimmerText>
               Built for SMBs Ready to Think Bigger
               </ShimmerText>
-            </motion.h2>
+            </ParallaxText>
             
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
@@ -1039,21 +1002,9 @@ export default function Home() {
               damping: 20
             }}
           >
-            <motion.h2 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                duration: 0.8,
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-                delay: 0.2
-              }}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
-            >
+            <ParallaxText speed={0.3} className="text-4xl md:text-5xl font-bold text-white mb-6">
               Leveling the Playing Field
-            </motion.h2>
+            </ParallaxText>
             
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
