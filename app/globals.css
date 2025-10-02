@@ -49,6 +49,26 @@ body {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
   }
+
+  /* Enhanced touch feedback */
+  button:active, a:active, [role="button"]:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+
+  /* Disable hover effects on touch devices */
+  @media (hover: none) {
+    *:hover {
+      transform: none !important;
+    }
+  }
+
+  /* Reduce motion for better performance */
+  .animate-pulse,
+  .animate-bounce,
+  .animate-spin {
+    animation-duration: 2s;
+  }
 }
 
 /* Reduce motion for users who prefer it */
@@ -77,4 +97,30 @@ body {
     background: #0a0a0a;
     color: #ededed;
   }
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #06b6d4);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2563eb, #0891b2);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+}
+
+/* Smooth scrolling for all browsers */
+html {
+  scroll-behavior: smooth;
 }

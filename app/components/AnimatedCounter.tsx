@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useState, memo } from 'react'
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { useEffect, useState, memo, useRef } from 'react'
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 interface AnimatedCounterProps {
@@ -47,11 +47,20 @@ const AnimatedCounter = memo(function AnimatedCounter({
 
   // Add scale bounce effect when animation completes
   const [isComplete, setIsComplete] = useState(false)
+  const [showParticles, setShowParticles] = useState(false)
   
   useEffect(() => {
     if (hasAnimated) {
       const timer = setTimeout(() => {
         setIsComplete(true)
+        setShowParticles(true)
+        
+        // Hide particles after animation
+        const hideTimer = setTimeout(() => {
+          setShowParticles(false)
+        }, 1000)
+        
+        return () => clearTimeout(hideTimer)
       }, duration * 1000 + 500) // Wait for animation to complete
       
       return () => clearTimeout(timer)
@@ -101,6 +110,46 @@ const AnimatedCounter = memo(function AnimatedCounter({
         </motion.span>
         {suffix}
       </motion.div>
+      
+      {/* Particle Burst Effect */}
+      <AnimatePresence>
+        {showParticles && (
+          <div className="absolute inset-0 pointer-events-none">
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-blue-400 rounded-full"
+                initial={{
+                  x: 0,
+                  y: 0,
+                  scale: 0,
+                  opacity: 1
+                }}
+                animate={{
+                  x: Math.cos((i / 8) * Math.PI * 2) * 60,
+                  y: Math.sin((i / 8) * Math.PI * 2) * 60,
+                  scale: [0, 1, 0],
+                  opacity: [1, 1, 0]
+                }}
+                exit={{
+                  opacity: 0,
+                  scale: 0
+                }}
+                transition={{
+                  duration: 0.8,
+                  ease: "easeOut",
+                  delay: i * 0.05
+                }}
+                style={{
+                  left: '50%',
+                  top: '50%',
+                  transform: 'translate(-50%, -50%)'
+                }}
+              />
+            ))}
+          </div>
+        )}
+      </AnimatePresence>
     </motion.div>
   )
 })

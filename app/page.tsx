@@ -1,6 +1,7 @@
 'use client'
 
-import { motion, useScroll, useSpring } from 'framer-motion'
+import { useState } from 'react'
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { ArrowRight, Zap, Target, TrendingUp, Lightbulb, Users } from 'lucide-react'
 import Image from 'next/image'
 import LazyParticleNetwork from './components/LazyParticleNetwork'
@@ -18,6 +19,7 @@ import MobileNav from './components/MobileNav'
 import AnimatedGradientOverlay from './components/AnimatedGradientOverlay'
 import AnimatedDivider from './components/AnimatedDivider'
 import ParallaxText from './components/ParallaxText'
+import KonamiCode from './components/KonamiCode'
 
 export default function Home() {
   const { scrollYProgress } = useScroll()
@@ -26,6 +28,14 @@ export default function Home() {
     damping: 30,
     restDelta: 0.001
   })
+
+  // Navigation scroll effects
+  const navBlur = useTransform(scrollYProgress, [0, 0.1], [24, 32])
+  const navOpacity = useTransform(scrollYProgress, [0, 0.1], [0.8, 0.95])
+  const navShadow = useTransform(scrollYProgress, [0, 0.1], [0.4, 0.8])
+
+  // Konami Code state
+  const [konamiActive, setKonamiActive] = useState(false)
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative">
@@ -37,6 +47,12 @@ export default function Home() {
       
       {/* Adaptive Cursor */}
       <AdaptiveCursor />
+      
+      {/* Konami Code Easter Egg */}
+      <KonamiCode 
+        onActivate={() => setKonamiActive(true)}
+        onDeactivate={() => setKonamiActive(false)}
+      />
       
       {/* Mobile Navigation */}
       <MobileNav />
@@ -75,14 +91,14 @@ export default function Home() {
         }}
         className="fixed top-0 w-full z-40 hidden md:block"
         style={{
-          background: 'rgba(15, 23, 42, 0.8)',
-          backdropFilter: 'blur(24px)',
-          WebkitBackdropFilter: 'blur(24px)',
+          background: `rgba(15, 23, 42, ${navOpacity})`,
+          backdropFilter: `blur(${navBlur}px)`,
+          WebkitBackdropFilter: `blur(${navBlur}px)`,
           borderBottom: '1px solid transparent',
-          backgroundImage: 'linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), linear-gradient(90deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))',
+          backgroundImage: `linear-gradient(rgba(15, 23, 42, ${navOpacity}), rgba(15, 23, 42, ${navOpacity})), linear-gradient(90deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))`,
           backgroundOrigin: 'border-box',
           backgroundClip: 'padding-box, border-box',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 20px rgba(59, 130, 246, 0.1)'
+          boxShadow: `0 8px 32px rgba(0, 0, 0, ${navShadow}), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 20px rgba(59, 130, 246, 0.1)`
         }}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -96,7 +112,10 @@ export default function Home() {
                     damping: 15,
                     delay: 0.2
                   }}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    filter: 'drop-shadow(0 0 15px rgba(59, 130, 246, 0.6))'
+                  }}
                   className="cursor-pointer"
                 >
                   <Image
@@ -1043,8 +1062,64 @@ export default function Home() {
         </div>
       </SectionTransition>
 
-      {/* CTA Section */}
+      {/* Enhanced CTA Section */}
       <SectionTransition sectionId="cta" className="py-20 px-6 bg-gradient-to-b from-slate-900 to-slate-950 relative overflow-hidden z-10">
+        {/* Animated Background Glow */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          animate={{
+            background: [
+              'radial-gradient(ellipse 800px 600px at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 70%)',
+              'radial-gradient(ellipse 1000px 800px at 50% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 70%)',
+              'radial-gradient(ellipse 800px 600px at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 70%)'
+            ]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        {/* Floating Particles */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-blue-400/30 rounded-full"
+            style={{
+              left: `${20 + i * 15}%`,
+              top: `${30 + (i % 3) * 20}%`,
+            }}
+            animate={{
+              y: [-20, 20, -20],
+              opacity: [0.3, 0.8, 0.3],
+              scale: [0.8, 1.2, 0.8],
+            }}
+            transition={{
+              duration: 3 + i * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.3,
+            }}
+          />
+        ))}
+        
+        {/* Pulsing Border Glow */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          animate={{
+            boxShadow: [
+              '0 0 50px rgba(59, 130, 246, 0.2)',
+              '0 0 100px rgba(59, 130, 246, 0.4)',
+              '0 0 50px rgba(59, 130, 246, 0.2)'
+            ]
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -1089,7 +1164,8 @@ export default function Home() {
               Let&apos;s discuss how Vrvo can elevate your digital marketing and business infrastructure.
             </motion.p>
             
-            <AdaptiveMagneticButton
+            <motion.div
+              className="relative inline-block"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -1100,27 +1176,51 @@ export default function Home() {
                 damping: 15,
                 delay: 0.6
               }}
-              whileHover={{ 
-                scale: 1.08,
-                boxShadow: "0 25px 50px rgba(59, 130, 246, 0.4)",
-                backgroundColor: "rgb(37, 99, 235)"
-              }}
-              whileTap={{ scale: 0.95 }}
-              magneticStrength={0.35}
-              magneticDistance={90}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-lg font-semibold text-lg inline-flex items-center gap-3 transition-all duration-300"
             >
-              Let&apos;s Talk Growth
-              <AdaptiveFloatingElement
-                amplitude={6}
-                duration={3.5}
-                delay={2}
+              {/* Animated Button Border */}
+              <motion.div
+                className="absolute inset-0 rounded-lg"
+                animate={{
+                  background: [
+                    'linear-gradient(45deg, rgba(59, 130, 246, 0.5), rgba(6, 182, 212, 0.5))',
+                    'linear-gradient(45deg, rgba(6, 182, 212, 0.5), rgba(59, 130, 246, 0.5))',
+                    'linear-gradient(45deg, rgba(59, 130, 246, 0.5), rgba(6, 182, 212, 0.5))'
+                  ]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                style={{
+                  filter: 'blur(1px)',
+                  zIndex: -1,
+                }}
+              />
+              
+              <AdaptiveMagneticButton
+                whileHover={{ 
+                  scale: 1.08,
+                  boxShadow: "0 25px 50px rgba(59, 130, 246, 0.6), 0 0 100px rgba(6, 182, 212, 0.4)",
+                  backgroundColor: "rgb(37, 99, 235)"
+                }}
+                whileTap={{ scale: 0.95 }}
+                magneticStrength={0.4}
+                magneticDistance={100}
+                className="relative bg-blue-600 hover:bg-blue-700 text-white px-12 py-6 rounded-lg font-bold text-xl inline-flex items-center gap-4 transition-all duration-300 border-2 border-blue-400/30"
               >
-                <AnimatedIcon animationType="bounce">
+                Let&apos;s Talk Growth
+                <AdaptiveFloatingElement
+                  amplitude={8}
+                  duration={3.5}
+                  delay={2}
+                >
+                  <AnimatedIcon animationType="bounce">
               <ArrowRight className="w-6 h-6" />
-                </AnimatedIcon>
-              </AdaptiveFloatingElement>
-            </AdaptiveMagneticButton>
+                  </AnimatedIcon>
+                </AdaptiveFloatingElement>
+              </AdaptiveMagneticButton>
+            </motion.div>
           </motion.div>
         </div>
       </SectionTransition>
