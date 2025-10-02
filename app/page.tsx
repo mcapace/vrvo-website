@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
-import { ArrowRight, Zap, Target, TrendingUp, Lightbulb, Users } from 'lucide-react'
+import { ArrowRight, Zap, Target, TrendingUp, Lightbulb, Users, Heart, ShoppingCart, Briefcase, BarChart3, Building, Banknote } from 'lucide-react'
 import Image from 'next/image'
 import LazyParticleNetwork from './components/LazyParticleNetwork'
 import AdaptiveCursor from './components/AdaptiveCursor'
@@ -315,7 +315,7 @@ export default function Home() {
                   delay={3}
                 >
                   <AnimatedIcon animationType="bounce">
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5" strokeWidth={1.5} />
                   </AnimatedIcon>
                 </AdaptiveFloatingElement>
               </AdaptiveMagneticButton>
@@ -435,12 +435,12 @@ export default function Home() {
               className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-8"
             >
               {[
-                { icon: '🏥', name: 'Healthcare' },
-                { icon: '🛒', name: 'E-commerce' },
-                { icon: '💼', name: 'Professional Services' },
-                { icon: '📊', name: 'B2B SaaS' },
-                { icon: '🏢', name: 'Retail' },
-                { icon: '🏦', name: 'Financial Services' }
+                { icon: <Heart className="w-8 h-8" strokeWidth={1.5} />, name: 'Healthcare' },
+                { icon: <ShoppingCart className="w-8 h-8" strokeWidth={1.5} />, name: 'E-commerce' },
+                { icon: <Briefcase className="w-8 h-8" strokeWidth={1.5} />, name: 'Professional Services' },
+                { icon: <BarChart3 className="w-8 h-8" strokeWidth={1.5} />, name: 'B2B SaaS' },
+                { icon: <Building className="w-8 h-8" strokeWidth={1.5} />, name: 'Retail' },
+                { icon: <Banknote className="w-8 h-8" strokeWidth={1.5} />, name: 'Financial Services' }
               ].map((industry, i) => (
                 <motion.div
                   key={i}
@@ -548,7 +548,7 @@ export default function Home() {
           >
             {[
               {
-                icon: <AnimatedIcon animationType="glow"><Target className="w-12 h-12" /></AnimatedIcon>,
+                icon: <AnimatedIcon animationType="glow"><Target className="w-16 h-16" strokeWidth={1.5} /></AnimatedIcon>,
                 title: 'Programmatic Advertising',
                 subtitle: 'Reach your ideal customers at the right moment, on the right platform',
                 features: [
@@ -560,7 +560,7 @@ export default function Home() {
                 outcome: 'Pay only for the results that matter. Scale efficiently as you grow.'
               },
               {
-                icon: <AnimatedIcon animationType="glow"><TrendingUp className="w-12 h-12" /></AnimatedIcon>,
+                icon: <AnimatedIcon animationType="glow"><TrendingUp className="w-16 h-16" strokeWidth={1.5} /></AnimatedIcon>,
                 title: 'Digital Marketing Strategy',
                 subtitle: 'Integrated campaigns designed to convert browsers into customers',
                 features: [
@@ -572,7 +572,7 @@ export default function Home() {
                 outcome: 'Build a predictable pipeline of qualified leads, month after month.'
               },
               {
-                icon: <AnimatedIcon animationType="glow"><Lightbulb className="w-12 h-12" /></AnimatedIcon>,
+                icon: <AnimatedIcon animationType="glow"><Lightbulb className="w-16 h-16" strokeWidth={1.5} /></AnimatedIcon>,
                 title: 'Business Transformation',
                 subtitle: 'Transform your marketing from cost center to growth engine',
                 features: [
@@ -1108,7 +1108,7 @@ export default function Home() {
                 className="bg-slate-800 hover:bg-slate-700 text-white px-8 py-3 rounded-lg font-semibold inline-flex items-center gap-3 transition-all duration-300 border border-slate-600 hover:border-blue-500"
               >
                 See Industry Solutions
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-5 h-5" strokeWidth={1.5} />
               </AdaptiveMagneticButton>
             </motion.div>
           </motion.div>
@@ -1221,22 +1221,22 @@ export default function Home() {
             >
               {[
                 {
-                  icon: <Zap className="w-6 h-6" />,
+                  icon: <Zap className="w-8 h-8" strokeWidth={1.5} />,
                   title: "Unified dashboard for all campaigns and channels",
                   description: "Manage display, video, native, and social campaigns from one central platform."
                 },
                 {
-                  icon: <Target className="w-6 h-6" />,
+                  icon: <Target className="w-8 h-8" strokeWidth={1.5} />,
                   title: "Real-time performance monitoring and alerts",
                   description: "Get instant notifications when campaigns need attention or optimization."
                 },
                 {
-                  icon: <TrendingUp className="w-6 h-6" />,
+                  icon: <TrendingUp className="w-8 h-8" strokeWidth={1.5} />,
                   title: "Automated optimization powered by machine learning",
                   description: "AI continuously adjusts bids, audiences, and placements for maximum ROI."
                 },
                 {
-                  icon: <Lightbulb className="w-6 h-6" />,
+                  icon: <Lightbulb className="w-8 h-8" strokeWidth={1.5} />,
                   title: "Complete transparency - see exactly where your budget goes",
                   description: "Detailed reporting shows every impression, click, and conversion with full attribution."
                 }
@@ -1277,7 +1277,7 @@ export default function Home() {
                   className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold inline-flex items-center gap-3 transition-all duration-300"
                 >
                   See The Platform
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-5 h-5" strokeWidth={1.5} />
                 </AdaptiveMagneticButton>
               </motion.div>
             </motion.div>
