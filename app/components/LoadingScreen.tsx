@@ -71,7 +71,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
       </div>
 
       {/* Main Content */}
-      <div className={`relative z-10 flex flex-col items-center justify-center min-h-screen ${isMobile ? 'px-6 pt-24 pb-12' : 'py-0'}`}>
+      <div className={`relative z-10 flex flex-col items-center justify-center ${isMobile ? 'min-h-[100dvh] px-6 py-16' : 'min-h-screen py-0'}`}>
         {/* Animated Logo */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -82,7 +82,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
             stiffness: 100,
             damping: 15
           }}
-          className={`relative ${isMobile ? 'mb-6' : 'mb-12'}`}
+          className={`relative ${isMobile ? 'mb-4' : 'mb-12'}`}
         >
           {/* Logo Background Glow */}
           <motion.div
@@ -132,10 +132,10 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
             <Image
               src="/logo/vrvo_wordmark_white.png"
               alt="Vrvo - Next-Generation Marketing"
-              width={isMobile ? 280 : 320}
-              height={isMobile ? 85 : 100}
+              width={isMobile ? 240 : 320}
+              height={isMobile ? 72 : 100}
               priority
-              className={`w-auto h-auto ${isMobile ? 'max-w-[280px]' : 'max-w-[320px]'}`}
+              className={`w-auto h-auto ${isMobile ? 'max-w-[240px]' : 'max-w-[320px]'}`}
               style={{
                 filter: isMobile 
                   ? 'drop-shadow(0 0 40px rgba(59, 130, 246, 0.8)) drop-shadow(0 0 80px rgba(6, 182, 212, 0.6)) brightness(1.2)'
@@ -177,7 +177,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className={`${isMobile ? 'w-72' : 'w-80 md:w-96'} h-1.5 bg-slate-800 rounded-full overflow-hidden relative`}
+          className={`${isMobile ? 'w-64' : 'w-80 md:w-96'} h-1.5 bg-slate-800 rounded-full overflow-hidden relative`}
         >
           {/* Loading Bar Background */}
           <div className="absolute inset-0 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 rounded-full" />
@@ -233,7 +233,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className={`text-center ${isMobile ? 'mt-6' : 'mt-8'}`}
+          className={`text-center ${isMobile ? 'mt-4' : 'mt-8'}`}
         >
           <motion.p
             className={`font-medium mb-2 ${isMobile ? 'text-base text-slate-300' : 'text-lg text-slate-400'}`}
