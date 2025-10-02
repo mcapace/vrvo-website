@@ -71,7 +71,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
       </div>
 
       {/* Main Content */}
-      <div className={`relative z-10 flex flex-col items-center justify-center min-h-screen ${isMobile ? 'px-4 pt-20 pb-8' : 'py-0'}`}>
+      <div className={`relative z-10 flex flex-col items-center justify-center min-h-screen ${isMobile ? 'px-6 pt-24 pb-12' : 'py-0'}`}>
         {/* Animated Logo */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -82,7 +82,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
             stiffness: 100,
             damping: 15
           }}
-          className={`relative ${isMobile ? 'mb-8' : 'mb-12'}`}
+          className={`relative ${isMobile ? 'mb-6' : 'mb-12'}`}
         >
           {/* Logo Background Glow */}
           <motion.div
@@ -233,7 +233,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-8 text-center"
+          className={`text-center ${isMobile ? 'mt-6' : 'mt-8'}`}
         >
           <motion.p
             className={`font-medium mb-2 ${isMobile ? 'text-base text-slate-300' : 'text-lg text-slate-400'}`}
@@ -250,7 +250,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
           </motion.p>
           
           <motion.div
-            className="flex items-center justify-center gap-1"
+            className={`flex items-center justify-center ${isMobile ? 'gap-0.5' : 'gap-1'}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.6 }}
