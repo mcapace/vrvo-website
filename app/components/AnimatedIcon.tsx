@@ -30,7 +30,7 @@ export default function AnimatedIcon({
             color: "rgb(34, 197, 94)"
           },
           transition: {
-            type: "spring",
+            type: "spring" as const,
             stiffness: 400,
             damping: 20,
             color: { duration: 0.2 }
@@ -44,7 +44,7 @@ export default function AnimatedIcon({
             color: "rgb(59, 130, 246)"
           },
           transition: {
-            type: "spring",
+            type: "spring" as const,
             stiffness: 400,
             damping: 10,
             color: { duration: 0.2 }
@@ -70,7 +70,7 @@ export default function AnimatedIcon({
             color: "rgb(168, 85, 247)"
           },
           transition: {
-            type: "spring",
+            type: "spring" as const,
             stiffness: 300,
             damping: 20,
             color: { duration: 0.2 }
@@ -103,7 +103,7 @@ export default function AnimatedIcon({
             color: "rgb(34, 197, 94)"
           },
           transition: {
-            type: "spring",
+            type: "spring" as const,
             stiffness: 400,
             damping: 25,
             color: { duration: 0.2 }
