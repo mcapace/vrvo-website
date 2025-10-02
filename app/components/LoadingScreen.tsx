@@ -3,6 +3,7 @@
 import { motion, useAnimation } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { useDeviceDetection } from '../hooks/useDeviceDetection'
 
 interface LoadingScreenProps {
   onComplete?: () => void
@@ -12,6 +13,10 @@ interface LoadingScreenProps {
 export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingScreenProps) {
   const [isVisible, setIsVisible] = useState(true)
   const controls = useAnimation()
+  const { isMobile, isTablet } = useDeviceDetection()
+  
+  // Reduce duration on mobile for better UX
+  const actualDuration = isMobile ? Math.min(duration, 2000) : duration
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -28,7 +33,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
         setIsVisible(false)
         onComplete?.()
       }, 1200)
-    }, duration)
+    }, actualDuration)
 
     return () => clearTimeout(timer)
   }, [controls, duration, onComplete])
@@ -107,7 +112,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
 
           {/* Logo Text */}
           <motion.div
-            className="relative z-10 text-6xl md:text-8xl font-bold"
+            className={`relative z-10 ${isMobile ? 'text-4xl' : 'text-6xl md:text-8xl'} font-bold`}
             animate={{
               backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
             }}
@@ -127,10 +132,10 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
             <Image
               src="/logo/vrvo_wordmark_white.png"
               alt="Vrvo - Next-Generation Marketing"
-              width={320}
-              height={100}
+              width={isMobile ? 240 : 320}
+              height={isMobile ? 75 : 100}
               priority
-              className="w-auto h-auto max-w-[320px]"
+              className={`w-auto h-auto ${isMobile ? 'max-w-[240px]' : 'max-w-[320px]'}`}
               style={{
                 filter: 'drop-shadow(0 0 30px rgba(59, 130, 246, 0.5)) drop-shadow(0 0 60px rgba(6, 182, 212, 0.3))'
               }}
@@ -138,7 +143,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
           </motion.div>
 
           {/* Floating Particles around Logo */}
-          {[...Array(6)].map((_, i) => (
+          {[...Array(isMobile ? 3 : 6)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-2 h-2 rounded-full"
@@ -170,7 +175,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="w-80 md:w-96 h-1 bg-slate-800 rounded-full overflow-hidden relative"
+          className={`${isMobile ? 'w-64' : 'w-80 md:w-96'} h-1 bg-slate-800 rounded-full overflow-hidden relative`}
         >
           {/* Loading Bar Background */}
           <div className="absolute inset-0 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 rounded-full" />
@@ -181,7 +186,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
             initial={{ width: '0%' }}
             animate={{ width: '100%' }}
             transition={{
-              duration: duration / 1000,
+              duration: actualDuration / 1000,
               ease: [0.25, 0.46, 0.45, 0.94]
             }}
           >
@@ -268,9 +273,11 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
         </motion.div>
       </div>
 
-      {/* Corner Accents */}
-      <motion.div
-        className="absolute top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-blue-400/30"
+      {/* Corner Accents - Hide on mobile for cleaner look */}
+      {!isMobile && (
+        <>
+          <motion.div
+            className="absolute top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-blue-400/30"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.3, duration: 0.6 }}
@@ -293,6 +300,8 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.9, duration: 0.6 }}
       />
+        </>
+      )}
     </motion.div>
   )
 }

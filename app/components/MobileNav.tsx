@@ -25,8 +25,11 @@ const MobileNav = memo(function MobileNav() {
 
   const navItems = [
     { href: "#services", label: "Services" },
-    { href: "#approach", label: "Approach" },
-    { href: "#about", label: "About" }
+    { href: "#how-it-works", label: "How It Works" },
+    { href: "#industries", label: "Industries" },
+    { href: "#case-studies", label: "Case Studies" },
+    { href: "#about", label: "About" },
+    { href: "#cta", label: "Get Started" }
   ]
 
   return (
@@ -82,7 +85,7 @@ const MobileNav = memo(function MobileNav() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 z-50 w-80 h-full bg-slate-900/95 backdrop-blur-xl border-l border-slate-700/50"
+              className="fixed top-0 right-0 z-50 w-72 h-full bg-slate-900/95 backdrop-blur-xl border-l border-slate-700/50"
             >
               <div className="flex flex-col h-full pt-20 px-6">
                 {/* Navigation Items */}
@@ -91,11 +94,18 @@ const MobileNav = memo(function MobileNav() {
                     <motion.a
                       key={item.href}
                       href={item.href}
-                      onClick={() => setIsOpen(false)}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setIsOpen(false)
+                        const element = document.querySelector(item.href)
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' })
+                        }
+                      }}
                       initial={{ opacity: 0, x: 50 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 + 0.2 }}
-                      className="block text-2xl font-semibold text-white hover:text-blue-400 transition-colors duration-300"
+                      className="block text-xl font-semibold text-white hover:text-blue-400 transition-colors duration-300 py-2"
                     >
                       {item.label}
                     </motion.a>
@@ -110,7 +120,15 @@ const MobileNav = memo(function MobileNav() {
                   className="pb-8"
                 >
                   <motion.button
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      setIsOpen(false)
+                      setTimeout(() => {
+                        const element = document.querySelector('#cta')
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' })
+                        }
+                      }, 300)
+                    }}
                     className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-lg"
                     whileTap={{ scale: 0.98 }}
                   >
