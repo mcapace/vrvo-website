@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, useCallback } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 interface SpotlightCardProps {
@@ -13,7 +13,7 @@ interface SpotlightCardProps {
 export default function SpotlightCard({
   children,
   className = '',
-  spotlightColor = 'rgba(59, 130, 246, 0.1)',
+  spotlightColor = 'rgba(59, 130, 246, 0.3)',
   ...props
 }: SpotlightCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
@@ -32,7 +32,7 @@ export default function SpotlightCard({
     damping: 30,
   })
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!cardRef.current || !isHovering) return
 
     const rect = cardRef.current.getBoundingClientRect()
@@ -41,15 +41,15 @@ export default function SpotlightCard({
 
     mouseX.set(x)
     mouseY.set(y)
-  }
+  }, [isHovering, mouseX, mouseY])
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = useCallback(() => {
     setIsHovering(true)
-  }
+  }, [])
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setIsHovering(false)
-  }
+  }, [])
 
   useEffect(() => {
     const card = cardRef.current
@@ -72,27 +72,39 @@ export default function SpotlightCard({
       className={`relative overflow-hidden ${className}`}
       {...props}
     >
-      {/* Primary spotlight overlay */}
+      {/* Enhanced Primary spotlight overlay */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(400px circle at ${springX}px ${springY}px, ${spotlightColor}, transparent 50%)`,
+          background: `radial-gradient(500px circle at ${springX}px ${springY}px, ${spotlightColor}, transparent 70%)`,
           opacity: isHovering ? 1 : 0,
         }}
         transition={{
-          opacity: { duration: 0.3 }
+          opacity: { duration: 0.4, ease: "easeOut" }
         }}
       />
       
-      {/* Secondary glow overlay */}
+      {/* Enhanced Secondary glow overlay */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(200px circle at ${springX}px ${springY}px, rgba(255, 255, 255, 0.1), transparent 60%)`,
+          background: `radial-gradient(300px circle at ${springX}px ${springY}px, rgba(59, 130, 246, 0.15), transparent 60%)`,
           opacity: isHovering ? 1 : 0,
         }}
         transition={{
-          opacity: { duration: 0.4, delay: 0.1 }
+          opacity: { duration: 0.5, delay: 0.1, ease: "easeOut" }
+        }}
+      />
+
+      {/* Tertiary outer glow for extra depth */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(800px circle at ${springX}px ${springY}px, rgba(6, 182, 212, 0.08), transparent 80%)`,
+          opacity: isHovering ? 1 : 0,
+        }}
+        transition={{
+          opacity: { duration: 0.6, delay: 0.2, ease: "easeOut" }
         }}
       />
       

@@ -15,6 +15,8 @@ import TextReveal from './components/TextReveal'
 import AdaptiveFloatingElement from './components/AdaptiveFloatingElement'
 import SectionTransition from './components/SectionTransition'
 import MobileNav from './components/MobileNav'
+import AnimatedGradientOverlay from './components/AnimatedGradientOverlay'
+import AnimatedDivider from './components/AnimatedDivider'
 
 export default function Home() {
   const { scrollYProgress } = useScroll()
@@ -29,18 +31,35 @@ export default function Home() {
       {/* Animated Grid Background */}
       <AnimatedGrid />
       
+      {/* Animated Gradient Overlay */}
+      <AnimatedGradientOverlay />
+      
       {/* Adaptive Cursor */}
       <AdaptiveCursor />
       
       {/* Mobile Navigation */}
       <MobileNav />
       
-      {/* Premium Scroll Progress Indicator */}
+      {/* Enhanced Premium Scroll Progress Indicator */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 z-50 origin-left shadow-lg"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 z-50 origin-left shadow-lg"
         style={{ 
           scaleX,
-          boxShadow: '0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(6, 182, 212, 0.4)'
+          boxShadow: '0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(6, 182, 212, 0.5), 0 0 45px rgba(14, 184, 166, 0.3)'
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      />
+      
+      {/* Progress indicator glow effect */}
+      <motion.div
+        className="fixed top-0 left-0 h-1 z-50 pointer-events-none"
+        style={{
+          width: `${scrollYProgress.get() * 100}%`,
+          background: 'linear-gradient(90deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.2))',
+          filter: 'blur(8px)',
+          opacity: 0.8,
         }}
       />
       {/* Navigation */}
@@ -646,6 +665,9 @@ export default function Home() {
         </div>
       </SectionTransition>
 
+      {/* Animated Divider */}
+      <AnimatedDivider />
+
       {/* Approach Section */}
       <SectionTransition sectionId="approach" className="py-20 px-6 relative overflow-hidden z-10">
         <div className="max-w-7xl mx-auto">
@@ -950,11 +972,12 @@ export default function Home() {
                     damping: 20
                   }}
                   whileHover={{ 
-                    y: -5,
-                    scale: 1.1,
-                    boxShadow: '0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(6, 182, 212, 0.2)'
+                    y: -8,
+                    scale: 1.05,
+                    boxShadow: '0 0 30px rgba(59, 130, 246, 0.6), 0 0 60px rgba(6, 182, 212, 0.4)',
+                    letterSpacing: '0.05em'
                   }}
-                  className="relative px-6 py-3 rounded-full text-slate-300 transition-all duration-300 cursor-pointer overflow-hidden"
+                  className="relative px-6 py-3 rounded-full text-slate-300 transition-all duration-500 cursor-pointer overflow-hidden group"
                   style={{
                     background: 'rgba(30, 41, 59, 0.4)',
                     backdropFilter: 'blur(10px)',
@@ -963,6 +986,23 @@ export default function Home() {
                     boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                   }}
                 >
+                  {/* Shimmer effect overlay */}
+                  <motion.div
+                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100"
+                    style={{
+                      background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
+                      backgroundSize: '200% 100%',
+                    }}
+                    animate={{
+                      backgroundPosition: ['200% 0', '-200% 0'],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      ease: "easeInOut",
+                    }}
+                  />
+                  
+                  {/* Enhanced hover background */}
                   <motion.div
                     className="absolute inset-0 rounded-full"
                     initial={{ opacity: 0 }}
@@ -973,6 +1013,7 @@ export default function Home() {
                     }}
                     transition={{ duration: 0.3 }}
                   />
+                  
                   <span className="relative z-10">{industry}</span>
                 </motion.span>
               ))}
@@ -980,6 +1021,9 @@ export default function Home() {
           </motion.div>
         </div>
       </SectionTransition>
+
+      {/* Animated Divider */}
+      <AnimatedDivider />
 
       {/* About Section */}
       <SectionTransition sectionId="about" className="py-20 px-6 relative z-10">

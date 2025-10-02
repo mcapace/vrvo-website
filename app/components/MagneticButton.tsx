@@ -20,8 +20,8 @@ const MagneticButton = memo(function MagneticButton({
   whileHover,
   whileTap,
   onClick,
-  magneticStrength = 0.3,
-  magneticDistance = 100,
+  magneticStrength = 0.25,
+  magneticDistance = 80,
   ...props
 }: MagneticButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -32,13 +32,13 @@ const MagneticButton = memo(function MagneticButton({
 
   const springX = useSpring(x, {
     stiffness: 150,
-    damping: 15,
+    damping: 20,
     restDelta: 0.001
   })
 
   const springY = useSpring(y, {
     stiffness: 150,
-    damping: 15,
+    damping: 20,
     restDelta: 0.001
   })
 
@@ -101,6 +101,7 @@ const MagneticButton = memo(function MagneticButton({
       }}
       whileHover={{
         scale: 1.05,
+        boxShadow: '0 0 30px rgba(59, 130, 246, 0.6), 0 0 60px rgba(6, 182, 212, 0.4)',
         ...(whileHover as Record<string, unknown>)
       }}
       whileTap={whileTap as any}
