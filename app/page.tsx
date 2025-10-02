@@ -256,7 +256,7 @@ export default function Home() {
                   duration={0.7}
                   className="text-white"
                 >
-                  Transform Your Digital
+                  Programmatic Advertising
                 </TextReveal>
               </div>
               <div className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
@@ -266,7 +266,7 @@ export default function Home() {
                   duration={0.8}
                   className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent"
                 >
-                Presence Into Growth
+                That Drives Sustainable Business Growth
                 </TextReveal>
               </div>
             </h1>
@@ -283,8 +283,7 @@ export default function Home() {
               }}
               className="text-xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed"
             >
-              Vrvo combines cutting-edge programmatic advertising, data-driven digital marketing, 
-              and business transformation strategies to help SMBs compete at enterprise level.
+              Vrvo is your strategic partner in digital transformation. Combining cutting-edge programmatic technology with integrated marketing strategy, we help ambitious SMBs create demand, drive conversions, and scale efficiently—all while you focus on what you do best: running your business.
             </motion.p>
             
             <motion.div 
@@ -410,6 +409,85 @@ export default function Home() {
         </div>
       </SectionTransition>
 
+      {/* Social Proof Section */}
+      <SectionTransition sectionId="social-proof" className="py-16 px-6 bg-slate-950/50 relative z-10">
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100,
+              damping: 20
+            }}
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-12">
+              Trusted by Forward-Thinking Businesses
+            </h2>
+            
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-8"
+            >
+              {[
+                { icon: '🏥', name: 'Healthcare' },
+                { icon: '🛒', name: 'E-commerce' },
+                { icon: '💼', name: 'Professional Services' },
+                { icon: '📊', name: 'B2B SaaS' },
+                { icon: '🏢', name: 'Retail' },
+                { icon: '🏦', name: 'Financial Services' }
+              ].map((industry, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ 
+                    delay: 0.4 + i * 0.1,
+                    duration: 0.6,
+                    type: "spring",
+                    stiffness: 120,
+                    damping: 20
+                  }}
+                  whileHover={{ 
+                    scale: 1.1,
+                    filter: 'brightness(1.2)'
+                  }}
+                  className="flex flex-col items-center gap-3 p-4 rounded-lg transition-all duration-300 cursor-pointer group"
+                  style={{
+                    background: 'rgba(30, 41, 59, 0.3)',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(148, 163, 184, 0.2)',
+                  }}
+                >
+                  <div className="text-4xl opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                    {industry.icon}
+                  </div>
+                  <span className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors duration-300">
+                    {industry.name}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              className="text-slate-400 text-lg"
+            >
+              Join innovative companies that trust Vrvo to transform their digital presence
+            </motion.p>
+          </motion.div>
+        </div>
+      </SectionTransition>
+
       {/* Services Section */}
       <SectionTransition sectionId="services" className="py-20 px-6 bg-slate-900/50 relative z-10">
         <div className="max-w-7xl mx-auto">
@@ -472,38 +550,38 @@ export default function Home() {
               {
                 icon: <AnimatedIcon animationType="glow"><Target className="w-12 h-12" /></AnimatedIcon>,
                 title: 'Programmatic Advertising',
-                subtitle: 'Precision-Targeted Campaigns That Scale',
+                subtitle: 'Reach your ideal customers at the right moment, on the right platform',
                 features: [
-                  'Automated bidding strategies',
-                  'Real-time optimization',
-                  'Cross-platform reach',
-                  'Advanced audience segmentation'
+                  'AI-powered audience targeting across display, video, and native',
+                  'Real-time bid optimization to maximize every dollar',
+                  'Cross-device campaigns that follow your customer journey',
+                  'Transparent reporting with actionable insights'
                 ],
-                outcome: 'Lower acquisition costs, higher ROI, smarter spend'
+                outcome: 'Pay only for the results that matter. Scale efficiently as you grow.'
               },
               {
                 icon: <AnimatedIcon animationType="glow"><TrendingUp className="w-12 h-12" /></AnimatedIcon>,
                 title: 'Digital Marketing Strategy',
-                subtitle: 'Integrated Campaigns That Convert',
+                subtitle: 'Integrated campaigns designed to convert browsers into customers',
                 features: [
-                  'Multi-channel strategy',
-                  'Content marketing & SEO/SEM',
-                  'Social media management',
-                  'Analytics & reporting'
+                  'Custom strategies tailored to your business goals',
+                  'SEO and content that actually ranks and engages',
+                  'Social media that builds community and drives action',
+                  'Email automation that nurtures leads on autopilot'
                 ],
-                outcome: 'Consistent brand presence, qualified leads, measurable growth'
+                outcome: 'Build a predictable pipeline of qualified leads, month after month.'
               },
               {
                 icon: <AnimatedIcon animationType="glow"><Lightbulb className="w-12 h-12" /></AnimatedIcon>,
                 title: 'Business Transformation',
-                subtitle: 'Digital Infrastructure That Empowers',
+                subtitle: 'Transform your marketing from cost center to growth engine',
                 features: [
-                  'MarTech stack optimization',
-                  'CRM implementation',
-                  'Data analytics setup',
-                  'Process automation'
+                  'MarTech stack audit and optimization',
+                  'CRM setup and integration (HubSpot, Salesforce, etc.)',
+                  'Custom dashboards for real-time performance tracking',
+                  'Team training and ongoing strategic support'
                 ],
-                outcome: 'Scalable systems, data-driven decisions, efficiency'
+                outcome: 'Make data-driven decisions with confidence. Scale without chaos.'
               }
             ].map((service, index) => (
               <SpotlightCard
