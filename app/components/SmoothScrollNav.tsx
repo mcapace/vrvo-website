@@ -9,7 +9,7 @@ interface SmoothScrollNavProps {
 }
 
 export default function SmoothScrollNav({ children, className = '' }: SmoothScrollNavProps) {
-  const [activeSection, setActiveSection] = useState('')
+  const [, setActiveSection] = useState('')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,17 +34,17 @@ export default function SmoothScrollNav({ children, className = '' }: SmoothScro
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      const offsetTop = element.offsetTop - 80 // Account for fixed header
-      
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      })
-    }
-  }
+  // const scrollToSection = (sectionId: string) => {
+  //   const element = document.getElementById(sectionId)
+  //   if (element) {
+  //     const offsetTop = element.offsetTop - 80 // Account for fixed header
+  //     
+  //     window.scrollTo({
+  //       top: offsetTop,
+  //       behavior: 'smooth'
+  //     })
+  //   }
+  // }
 
   return (
     <motion.div

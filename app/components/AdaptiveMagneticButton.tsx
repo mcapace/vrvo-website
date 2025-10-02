@@ -38,7 +38,7 @@ const AdaptiveMagneticButton = memo(function AdaptiveMagneticButton({
 
   // Enhanced touch feedback for mobile
   const enhancedWhileTap = (hasTouch || isMobile || isTablet) 
-    ? { scale: 0.95, ...whileTap }
+    ? { scale: 0.95, ...(whileTap as Record<string, unknown>) }
     : whileTap
 
   return (
