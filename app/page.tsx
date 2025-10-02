@@ -619,7 +619,7 @@ export default function Home() {
                   'Custom dashboards for real-time performance tracking',
                   'Team training and ongoing strategic support'
                 ],
-                outcome: 'Make data-driven decisions with confidence. Scale without chaos.'
+                outcome: 'Make data-driven decisions with confidence. Scale without chaos or complexity.'
               }
             ].map((service, index) => (
               <SpotlightCard
