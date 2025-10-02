@@ -1285,6 +1285,222 @@ export default function Home() {
         </div>
       </SectionTransition>
 
+      {/* Case Study Teaser Section */}
+      <SectionTransition sectionId="case-studies" className="py-20 px-6 bg-slate-900/30 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100,
+              damping: 20
+            }}
+            className="text-center mb-16"
+          >
+            <ParallaxText speed={0.5} className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Results That Speak
+            </ParallaxText>
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+                delay: 0.2
+              }}
+              className="text-slate-400 text-lg max-w-2xl mx-auto"
+            >
+              Real results from real businesses that trusted Vrvo with their growth
+            </motion.p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Case Study Card 1 - Healthcare */}
+            <motion.div
+              initial={{ opacity: 0, y: 60, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                delay: 0.2,
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20
+              }}
+              whileHover={{ 
+                y: -10,
+                scale: 1.02,
+                boxShadow: "0 25px 50px rgba(251, 191, 36, 0.3)"
+              }}
+              className="relative p-8 rounded-2xl border border-yellow-500/20 overflow-hidden group cursor-pointer"
+              style={{
+                background: 'linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.05))',
+              }}
+            >
+              {/* Floating particles */}
+              <motion.div
+                animate={{ y: [-5, 5, -5], rotate: [0, 180, 360] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-4 right-4 w-3 h-3 bg-yellow-400 rounded-full opacity-60"
+              />
+              <motion.div
+                animate={{ y: [5, -5, 5], rotate: [360, 180, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute bottom-4 left-4 w-2 h-2 bg-yellow-300 rounded-full opacity-40"
+              />
+              
+              <div className="relative z-10">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: 0.5, duration: 0.6, type: "spring" }}
+                  className="text-6xl font-bold text-yellow-400 mb-4"
+                >
+                  <AnimatedCounter end={3.2} suffix="x" className="text-yellow-400" />
+                </motion.div>
+                
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Increase in Qualified Leads
+                </h3>
+                
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  Healthcare provider scaled patient acquisition while reducing cost per lead by 47%
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Case Study Card 2 - E-commerce */}
+            <motion.div
+              initial={{ opacity: 0, y: 60, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                delay: 0.4,
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20
+              }}
+              whileHover={{ 
+                y: -10,
+                scale: 1.02,
+                boxShadow: "0 25px 50px rgba(59, 130, 246, 0.3)"
+              }}
+              className="relative p-8 rounded-2xl border border-blue-500/20 overflow-hidden group cursor-pointer"
+              style={{
+                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05))',
+              }}
+            >
+              {/* Floating particles */}
+              <motion.div
+                animate={{ y: [-3, 7, -3], rotate: [0, 360, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-6 right-6 w-4 h-4 bg-blue-400 rounded-full opacity-50"
+              />
+              <motion.div
+                animate={{ y: [7, -3, 7], rotate: [360, 0, 360] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                className="absolute bottom-6 left-6 w-3 h-3 bg-blue-300 rounded-full opacity-30"
+              />
+              
+              <div className="relative z-10">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: 0.7, duration: 0.6, type: "spring" }}
+                  className="text-6xl font-bold text-blue-400 mb-4"
+                >
+                  <AnimatedCounter end={425} suffix="%" className="text-blue-400" />
+                </motion.div>
+                
+                <h3 className="text-xl font-bold text-white mb-3">
+                  ROAS Improvement
+                </h3>
+                
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  E-commerce brand achieved 4.25x return on ad spend within 90 days
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Case Study Card 3 - B2B SaaS */}
+            <motion.div
+              initial={{ opacity: 0, y: 60, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                delay: 0.6,
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20
+              }}
+              whileHover={{ 
+                y: -10,
+                scale: 1.02,
+                boxShadow: "0 25px 50px rgba(20, 184, 166, 0.3)"
+              }}
+              className="relative p-8 rounded-2xl border border-teal-500/20 overflow-hidden group cursor-pointer"
+              style={{
+                background: 'linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(13, 148, 136, 0.05))',
+              }}
+            >
+              {/* Floating particles */}
+              <motion.div
+                animate={{ y: [-6, 4, -6], rotate: [0, 180, 360] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-5 right-5 w-3 h-3 bg-teal-400 rounded-full opacity-60"
+              />
+              <motion.div
+                animate={{ y: [4, -6, 4], rotate: [360, 180, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                className="absolute bottom-5 left-5 w-2 h-2 bg-teal-300 rounded-full opacity-40"
+              />
+              
+              <div className="relative z-10">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: 0.9, duration: 0.6, type: "spring" }}
+                  className="text-6xl font-bold text-teal-400 mb-4"
+                >
+                  <AnimatedCounter end={67} suffix="%" className="text-teal-400" />
+                </motion.div>
+                
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Reduction in CAC
+                </h3>
+                
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  B2B SaaS company cut customer acquisition costs while scaling to new markets
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            className="text-center mt-12"
+          >
+            <p className="text-slate-500 text-sm italic">
+              Results vary based on industry, budget, and goals
+            </p>
+          </motion.div>
+        </div>
+      </SectionTransition>
+
       {/* Animated Divider */}
       <AnimatedDivider />
 
@@ -1303,7 +1519,7 @@ export default function Home() {
             }}
           >
             <ParallaxText speed={0.3} className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Leveling the Playing Field
+              Why Vrvo Exists
             </ParallaxText>
             
             <motion.p 
@@ -1319,9 +1535,7 @@ export default function Home() {
               }}
               className="text-xl text-slate-300 leading-relaxed mb-6"
             >
-              Enterprise-grade marketing strategy shouldn&apos;t be exclusive to Fortune 500 companies. 
-              Vrvo brings sophisticated programmatic advertising, integrated digital marketing, 
-              and transformative business strategies to ambitious SMBs ready to scale.
+              For too long, sophisticated digital marketing has been gatekept by high minimums, complex platforms, and agencies that treat SMBs like afterthoughts.
             </motion.p>
             
             <motion.p 
@@ -1333,12 +1547,64 @@ export default function Home() {
                 type: "spring",
                 stiffness: 100,
                 damping: 20,
+                delay: 0.4
+              }}
+              className="text-lg text-slate-300 leading-relaxed mb-6"
+            >
+              We believe every ambitious business deserves access to the same technology, strategy, and expertise that enterprise companies use to dominate their markets.
+            </motion.p>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
                 delay: 0.6
               }}
-              className="text-lg text-slate-400"
+              className="text-lg text-slate-300 leading-relaxed mb-6"
             >
-              We exist to help forward-thinking businesses compete—and win—in the digital age.
+              That&apos;s why we built Vrvo—to democratize programmatic advertising and digital transformation for businesses ready to punch above their weight class.
             </motion.p>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+                delay: 0.8
+              }}
+              className="text-lg text-slate-300 leading-relaxed mb-8"
+            >
+              We&apos;re not just your marketing vendor. We&apos;re your strategic partner, your growth team, and your competitive advantage.
+            </motion.p>
+
+            {/* Promise Highlight Box */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+                delay: 1.0
+              }}
+              className="relative p-6 rounded-xl border border-blue-500/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-xl"></div>
+              <p className="relative text-lg text-white font-medium text-center">
+                <span className="text-blue-400 font-bold">Our Promise:</span> No long-term contracts. No hidden fees. Just transparent partnership focused on your growth.
+              </p>
+            </motion.div>
           </motion.div>
         </div>
       </SectionTransition>
