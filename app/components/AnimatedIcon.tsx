@@ -58,7 +58,7 @@ export default function AnimatedIcon({
           },
           transition: {
             duration: 0.6,
-            ease: "easeInOut",
+            ease: "easeInOut" as const,
             color: { duration: 0.2 }
           }
         }
@@ -86,7 +86,7 @@ export default function AnimatedIcon({
           transition: {
             duration: floatDuration,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: "easeInOut" as const,
             delay: floatDelay
           },
           whileHover: {
