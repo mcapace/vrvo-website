@@ -1008,7 +1008,7 @@ export default function Home() {
               }}
               className="text-slate-400 text-lg mb-8"
             >
-              We partner with ambitious small and medium-sized businesses across industries
+              We specialize in helping small and medium-sized businesses compete with industry leaders—without the enterprise budget.
             </motion.p>
             
             <motion.div 
@@ -1018,7 +1018,14 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="flex flex-wrap justify-center gap-4"
             >
-              {['Professional Services', 'Healthcare', 'E-commerce', 'B2B SaaS', 'Retail', 'Financial Services'].map((industry, i) => (
+              {[
+                { name: 'Professional Services', tooltip: 'Law firms, consultancies, agencies' },
+                { name: 'Healthcare', tooltip: 'Clinics, med spas, wellness centers' },
+                { name: 'E-commerce', tooltip: 'DTC brands, online retailers' },
+                { name: 'B2B SaaS', tooltip: 'Software and tech platforms' },
+                { name: 'Home Services', tooltip: 'HVAC, solar, contractors' },
+                { name: 'Financial Services', tooltip: 'Advisors, insurance, fintech' }
+              ].map((industry, i) => (
                 <motion.span 
                   key={i}
                   initial={{ opacity: 0, y: 20, scale: 0.8 }}
@@ -1074,11 +1081,207 @@ export default function Home() {
                     transition={{ duration: 0.3 }}
                   />
                   
-                  <span className="relative z-10">{industry}</span>
+                  <div className="relative group">
+                    <span className="relative z-10">{industry.name}</span>
+                    {/* Tooltip */}
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-slate-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-20">
+                      {industry.tooltip}
+                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-800"></div>
+                    </div>
+                  </div>
                 </motion.span>
               ))}
             </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 1.8 }}
+              className="text-center mt-8"
+            >
+              <AdaptiveMagneticButton
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 15px 30px rgba(59, 130, 246, 0.3)"
+                }}
+                className="bg-slate-800 hover:bg-slate-700 text-white px-8 py-3 rounded-lg font-semibold inline-flex items-center gap-3 transition-all duration-300 border border-slate-600 hover:border-blue-500"
+              >
+                See Industry Solutions
+                <ArrowRight className="w-4 h-4" />
+              </AdaptiveMagneticButton>
+            </motion.div>
           </motion.div>
+        </div>
+      </SectionTransition>
+
+      {/* How It Works Section */}
+      <SectionTransition sectionId="how-it-works" className="py-20 px-6 bg-slate-800/30 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100,
+              damping: 20
+            }}
+            className="text-center mb-16"
+          >
+            <ParallaxText speed={0.5} className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Enterprise Technology, SMB Accessibility
+            </ParallaxText>
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+                delay: 0.2
+              }}
+              className="text-slate-400 text-lg max-w-3xl mx-auto"
+            >
+              We leverage the same programmatic platforms and data intelligence as Fortune 500 companies—without the enterprise complexity or cost.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Platform Dashboard Mockup */}
+            <motion.div
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20
+              }}
+              className="relative"
+            >
+              <div className="relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 border border-slate-700 shadow-2xl">
+                {/* Dashboard Header */}
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-blue-500 rounded-lg"></div>
+                    <span className="text-white font-semibold">Vrvo Platform</span>
+                  </div>
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                  </div>
+                </div>
+                
+                {/* Dashboard Content */}
+                <div className="space-y-4">
+                  <div className="h-4 bg-blue-500/20 rounded animate-pulse"></div>
+                  <div className="grid grid-cols-3 gap-4">
+                    <div className="h-16 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-lg"></div>
+                    <div className="h-16 bg-gradient-to-r from-cyan-500/30 to-teal-500/30 rounded-lg"></div>
+                    <div className="h-16 bg-gradient-to-r from-teal-500/30 to-green-500/30 rounded-lg"></div>
+                  </div>
+                  <div className="h-32 bg-gradient-to-r from-slate-700 to-slate-600 rounded-lg flex items-center justify-center">
+                    <span className="text-slate-400 text-sm">Real-time Performance Dashboard</span>
+                  </div>
+                </div>
+                
+                {/* Floating Elements */}
+                <motion.div
+                  animate={{ y: [-5, 5, -5] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full shadow-lg"
+                />
+                <motion.div
+                  animate={{ y: [5, -5, 5] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  className="absolute -bottom-2 -left-2 w-4 h-4 bg-cyan-500 rounded-full shadow-lg"
+                />
+              </div>
+            </motion.div>
+
+            {/* Right: Benefits List */}
+            <motion.div
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+                delay: 0.2
+              }}
+              className="space-y-6"
+            >
+              {[
+                {
+                  icon: <Zap className="w-6 h-6" />,
+                  title: "Unified dashboard for all campaigns and channels",
+                  description: "Manage display, video, native, and social campaigns from one central platform."
+                },
+                {
+                  icon: <Target className="w-6 h-6" />,
+                  title: "Real-time performance monitoring and alerts",
+                  description: "Get instant notifications when campaigns need attention or optimization."
+                },
+                {
+                  icon: <TrendingUp className="w-6 h-6" />,
+                  title: "Automated optimization powered by machine learning",
+                  description: "AI continuously adjusts bids, audiences, and placements for maximum ROI."
+                },
+                {
+                  icon: <Lightbulb className="w-6 h-6" />,
+                  title: "Complete transparency - see exactly where your budget goes",
+                  description: "Detailed reporting shows every impression, click, and conversion with full attribution."
+                }
+              ].map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{
+                    delay: 0.4 + index * 0.1,
+                    duration: 0.6
+                  }}
+                  className="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-slate-700/50 hover:border-blue-500/30 transition-all duration-300"
+                >
+                  <div className="flex-shrink-0 w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400">
+                    {benefit.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold mb-1">{benefit.title}</h3>
+                    <p className="text-slate-400 text-sm">{benefit.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                className="pt-4"
+              >
+                <AdaptiveMagneticButton
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)"
+                  }}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold inline-flex items-center gap-3 transition-all duration-300"
+                >
+                  See The Platform
+                  <ArrowRight className="w-5 h-5" />
+                </AdaptiveMagneticButton>
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </SectionTransition>
 
