@@ -122,7 +122,6 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
               WebkitBackgroundClip: 'text',
               backgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              textFillColor: 'transparent',
             }}
           >
             <Image
