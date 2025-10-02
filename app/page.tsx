@@ -1708,65 +1708,140 @@ export default function Home() {
               }}
               className="text-xl text-slate-400 mb-10"
             >
-              Let&apos;s discuss how Vrvo can elevate your digital marketing and business infrastructure.
+              Let&apos;s talk about your goals, your challenges, and how Vrvo can help you compete—and win.
             </motion.p>
             
+            {/* Mini Form Section */}
             <motion.div
-              className="relative inline-block"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{
-                duration: 0.6,
+                duration: 0.8,
                 type: "spring",
-                stiffness: 200,
-                damping: 15,
+                stiffness: 100,
+                damping: 20,
                 delay: 0.6
               }}
+              className="max-w-2xl mx-auto"
             >
-              {/* Animated Button Border */}
-              <motion.div
-                className="absolute inset-0 rounded-lg"
-                animate={{
-                  background: [
-                    'linear-gradient(45deg, rgba(59, 130, 246, 0.5), rgba(6, 182, 212, 0.5))',
-                    'linear-gradient(45deg, rgba(6, 182, 212, 0.5), rgba(59, 130, 246, 0.5))',
-                    'linear-gradient(45deg, rgba(59, 130, 246, 0.5), rgba(6, 182, 212, 0.5))'
-                  ]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                style={{
-                  filter: 'blur(1px)',
-                  zIndex: -1,
-                }}
-              />
-              
-              <AdaptiveMagneticButton
-                whileHover={{ 
-                  scale: 1.08,
-                  boxShadow: "0 25px 50px rgba(59, 130, 246, 0.6), 0 0 100px rgba(6, 182, 212, 0.4)",
-                  backgroundColor: "rgb(37, 99, 235)"
-                }}
-                whileTap={{ scale: 0.95 }}
-                magneticStrength={0.4}
-                magneticDistance={100}
-                className="relative bg-blue-600 hover:bg-blue-700 text-white px-12 py-6 rounded-lg font-bold text-xl inline-flex items-center gap-4 transition-all duration-300 border-2 border-blue-400/30"
-              >
-                Let&apos;s Talk Growth
-                <AdaptiveFloatingElement
-                  amplitude={8}
-                  duration={3.5}
-                  delay={2}
+              <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8">
+                <form className="space-y-6">
+                  {/* Challenge Dropdown */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: 0.8, duration: 0.6 }}
+                  >
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      What&apos;s your biggest marketing challenge?
+                    </label>
+                    <select className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                      <option value="">Select your challenge</option>
+                      <option value="generating-leads">Generating Leads</option>
+                      <option value="reducing-cac">Reducing CAC</option>
+                      <option value="scaling-campaigns">Scaling Campaigns</option>
+                      <option value="measuring-roi">Measuring ROI</option>
+                      <option value="all-of-above">All of the Above</option>
+                    </select>
+                  </motion.div>
+
+                  {/* Budget Dropdown */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: 0.9, duration: 0.6 }}
+                  >
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      What&apos;s your monthly marketing budget?
+                    </label>
+                    <select className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                      <option value="">Select budget range</option>
+                      <option value="5k-15k">$5K - $15K</option>
+                      <option value="15k-50k">$15K - $50K</option>
+                      <option value="50k-100k">$50K - $100K</option>
+                      <option value="100k+">$100K+</option>
+                    </select>
+                  </motion.div>
+
+                  {/* Email Input */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: 1.0, duration: 0.6 }}
+                  >
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="your@email.com"
+                      className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    />
+                  </motion.div>
+
+                  {/* Submit Button */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: 1.1, duration: 0.6 }}
+                  >
+                    <AdaptiveMagneticButton
+                      whileHover={{ 
+                        scale: 1.02,
+                        boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)"
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 border border-blue-500/30"
+                    >
+                      Get Your Custom Strategy
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </AdaptiveMagneticButton>
+                  </motion.div>
+                </form>
+
+                {/* Alternative CTA */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: 1.3, duration: 0.6 }}
+                  className="text-center mt-6 pt-6 border-t border-slate-700"
                 >
-                  <AnimatedIcon animationType="bounce">
-              <ArrowRight className="w-6 h-6" />
-                  </AnimatedIcon>
-                </AdaptiveFloatingElement>
-              </AdaptiveMagneticButton>
+                  <p className="text-slate-400 text-sm mb-3">
+                    Or schedule a 30-minute consultation
+                  </p>
+                  <button className="text-blue-400 hover:text-blue-300 underline transition-colors duration-300">
+                    Book a Call →
+                  </button>
+                </motion.div>
+
+                {/* Trust Indicators */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: 1.5, duration: 0.6 }}
+                  className="flex flex-wrap justify-center gap-6 mt-6 pt-6 border-t border-slate-700"
+                >
+                  <div className="flex items-center gap-2 text-slate-400 text-sm">
+                    <span className="text-green-400">✓</span>
+                    Free consultation
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-400 text-sm">
+                    <span className="text-green-400">✓</span>
+                    No-pressure approach
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-400 text-sm">
+                    <span className="text-green-400">✓</span>
+                    Custom roadmap included
+                  </div>
+                </motion.div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
