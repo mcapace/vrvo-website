@@ -9,7 +9,7 @@ interface AnimatedIconProps {
   className?: string
   floatDuration?: number
   floatDelay?: number
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export default function AnimatedIcon({

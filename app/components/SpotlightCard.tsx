@@ -7,7 +7,7 @@ interface SpotlightCardProps {
   children: React.ReactNode
   className?: string
   spotlightColor?: string
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export default function SpotlightCard({
@@ -64,7 +64,7 @@ export default function SpotlightCard({
       card.removeEventListener('mouseenter', handleMouseEnter)
       card.removeEventListener('mouseleave', handleMouseLeave)
     }
-  }, [isHovering])
+  }, [isHovering, handleMouseMove])
 
   return (
     <motion.div

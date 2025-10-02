@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef, memo } from 'react'
+import { useEffect, useState, memo } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 

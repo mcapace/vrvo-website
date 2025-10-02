@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useMemo, memo, useCallback } from 'react'
+import { useRef, useMemo, memo } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Points, PointMaterial } from '@react-three/drei'
 import * as THREE from 'three'

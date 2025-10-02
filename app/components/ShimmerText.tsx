@@ -6,7 +6,7 @@ interface ShimmerTextProps {
   children: React.ReactNode
   className?: string
   shimmerColors?: string[]
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export default function ShimmerText({

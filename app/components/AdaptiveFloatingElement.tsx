@@ -10,7 +10,7 @@ interface AdaptiveFloatingElementProps {
   duration?: number
   delay?: number
   className?: string
-  [key: string]: any
+  [key: string]: unknown
 }
 
 const AdaptiveFloatingElement = memo(function AdaptiveFloatingElement({

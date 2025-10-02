@@ -1,17 +1,17 @@
 'use client'
 
 import { useRef, useEffect, useState, memo, useCallback } from 'react'
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 interface MagneticButtonProps {
   children: React.ReactNode
   className?: string
-  whileHover?: any
-  whileTap?: any
+  whileHover?: unknown
+  whileTap?: unknown
   onClick?: () => void
   magneticStrength?: number
   magneticDistance?: number
-  [key: string]: any
+  [key: string]: unknown
 }
 
 const MagneticButton = memo(function MagneticButton({

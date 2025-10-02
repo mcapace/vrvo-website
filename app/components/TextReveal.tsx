@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ReactNode } from 'react'
 
 interface TextRevealProps {
   children: string
@@ -9,7 +8,7 @@ interface TextRevealProps {
   delay?: number
   staggerDelay?: number
   duration?: number
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export default function TextReveal({

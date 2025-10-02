@@ -7,12 +7,12 @@ import MagneticButton from './MagneticButton'
 interface AdaptiveMagneticButtonProps {
   children: React.ReactNode
   className?: string
-  whileHover?: any
-  whileTap?: any
+  whileHover?: unknown
+  whileTap?: unknown
   onClick?: () => void
   magneticStrength?: number
   magneticDistance?: number
-  [key: string]: any
+  [key: string]: unknown
 }
 
 const AdaptiveMagneticButton = memo(function AdaptiveMagneticButton({

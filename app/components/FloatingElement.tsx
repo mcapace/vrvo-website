@@ -9,7 +9,7 @@ interface FloatingElementProps {
   duration?: number // Duration of one complete cycle
   delay?: number // Initial delay before starting
   className?: string
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export default function FloatingElement({
