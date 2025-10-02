@@ -58,14 +58,14 @@ export default function Home() {
       <MobileNav />
       
       {/* Enhanced Premium Scroll Progress Indicator */}
-      <motion.div
+          <motion.div 
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 z-50 origin-left shadow-lg"
         style={{ 
           scaleX,
           boxShadow: '0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(6, 182, 212, 0.5), 0 0 45px rgba(14, 184, 166, 0.3)'
         }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       />
       
@@ -126,7 +126,7 @@ export default function Home() {
                     priority
                     className="w-auto h-auto max-w-[130px]"
                   />
-                </motion.div>
+          </motion.div>
           
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
@@ -216,6 +216,41 @@ export default function Home() {
 
       {/* Hero Section */}
       <SectionTransition sectionId="hero" className="relative pt-20 md:pt-32 pb-20 px-4 md:px-6 overflow-hidden z-10">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Floating Triangles */}
+          <motion.div
+            animate={{ y: [-20, 20, -20], rotate: [0, 180, 360] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 left-10 w-4 h-4 border-l-2 border-t-2 border-blue-400/30 rotate-45"
+          />
+          <motion.div
+            animate={{ y: [20, -20, 20], rotate: [360, 180, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute top-40 right-20 w-3 h-3 border-l-2 border-t-2 border-cyan-400/20 rotate-45"
+          />
+          <motion.div
+            animate={{ y: [-15, 15, -15], rotate: [0, 360, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+            className="absolute bottom-40 left-1/4 w-2 h-2 border-l-2 border-t-2 border-blue-500/25 rotate-45"
+          />
+          
+          {/* Floating Circles */}
+          <motion.div
+            animate={{ y: [-10, 10, -10], scale: [1, 1.2, 1] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/3 right-1/3 w-6 h-6 border border-cyan-400/20 rounded-full"
+          />
+          <motion.div
+            animate={{ y: [10, -10, 10], scale: [1.2, 1, 1.2] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+            className="absolute bottom-1/4 right-1/4 w-4 h-4 border border-blue-400/15 rounded-full"
+          />
+          
+          {/* Diagonal Lines */}
+          <div className="absolute top-1/4 left-0 w-32 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent transform -rotate-12" />
+          <div className="absolute bottom-1/3 right-0 w-24 h-px bg-gradient-to-l from-transparent via-cyan-500/15 to-transparent transform rotate-12" />
+        </div>
         {/* 3D Particle Network Background */}
         <LazyParticleNetwork />
         
@@ -427,9 +462,9 @@ export default function Home() {
               Trusted by Forward-Thinking Businesses
             </h2>
             
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-8"
@@ -503,7 +538,10 @@ export default function Home() {
             }}
             className="text-center mb-16"
           >
-            <ParallaxText speed={0.6} className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight text-balance">
+            <ParallaxText speed={0.6} className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight text-balance relative">
+              {/* Decorative Accent Lines */}
+              <div className="absolute -left-8 top-1/2 w-6 h-px bg-gradient-to-r from-transparent to-blue-400/30" />
+              <div className="absolute -right-8 top-1/2 w-6 h-px bg-gradient-to-l from-transparent to-cyan-400/30" />
               Three Pillars of <motion.span 
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -748,7 +786,7 @@ export default function Home() {
               </SpotlightCard>
             ))}
           </motion.div>
-        </div>
+          </div>
       </SectionTransition>
 
       {/* Animated Divider */}
@@ -950,7 +988,7 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
-        </div>
+          </div>
       </SectionTransition>
 
       {/* Who We Serve */}
@@ -1011,9 +1049,9 @@ export default function Home() {
               We specialize in helping small and medium-sized businesses compete with industry leaders—without the enterprise budget.
             </motion.p>
             
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.8 }}
               className="flex flex-wrap justify-center gap-4"
@@ -1112,7 +1150,7 @@ export default function Home() {
               </AdaptiveMagneticButton>
             </motion.div>
           </motion.div>
-        </div>
+            </div>
       </SectionTransition>
 
       {/* How It Works Section */}
@@ -1170,7 +1208,7 @@ export default function Home() {
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-blue-500 rounded-lg"></div>
                     <span className="text-white font-semibold">Vrvo Platform</span>
-                  </div>
+        </div>
                   <div className="flex gap-2">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
@@ -1506,6 +1544,18 @@ export default function Home() {
 
       {/* About Section */}
       <SectionTransition sectionId="about" className="py-20 px-6 bg-slate-900/20 relative z-10">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Subtle Dot Pattern */}
+          <div className="absolute top-10 left-10 w-2 h-2 bg-blue-400/10 rounded-full" />
+          <div className="absolute top-20 right-20 w-1 h-1 bg-cyan-400/15 rounded-full" />
+          <div className="absolute bottom-20 left-1/4 w-1.5 h-1.5 bg-blue-500/10 rounded-full" />
+          <div className="absolute bottom-10 right-1/3 w-1 h-1 bg-cyan-500/10 rounded-full" />
+          
+          {/* Faint Geometric Shapes */}
+          <div className="absolute top-1/3 left-5 w-8 h-8 border border-blue-400/5 rounded-full" />
+          <div className="absolute bottom-1/3 right-5 w-6 h-6 border border-cyan-400/8 rotate-45" />
+        </div>
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -1611,6 +1661,25 @@ export default function Home() {
 
       {/* Enhanced CTA Section */}
       <SectionTransition sectionId="cta" className="py-20 px-6 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 relative overflow-hidden z-10">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Floating Light Orbs */}
+          <motion.div
+            animate={{ y: [-15, 15, -15], opacity: [0.3, 0.7, 0.3] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/4 left-1/4 w-3 h-3 bg-white/20 rounded-full blur-sm"
+          />
+          <motion.div
+            animate={{ y: [15, -15, 15], opacity: [0.5, 0.2, 0.5] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-1/3 right-1/3 w-2 h-2 bg-cyan-200/30 rounded-full blur-sm"
+          />
+          <motion.div
+            animate={{ y: [-10, 10, -10], opacity: [0.4, 0.8, 0.4] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+            className="absolute top-2/3 left-2/3 w-4 h-4 bg-blue-200/25 rounded-full blur-sm"
+          />
+        </div>
         {/* Animated Background Glow */}
         <motion.div
           className="absolute inset-0 pointer-events-none"
@@ -1840,8 +1909,8 @@ export default function Home() {
                     <span className="text-green-400">✓</span>
                     Custom roadmap included
                   </div>
-                </motion.div>
-              </div>
+          </motion.div>
+        </div>
             </motion.div>
           </motion.div>
         </div>
@@ -1895,7 +1964,7 @@ export default function Home() {
           >
             © 2025 Vrvo. Next-Generation Marketing for Forward-Thinking Businesses.
           </motion.p>
-        </div>
+          </div>
       </motion.footer>
     </main>
   )
