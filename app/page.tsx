@@ -399,10 +399,10 @@ export default function Home() {
       {/* CTA SECTION */}
       <section className="bg-gray-900 text-white py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight tracking-tight">
             Ready to Transform Your Marketing?
           </h2>
-          <p className="text-xl text-gray-400 mb-10">
+          <p className="text-xl text-gray-400 mb-10 leading-relaxed">
             Let's discuss how Vrvo can elevate your digital marketing and business infrastructure.
           </p>
           <button className="px-10 py-4 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg text-lg transition-colors inline-flex items-center gap-2">
