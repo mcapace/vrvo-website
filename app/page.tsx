@@ -450,7 +450,6 @@ export default function Home() {
                       <span className="text-sm">{capability}</span>
                 </motion.div>
               ))}
-                </div>
               </div>
             </div>
           </motion.div>
