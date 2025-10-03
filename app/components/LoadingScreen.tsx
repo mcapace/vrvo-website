@@ -71,7 +71,7 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
       </div>
 
       {/* Main Content */}
-      <div className={`relative z-10 flex flex-col items-center justify-center min-h-screen ${isMobile ? 'px-6 pt-16 pb-8' : 'py-0'}`}>
+      <div className={`relative z-10 flex flex-col items-center ${isMobile ? 'px-6 pt-32 pb-8 min-h-screen' : 'justify-center min-h-screen py-0'}`}>
         {/* Animated Logo */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
