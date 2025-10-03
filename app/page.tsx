@@ -1,464 +1,324 @@
 'use client'
 
-import { motion, useScroll, useTransform, useMotionValue, useSpring, useInView } from 'framer-motion'
-import { useRef, useEffect, useState } from 'react'
-import { TrendingUp, Target, Lightbulb, ArrowRight, Eye, Zap, Handshake, BarChart3, Users, DollarSign, CheckCircle } from 'lucide-react'
-import Link from 'next/link'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
+import { TrendingUp, Target, Lightbulb, Eye, Zap, ArrowRight } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
-// Custom hook for counter animation
-const useCounter = (end: number, duration: number = 2000) => {
-  const [count, setCount] = useState(0)
-  const [isInView, setIsInView] = useState(false)
-
-  useEffect(() => {
-    if (!isInView) return
-
-    let startTime: number
-    const startCount = 0
-
-    const updateCount = (timestamp: number) => {
-      if (!startTime) startTime = timestamp
-      const progress = Math.min((timestamp - startTime) / duration, 1)
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4)
-      setCount(Math.floor(easeOutQuart * end))
-      
-      if (progress < 1) {
-        requestAnimationFrame(updateCount)
-      }
-    }
-
-    requestAnimationFrame(updateCount)
-  }, [isInView, end, duration])
-
-  return { count, setIsInView }
-}
-
-// Custom cursor component
-const CustomCursor = () => {
-  const cursorRef = useRef<HTMLDivElement>(null)
-  const cursorPosition = useMotionValue({ x: 0, y: 0 })
-  const cursorSpring = useSpring(cursorPosition, { stiffness: 150, damping: 20 })
-
-  useEffect(() => {
-    const updateCursor = (e: MouseEvent) => {
-      cursorPosition.set({ x: e.clientX, y: e.clientY })
-    }
-
-    window.addEventListener('mousemove', updateCursor)
-    return () => window.removeEventListener('mousemove', updateCursor)
-  }, [cursorPosition])
-
-  return (
-    <motion.div
-      ref={cursorRef}
-      className="fixed top-0 left-0 w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full pointer-events-none z-50 mix-blend-difference"
-      style={{
-        x: cursorSpring.x,
-        y: cursorSpring.y,
-        translateX: '-50%',
-        translateY: '-50%'
-      }}
-    />
-  )
-}
-
-// Magnetic button component
-const MagneticButton = ({ children, className, ...props }: any) => {
-  const buttonRef = useRef<HTMLButtonElement>(null)
-  const position = useMotionValue({ x: 0, y: 0 })
-  const springPosition = useSpring(position, { stiffness: 150, damping: 20 })
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!buttonRef.current) return
-    
-    const rect = buttonRef.current.getBoundingClientRect()
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-    const distanceX = (e.clientX - centerX) * 0.1
-    const distanceY = (e.clientY - centerY) * 0.1
-    
-    position.set({ x: distanceX, y: distanceY })
-  }
-
-  const handleMouseLeave = () => {
-    position.set({ x: 0, y: 0 })
-  }
-
-  return (
-    <motion.button
-      ref={buttonRef}
-      className={className}
-      style={{ x: springPosition.x, y: springPosition.y }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      {...props}
-    >
-      {children}
-    </motion.button>
-  )
-}
-
-// Floating particle component
-const FloatingParticles = () => {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(25)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-white/20 rounded-full"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [0, -20, 0],
-            x: [0, Math.random() * 10 - 5, 0],
-            opacity: [0.2, 0.8, 0.2],
-          }}
-          transition={{
-            duration: 3 + Math.random() * 2,
-            repeat: Infinity,
-            delay: Math.random() * 2,
-          }}
-        />
-      ))}
-    </div>
-  )
-}
-
-// Scroll progress indicator
-const ScrollProgress = () => {
+export default function Home() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const heroRef = useRef(null)
   const { scrollYProgress } = useScroll()
-  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 })
-
-  return (
-    <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 origin-left z-50"
-      style={{ scaleX }}
-    />
-  )
-}
-
-export default function HomePage() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: containerRef })
   
-  // Parallax values
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, -100])
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -200])
-
-  // Counter animations
-  const roiCounter = useCounter(340)
-  const revenueCounter = useCounter(2400000)
-  const retentionCounter = useCounter(94)
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
 
   return (
-    <div ref={containerRef} className="relative">
-      <ScrollProgress />
-      <CustomCursor />
-      <FloatingParticles />
+    <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
+      
+      {/* Scroll Progress Bar */}
+          <motion.div 
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-purple-500 to-blue-500 origin-left z-50"
+        style={{ scaleX: scrollYProgress }}
+      />
 
       {/* Navigation */}
       <motion.nav 
-        className="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="sticky top-0 z-40 bg-white/80 backdrop-blur-lg border-b border-gray-200"
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <motion.div 
-            className="text-2xl font-bold text-gray-900"
+                <motion.div
+            className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent"
             whileHover={{ scale: 1.05 }}
           >
             vrvo
           </motion.div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <motion.a href="#services" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" whileHover={{ y: -2 }}>
-              Services
-            </motion.a>
-            <motion.a href="#approach" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" whileHover={{ y: -2 }}>
-              Approach
-            </motion.a>
-            <motion.a href="#about" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" whileHover={{ y: -2 }}>
-              About
-            </motion.a>
+            {['Services', 'Approach', 'About'].map((item) => (
+              <motion.a 
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors relative group"
+                whileHover={{ y: -2 }}
+              >
+                {item}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-hover:w-full" />
+              </motion.a>
+            ))}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+              className="px-5 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold rounded-lg transition-colors shadow-lg shadow-orange-500/30"
+            >
+              Get Started
+            </motion.button>
           </div>
-          
-          <MagneticButton className="px-5 py-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
-            Get Started
-          </MagneticButton>
         </div>
       </motion.nav>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
-        {/* Animated background */}
-        <motion.div 
-          className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-orange-500/10"
-          style={{ y: backgroundY }}
-        />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+      {/* Hero Section with Gradient Background */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-orange-50">
           <motion.div
-            style={{ y: heroY }}
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.1,
-                  delayChildren: 0.3
-                }
-              }
+            className="absolute inset-0 opacity-30"
+            animate={{
+              background: [
+                'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%)',
+                'radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)',
+                'radial-gradient(circle at 50% 80%, rgba(249, 115, 22, 0.3) 0%, transparent 50%)',
+                'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%)',
+              ],
             }}
-          >
-            {/* Badge */}
-            <motion.div
-              className="inline-flex px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8"
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 }
-              }}
-            >
-              <span className="text-white/90 text-sm font-medium">Digital Marketing & Business Transformation</span>
-            </motion.div>
-            
-            {/* Headline with word-by-word animation */}
-            <motion.h1 
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight mb-8 max-w-6xl mx-auto"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
-            >
-              {"Transform Your Business Through Strategic Digital Marketing".split(' ').map((word, i) => (
-                <motion.span
-                  key={i}
-                  className="inline-block mr-4 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent"
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0 }
-                  }}
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </motion.h1>
-            
-            {/* Subheadline */}
-            <motion.p 
-              className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-4xl mx-auto mb-10"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-            >
-              Vrvo combines advanced programmatic advertising, integrated marketing strategy, and business transformation consulting to help ambitious SMBs build scalable, data-driven growth engines.
-            </motion.p>
-            
-            {/* Buttons */}
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-            >
-              <MagneticButton className="px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold rounded-lg text-lg transition-all duration-300 shadow-xl hover:shadow-2xl">
-                Get Started
-              </MagneticButton>
-              <MagneticButton className="px-8 py-4 border-2 border-white/30 hover:border-white/50 text-white font-semibold rounded-lg text-lg transition-all duration-300 backdrop-blur-sm hover:bg-white/10">
-                View Our Work
-              </MagneticButton>
-            </motion.div>
-            
-            {/* Trust line */}
-            <motion.p 
-              className="text-sm text-gray-400"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1 }
-              }}
-            >
-              Trusted by 200+ growing businesses • $50M+ in ad spend managed
-            </motion.p>
-          </motion.div>
+            transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+          />
         </div>
+        
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 mb-8 shadow-lg"
+          >
+            <span className="text-sm font-medium text-gray-700">
+              Digital Marketing & Business Transformation
+              </span>
+            </motion.div>
+            
+          <motion.h1 
+            className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight tracking-tight"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            {['Transform', 'Your', 'Business'].map((word, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="inline-block mr-4 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent"
+              >
+                {word}
+              </motion.span>
+            ))}
+            <br />
+            <motion.span
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="bg-gradient-to-r from-orange-600 via-purple-600 to-blue-600 bg-clip-text text-transparent"
+            >
+              Through Strategic Digital Marketing
+            </motion.span>
+          </motion.h1>
+            
+            <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed max-w-4xl mx-auto"
+          >
+            Vrvo combines advanced programmatic advertising, integrated marketing strategy, 
+            and business transformation consulting to help ambitious SMBs build scalable, 
+            data-driven growth engines.
+            </motion.p>
+            
+            <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(249, 115, 22, 0.4)' }}
+                whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-semibold rounded-xl text-lg shadow-xl shadow-orange-500/50 transition-all"
+            >
+              Get Started
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05, borderColor: 'rgb(107, 114, 128)' }}
+                whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 border-2 border-gray-300 hover:border-gray-400 text-gray-900 font-semibold rounded-xl text-lg bg-white/50 backdrop-blur-sm transition-all"
+              >
+              View Our Work
+            </motion.button>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+            className="text-sm text-gray-500"
+          >
+            Trusted by 200+ growing businesses • $50M+ in ad spend managed
+          </motion.p>
+        </div>
+
+        {/* Floating Elements */}
+                <motion.div 
+          className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full blur-3xl opacity-50"
+          animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
+                <motion.div
+          className="absolute bottom-20 right-10 w-32 h-32 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full blur-3xl opacity-50"
+          animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        />
       </section>
 
-      {/* Platform Section - Bento Box Layout */}
-      <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
+      {/* Platform Section - Bento Grid */}
+      <section className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Section Header */}
-          <motion.div 
-            className="text-center mb-16"
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="mb-16"
           >
-            <motion.div 
-              className="text-sm font-semibold text-orange-500 uppercase tracking-wide mb-2"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              Platform
-            </motion.div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <p className="text-sm font-semibold text-orange-600 uppercase tracking-wide mb-2">PLATFORM</p>
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">
               Real-Time Visibility Into Your Marketing Performance
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Track every campaign, channel, and conversion in one unified dashboard. Make data-driven decisions with confidence.
+            <p className="text-xl text-gray-600 max-w-3xl">
+              Track every campaign, channel, and conversion in one unified dashboard. 
+              Make data-driven decisions with confidence.
             </p>
+            </motion.div>
+            
+          {/* Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
+            {/* Large Feature Card */}
+          <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)' }}
+              className="md:col-span-3 md:row-span-2 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 border border-gray-200 shadow-lg relative overflow-hidden group"
+            >
+                <div className="relative z-10">
+                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                  <Eye className="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">Unified Dashboard</h3>
+                <p className="text-lg text-gray-600 mb-6">
+                  See all channels in one place with real-time performance metrics and actionable insights.
+                </p>
+                <ul className="space-y-3">
+                  {['Real-time data sync', 'Custom widgets', 'Drill-down analytics'].map((item, i) => (
+                    <motion.li 
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      className="flex items-center text-gray-700"
+                    >
+                      <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-3" />
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
+                </div>
+          <motion.div
+                className="absolute -right-10 -bottom-10 w-40 h-40 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity"
+              />
           </motion.div>
 
-          {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 h-[600px]">
-            {/* Big Hero Card */}
-            <motion.div 
-              className="md:col-span-2 lg:col-span-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-8 text-white relative overflow-hidden"
+            {/* Dashboard Mock */}
+          <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.02, rotateY: 5 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
+              whileHover={{ y: -8 }}
+              className="md:col-span-3 md:row-span-2 bg-white rounded-2xl p-6 border border-gray-200 shadow-lg"
             >
-              <div className="relative z-10">
-                <BarChart3 className="w-12 h-12 mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Unified Dashboard</h3>
-                <p className="text-blue-100">See all channels in one place with real-time performance metrics and actionable insights.</p>
-              </div>
-              <motion.div 
-                className="absolute top-4 right-4 w-20 h-20 bg-white/20 rounded-full"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              />
-            </motion.div>
-
-            {/* Dashboard Mockup */}
-            <motion.div 
-              className="md:col-span-2 lg:col-span-3 bg-white rounded-2xl p-8 shadow-xl border border-gray-200 relative"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -5, shadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              {/* Browser chrome */}
               <div className="flex items-center gap-2 mb-6">
-                <div className="flex gap-1">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                </div>
-                <div className="flex-1 bg-gray-100 rounded px-3 py-1">
-                  <span className="text-xs text-gray-500">vrvo.com/dashboard</span>
-                </div>
+                <div className="w-3 h-3 bg-red-500 rounded-full" />
+                <div className="w-3 h-3 bg-yellow-500 rounded-full" />
+                <div className="w-3 h-3 bg-green-500 rounded-full" />
+                <span className="ml-4 text-xs text-gray-500">vrvo-dashboard.com</span>
               </div>
 
-              {/* Stats Grid */}
               <div className="grid grid-cols-3 gap-4 mb-6">
-                <div className="text-center">
-                  <div 
-                    ref={roiCounter.setIsInView}
-                    className="text-3xl font-bold text-orange-500"
+                {[
+                  { value: '340%', label: 'Avg ROI' },
+                  { value: '$2.4M', label: 'Revenue' },
+                  { value: '94%', label: 'Retention' }
+                ].map((stat, i) => (
+              <motion.div
+                    key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="text-center"
                   >
-                    {roiCounter.count}%
-                  </div>
-                  <div className="text-xs text-gray-500">Avg ROI</div>
-                </div>
-                <div className="text-center">
-                  <div 
-                    ref={revenueCounter.setIsInView}
-                    className="text-3xl font-bold text-green-500"
-                  >
-                    ${revenueCounter.count.toLocaleString()}
-                  </div>
-                  <div className="text-xs text-gray-500">Revenue</div>
-                </div>
-                <div className="text-center">
-                  <div 
-                    ref={retentionCounter.setIsInView}
-                    className="text-3xl font-bold text-blue-500"
-                  >
-                    {retentionCounter.count}%
-                  </div>
-                  <div className="text-xs text-gray-500">Retention</div>
-                </div>
-              </div>
-
-              {/* Chart */}
-              <motion.div 
-                className="h-24 bg-gradient-to-r from-blue-100 via-purple-100 to-orange-100 rounded-lg relative overflow-hidden"
-                initial={{ opacity: 0, scaleX: 0 }}
-                whileInView={{ opacity: 1, scaleX: 1 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20"
-                  animate={{ 
-                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-                  }}
-                  transition={{ 
-                    duration: 3, 
-                    repeat: Infinity, 
-                    ease: "linear" 
-                  }}
-                />
-              </motion.div>
-            </motion.div>
-
-            {/* Feature Cards */}
-            {[
-              { icon: CheckCircle, title: "Custom Reporting", desc: "Build reports that matter" },
-              { icon: Eye, title: "Transparent Spend", desc: "Know where every dollar goes" },
-              { icon: Users, title: "Team Collaboration", desc: "Work together seamlessly" }
-            ].map((feature, i) => (
-              <motion.div 
-                key={i}
-                className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -5, rotateX: 5 }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <feature.icon className="w-8 h-8 text-orange-500 mb-4" />
-                <h4 className="font-bold text-gray-900 mb-2">{feature.title}</h4>
-                <p className="text-sm text-gray-600">{feature.desc}</p>
+                    <div className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</div>
+                    <div className="text-xs text-gray-500">{stat.label}</div>
               </motion.div>
             ))}
           </div>
+
+              <div className="h-32 bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 rounded-lg mb-4" />
+
+              <div className="space-y-2">
+                {['Strategic Marketing Campaign', 'Programmatic Display', 'Social Media Ads'].map((campaign, i) => (
+                  <div key={i} className="flex justify-between items-center text-sm">
+                    <span className="text-gray-700">{campaign}</span>
+                    <span className="text-green-600 font-medium">+12%</span>
+                    </div>
+              ))}
+              </div>
+            </motion.div>
+            
+            {/* Small Feature Cards */}
+            {[
+              { icon: Zap, title: 'Custom Reporting', color: 'from-orange-50 to-red-50' },
+              { icon: Target, title: 'Transparent Spend', color: 'from-green-50 to-teal-50' }
+            ].map((feature, i) => (
+            <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className={`md:col-span-3 bg-gradient-to-br ${feature.color} rounded-2xl p-6 border border-gray-200 shadow-lg cursor-pointer`}
+              >
+                <feature.icon className="w-10 h-10 text-gray-900 mb-4" />
+                <h4 className="text-xl font-bold text-gray-900">{feature.title}</h4>
+            </motion.div>
+            ))}
+            </div>
         </div>
       </section>
 
-      {/* Services Section - Interactive Cards */}
-      <section id="services" className="py-24 bg-white">
+      {/* Services Section - 3D Tilt Cards */}
+      <section id="services" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
-            className="text-center mb-16"
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            <div className="text-sm font-semibold text-orange-500 uppercase tracking-wide mb-2">
-              Our Services
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <p className="text-sm font-semibold text-orange-600 uppercase tracking-wide mb-3">OUR SERVICES</p>
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
               Full-Stack Digital Growth Solutions
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              End-to-end capabilities that work together to accelerate your business.
+              End-to-end capabilities that work together to accelerate your business
             </p>
           </motion.div>
 
@@ -466,348 +326,151 @@ export default function HomePage() {
             {[
               {
                 icon: TrendingUp,
-                title: "Strategic Marketing",
-                description: "Integrated campaigns that build brands and drive revenue through multi-channel strategy and execution.",
-                features: [
-                  "Brand positioning & messaging architecture",
-                  "Multi-channel campaign strategy",
-                  "Content marketing & SEO",
-                  "Performance marketing & analytics"
-                ],
-                gradient: "from-blue-500 to-cyan-500"
+                title: 'Strategic Marketing',
+                desc: 'Integrated campaigns that build brands and drive revenue through multi-channel strategy.',
+                features: ['Brand positioning', 'Multi-channel campaigns', 'Content & SEO', 'Performance analytics'],
+                gradient: 'from-blue-500 to-purple-500'
               },
               {
                 icon: Target,
-                title: "Programmatic Advertising",
-                description: "Enterprise-grade audience targeting and automation that maximizes reach and ROI at scale.",
-                features: [
-                  "AI-powered programmatic display & video",
-                  "Cross-platform DSP management",
-                  "Advanced audience segmentation",
-                  "Real-time bid optimization"
-                ],
-                gradient: "from-purple-500 to-pink-500"
+                title: 'Programmatic Advertising',
+                desc: 'Enterprise-grade audience targeting and automated bidding that maximizes reach and ROI.',
+                features: ['AI-powered targeting', 'Cross-platform DSP', 'Real-time optimization', 'Advanced segmentation'],
+                gradient: 'from-purple-500 to-pink-500'
               },
               {
                 icon: Lightbulb,
-                title: "Business Transformation",
-                description: "Build the marketing infrastructure and systems needed to scale efficiently and make data-driven decisions.",
-                features: [
-                  "MarTech stack optimization",
-                  "CRM implementation & integration",
-                  "Data analytics infrastructure",
-                  "Process automation & training"
-                ],
-                gradient: "from-orange-500 to-red-500"
+                title: 'Business Transformation',
+                desc: 'Build the marketing infrastructure needed to scale efficiently and make data-driven decisions.',
+                features: ['MarTech optimization', 'CRM implementation', 'Analytics setup', 'Process automation'],
+                gradient: 'from-orange-500 to-red-500'
               }
             ].map((service, i) => (
-              <motion.div
+                <motion.div
                 key={i}
-                className="relative group cursor-pointer"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -10 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -12, scale: 1.02 }}
+                className="group relative bg-white rounded-2xl p-8 border border-gray-200 shadow-lg overflow-hidden cursor-pointer"
               >
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300"
-                  style={{ backgroundImage: `linear-gradient(135deg, var(--tw-gradient-stops))` }}
-                />
-                <div className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-200 h-full">
-                  <div className={`w-12 h-12 bg-gradient-to-br ${service.gradient} rounded-lg flex items-center justify-center mb-6`}>
-                    <service.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-                  <ul className="space-y-3">
-                    {service.features.map((feature, j) => (
-                      <motion.li 
-                        key={j}
-                        className="flex items-start"
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: j * 0.1 }}
-                        viewport={{ once: true }}
-                      >
-                        <div className={`w-2 h-2 bg-gradient-to-r ${service.gradient} rounded-full mt-2 mr-3 flex-shrink-0`}></div>
-                        <span className="text-gray-600">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Capabilities Section - Horizontal Scroll */}
-      <section className="py-24 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Integrated Capabilities Across The Digital Spectrum
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Enterprise technology. SMB accessibility.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-12">
-            {[
-              {
-                title: "Paid Media",
-                items: [
-                  "Programmatic Display & Video",
-                  "Paid Search (Google, Microsoft)",
-                  "Paid Social (Meta, LinkedIn, TikTok)",
-                  "Native Advertising",
-                  "Connected TV & Audio"
-                ]
-              },
-              {
-                title: "Organic & Content",
-                items: [
-                  "Search Engine Optimization",
-                  "Content Strategy & Production",
-                  "Social Media Management",
-                  "Email Marketing & Automation",
-                  "Community Building"
-                ]
-              },
-              {
-                title: "MarTech & Data",
-                items: [
-                  "Marketing Automation Platforms",
-                  "CRM Implementation",
-                  "Analytics & Business Intelligence",
-                  "Customer Data Platforms",
-                  "Attribution & Measurement"
-                ]
-              }
-            ].map((capability, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.2 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-xl font-bold text-white mb-6">{capability.title}</h3>
-                <ul className="space-y-4">
-                  {capability.items.map((item, j) => (
-                    <motion.li 
-                      key={j}
-                      className="text-gray-300 flex items-center"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: j * 0.05 }}
-                      viewport={{ once: true }}
-                      whileHover={{ x: 5, color: "#F97316" }}
-                    >
-                      <div className="w-1 h-1 bg-orange-500 rounded-full mr-3"></div>
-                      {item}
-                    </motion.li>
+                <div className={`w-14 h-14 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-6 shadow-lg`}>
+                  <service.icon className="w-7 h-7 text-white" />
+              </div>
+                
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">{service.desc}</p>
+                
+                <ul className="space-y-3">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start text-sm text-gray-700">
+                      <span className="text-orange-600 mr-3">•</span>
+                      {feature}
+                    </li>
                   ))}
                 </ul>
-              </motion.div>
+
+            <motion.div
+                  className={`absolute -right-10 -bottom-10 w-32 h-32 bg-gradient-to-br ${service.gradient} rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity`}
+                />
+                </motion.div>
             ))}
+              </div>
           </div>
-        </div>
       </section>
 
-      {/* Why Vrvo Section - Floating Cards */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Why Vrvo Is Different
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Transparent partnerships built on results, not contracts.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Handshake,
-                title: "No Long-Term Contracts",
-                description: "Month-to-month partnerships. Stay because we deliver, not because you're locked in."
-              },
-              {
-                icon: Eye,
-                title: "Complete Transparency",
-                description: "Real-time dashboard access. Know exactly where your budget goes and what's working."
-              },
-              {
-                icon: Zap,
-                title: "Strategy + Execution",
-                description: "We don't just plan—we do. Full-service from strategy through implementation."
-              },
-              {
-                icon: TrendingUp,
-                title: "Built for Growth",
-                description: "Scalable solutions that grow with you. Start small, scale as you see results."
-              }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                className="relative group"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -5, rotateY: 5 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                viewport={{ once: true }}
-                animate={{
-                  y: [0, -10, 0]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  delay: i * 0.5
-                }}
-              >
-                <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-200 text-center h-full">
-                  <motion.div 
-                    className="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl mx-auto mb-6 flex items-center justify-center"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                  >
-                    <item.icon className="w-8 h-8 text-orange-500" />
-                  </motion.div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section - Immersive */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-purple-900 to-orange-900 overflow-hidden">
-        {/* Animated background */}
-        <motion.div 
-          className="absolute inset-0"
+      {/* CTA Section */}
+      <section className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">
+          <motion.div
+          className="absolute inset-0 opacity-30"
           animate={{
             background: [
-              "linear-gradient(45deg, #1e3a8a, #7c3aed, #ea580c)",
-              "linear-gradient(45deg, #7c3aed, #ea580c, #1e3a8a)",
-              "linear-gradient(45deg, #ea580c, #1e3a8a, #7c3aed)",
-              "linear-gradient(45deg, #1e3a8a, #7c3aed, #ea580c)"
-            ]
+              'radial-gradient(circle at 20% 50%, rgba(249, 115, 22, 0.3) 0%, transparent 50%)',
+              'radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)',
+              'radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.3) 0%, transparent 50%)',
+              'radial-gradient(circle at 20% 50%, rgba(249, 115, 22, 0.3) 0%, transparent 50%)',
+            ],
           }}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 10, repeat: Infinity }}
         />
-        
+
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.1
-                }
-              }
-            }}
-            viewport={{ once: true }}
-          >
             <motion.h2 
-              className="text-4xl md:text-6xl font-bold text-white mb-8"
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: { opacity: 1, y: 0 }
-              }}
-            >
-              Ready to Transform Your Marketing?
+            initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-6xl font-bold mb-6"
+          >
+            Ready to Transform Your Marketing?
             </motion.h2>
             
             <motion.p 
-              className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-            >
-              Let's discuss how Vrvo can elevate your digital marketing and business infrastructure.
+            initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-gray-300 mb-10"
+          >
+            Let's discuss how Vrvo can elevate your digital marketing and business infrastructure.
             </motion.p>
             
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, scale: 0.9 },
-                visible: { opacity: 1, scale: 1 }
-              }}
-            >
-              <MagneticButton className="inline-flex items-center bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-12 py-6 rounded-2xl font-semibold text-xl transition-all duration-300 shadow-2xl hover:shadow-orange-500/25">
-                Contact Us
-                <ArrowRight className="w-6 h-6 ml-3" />
-              </MagneticButton>
-            </motion.div>
-          </motion.div>
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            whileHover={{ scale: 1.05, boxShadow: '0 20px 60px rgba(249, 115, 22, 0.5)' }}
+            whileTap={{ scale: 0.95 }}
+            className="px-10 py-4 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-semibold rounded-xl text-lg shadow-2xl shadow-orange-500/50 inline-flex items-center gap-2"
+          >
+            Contact Us
+            <ArrowRight className="w-5 h-5" />
+          </motion.button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-b from-gray-900 to-black py-16">
+      <footer className="bg-gray-900 text-white py-12 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="text-2xl font-bold text-white mb-4">vrvo</div>
-              <p className="text-gray-400 mb-4">
-                Strategic digital marketing for ambitious businesses.
-              </p>
+              <div className="text-2xl font-bold mb-4">vrvo</div>
+              <p className="text-gray-400 text-sm">Strategic digital marketing for ambitious businesses</p>
             </div>
             
             <div>
-              <h3 className="text-white font-semibold mb-4">Services</h3>
-              <ul className="space-y-2">
-                <li><Link href="/services/strategic-marketing" className="text-gray-400 hover:text-white transition-colors">Strategic Marketing</Link></li>
-                <li><Link href="/services/programmatic-advertising" className="text-gray-400 hover:text-white transition-colors">Programmatic Advertising</Link></li>
-                <li><Link href="/services/business-transformation" className="text-gray-400 hover:text-white transition-colors">Business Transformation</Link></li>
+              <h3 className="font-semibold mb-4">Services</h3>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li>Strategic Marketing</li>
+                <li>Programmatic Advertising</li>
+                <li>Business Transformation</li>
               </ul>
             </div>
-            
+
             <div>
-              <h3 className="text-white font-semibold mb-4">Company</h3>
-              <ul className="space-y-2">
-                <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">About</Link></li>
-                <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
-                <li><Link href="/careers" className="text-gray-400 hover:text-white transition-colors">Careers</Link></li>
+              <h3 className="font-semibold mb-4">Company</h3>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li>About</li>
+                <li>Contact</li>
+                <li>Careers</li>
               </ul>
             </div>
-            
+
             <div>
-              <h3 className="text-white font-semibold mb-4">Get Started</h3>
-              <p className="text-gray-400 mb-4">
-                Ready to transform your marketing?
-              </p>
-              <Link href="/contact" className="text-orange-500 hover:text-orange-400 transition-colors">
+              <h3 className="font-semibold mb-4">Get Started</h3>
+              <button className="px-6 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold rounded-lg transition-colors">
                 Contact Us
-              </Link>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 pt-8">
-            <p className="text-gray-400 text-center">
-              © 2025 Vrvo. All rights reserved.
-            </p>
-          </div>
+                  </button>
+                  </div>
+                  </div>
+
+          <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+            © 2025 Vrvo. All rights reserved.
+                  </div>
         </div>
       </footer>
-    </div>
+
+    </main>
   )
 }
