@@ -2,221 +2,228 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Zapier-inspired color system */
-  --background-dark: #0F1419;
-  --background-light: #FAFAF9;
-  --text-primary-dark: #F5F5F4;
-  --text-primary-light: #1C1917;
-  --text-secondary: #78716C;
+  /* Backgrounds */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F7F5;
+  --bg-tertiary: #F1F0ED;
+  --bg-dark: #1A1A1A;
+  --bg-darker: #0D0D0D;
   
-  /* Accent colors */
-  --accent-primary: #FF6C37;
-  --accent-secondary: #4F46E5;
-  --accent-subtle: #D4D4D8;
+  /* Text Colors */
+  --text-primary: #1A1A1A;
+  --text-secondary: #6B6B6B;
+  --text-tertiary: #999999;
+  --text-on-dark: #FFFFFF;
+  --text-on-dark-secondary: #B8B8B8;
   
-  /* Neutral grays */
-  --gray-50: #F5F5F4;
-  --gray-100: #E5E5E5;
-  --gray-200: #D4D4D8;
-  --gray-300: #A3A3A3;
-  --gray-400: #78716C;
-  --gray-500: #57534E;
-  --gray-600: #44403C;
-  --gray-700: #292524;
-  --gray-800: #1C1917;
-  --gray-900: #0F1419;
+  /* Accent Colors */
+  --accent-primary: #FF5C35;
+  --accent-primary-hover: #E54D2A;
+  --accent-secondary: #2E2E2E;
+  
+  /* Borders */
+  --border-light: #E8E8E8;
+  --border-medium: #D4D4D4;
+  --border-dark: #2E2E2E;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.06);
 }
 
-@theme inline {
-  --color-background: var(--background-light);
-  --color-foreground: var(--text-primary-light);
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Dark mode variables */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--background-dark);
-    --foreground: var(--text-primary-dark);
-  }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-  background: var(--background-light);
-  color: var(--text-primary-light);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 400;
   line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography Scale - Zapier-inspired */
+/* Typography Scale */
 .text-hero {
-  font-size: 4rem; /* 64px */
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
 .text-section {
-  font-size: 3rem; /* 48px */
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
 
 .text-subheadline {
-  font-size: 1.5rem; /* 24px */
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   font-weight: 600;
   line-height: 1.4;
 }
 
 .text-body-large {
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.6;
 }
 
 .text-body-regular {
-  font-size: 1.125rem; /* 18px */
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .text-body-small {
-  font-size: 1rem; /* 16px */
+  font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.6;
 }
 
 .text-eyebrow {
-  font-size: 0.875rem; /* 14px */
-  font-weight: 500;
+  font-size: 0.875rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--text-secondary);
+  color: var(--accent-primary);
 }
 
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: var(--background-dark);
-    color: var(--text-primary-dark);
-  }
+/* Spacing System - 8px grid */
+.space-xs { gap: 8px; }
+.space-sm { gap: 16px; }
+.space-md { gap: 24px; }
+.space-lg { gap: 32px; }
+.space-xl { gap: 48px; }
+.space-2xl { gap: 64px; }
+.space-3xl { gap: 96px; }
+
+/* Consistent Border Radius */
+.rounded-consistent {
+  border-radius: 8px;
 }
 
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  /* Improve touch targets */
-  button, a, [role="button"] {
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  /* Prevent zoom on input focus */
-  input, textarea, select {
-    font-size: 16px;
-  }
-  
-  /* Optimize animations for mobile */
-  * {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-
-  /* Enhanced touch feedback */
-  button:active, a:active, [role="button"]:active {
-    transform: scale(0.95);
-    transition: transform 0.1s ease;
-  }
-
-  /* Disable hover effects on touch devices */
-  @media (hover: none) {
-    *:hover {
-      transform: none !important;
-    }
-  }
-
-  /* Reduce motion for better performance */
-  .animate-pulse,
-  .animate-bounce,
-  .animate-spin {
-    animation-duration: 2s;
-  }
+/* Focus States */
+*:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
 }
 
-/* Reduce motion for users who prefer it */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+/* Button Base Styles */
+.btn-primary {
+  background-color: var(--accent-primary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  border: none;
+  cursor: pointer;
 }
 
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .text-slate-400 {
-    color: #ffffff !important;
-  }
-  
-  .text-slate-300 {
-    color: #ffffff !important;
-  }
+.btn-primary:hover {
+  background-color: var(--accent-primary-hover);
 }
 
-/* Dark mode optimizations */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #0a0a0a;
-    color: #ededed;
-  }
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 2px solid var(--border-medium);
+  cursor: pointer;
 }
 
-/* Custom Scrollbar Styles - Minimal */
+.btn-secondary:hover {
+  border-color: var(--border-dark);
+  background-color: var(--bg-secondary);
+}
+
+/* Card Base Styles */
+.card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Remove all animations and effects */
+* {
+  animation: none !important;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--gray-100);
-  border-radius: 3px;
+  background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gray-400);
+  background: var(--border-medium);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gray-500);
+  background: var(--text-secondary);
 }
 
-/* Dark mode scrollbar */
+/* Dark mode support */
 @media (prefers-color-scheme: dark) {
-  ::-webkit-scrollbar-track {
-    background: var(--gray-800);
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: var(--gray-600);
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--gray-500);
+  :root {
+    --bg-primary: #0D0D0D;
+    --bg-secondary: #1A1A1A;
+    --bg-tertiary: #2E2E2E;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B8B8B8;
+    --text-tertiary: #999999;
   }
 }
 
-/* Smooth scrolling for all browsers */
-html {
-  scroll-behavior: smooth;
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .text-hero {
+    font-size: 2.5rem;
+  }
+  
+  .text-section {
+    font-size: 2rem;
+  }
 }
 
+/* Print styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
