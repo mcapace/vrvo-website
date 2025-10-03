@@ -39,547 +39,123 @@ export default function Home() {
   const [konamiActive, setKonamiActive] = useState(false)
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative">
-      {/* Animated Grid Background */}
-      <AnimatedGrid />
-      
-      {/* Animated Gradient Overlay */}
-      <AnimatedGradientOverlay />
-      
-      {/* Adaptive Cursor */}
-      <AdaptiveCursor />
-      
-      {/* Konami Code Easter Egg */}
-      <KonamiCode 
-        onActivate={() => setKonamiActive(true)}
-        onDeactivate={() => setKonamiActive(false)}
-      />
-      
-      {/* Mobile Navigation */}
-      <MobileNav />
-      
-      {/* Enhanced Premium Scroll Progress Indicator */}
-          <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 z-50 origin-left shadow-lg"
-        style={{ 
-          scaleX,
-          boxShadow: '0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(6, 182, 212, 0.5), 0 0 45px rgba(14, 184, 166, 0.3)'
-        }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      />
-      
-      {/* Progress indicator glow effect */}
-      <motion.div
-        className="fixed top-0 left-0 h-1 z-50 pointer-events-none"
-        style={{
-          width: `${scrollYProgress.get() * 100}%`,
-          background: 'linear-gradient(90deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.2))',
-          filter: 'blur(8px)',
-          opacity: 0.8,
-        }}
-      />
-      {/* Navigation */}
-      <motion.nav 
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{
-          duration: 0.8,
-          type: "spring",
-          stiffness: 100,
-          damping: 20
-        }}
-        className="fixed top-0 w-full z-40 hidden md:block"
-        style={{
-          background: `rgba(15, 23, 42, ${navOpacity})`,
-          backdropFilter: `blur(${navBlur}px)`,
-          WebkitBackdropFilter: `blur(${navBlur}px)`,
-          borderBottom: '1px solid transparent',
-          backgroundImage: `linear-gradient(rgba(15, 23, 42, ${navOpacity}), rgba(15, 23, 42, ${navOpacity})), linear-gradient(90deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))`,
-          backgroundOrigin: 'border-box',
-          backgroundClip: 'padding-box, border-box',
-          boxShadow: `0 8px 32px rgba(0, 0, 0, ${navShadow}), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 20px rgba(59, 130, 246, 0.1)`
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    type: "spring",
-                    stiffness: 200,
-                    damping: 15,
-                    delay: 0.2
-                  }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    filter: 'drop-shadow(0 0 15px rgba(59, 130, 246, 0.6))'
-                  }}
-                  className="cursor-pointer"
-                >
-                  <Image
-                    src="/logo/vrvo_wordmark_white.png"
-                    alt="Vrvo - Next-Generation Marketing"
-                    width={130}
-                    height={40}
-                    priority
-                    className="w-auto h-auto max-w-[130px]"
-                  />
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.6,
-              delay: 0.4
-            }}
-            className="hidden md:flex gap-8 text-slate-300"
-          >
-            {[
-              { href: "/services", label: "Services" },
-              { href: "/about", label: "About" },
-              { href: "/contact", label: "Contact" }
-            ].map((link, index) => (
-              <motion.a 
-                key={link.href}
-                href={link.href}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.4,
-                  delay: 0.6 + index * 0.1
-                }}
-                whileHover={{ 
-                  y: -2,
-                  scale: 1.05
-                }}
-                className="relative px-4 py-2 rounded-full transition-all duration-300 text-slate-300 hover:text-white"
-                style={{
-                  background: 'rgba(148, 163, 184, 0.1)',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(148, 163, 184, 0.2)'
-                }}
-              >
-                <motion.div
-                  className="absolute inset-0 rounded-full"
-                  whileHover={{
-                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(34, 197, 94, 0.2))',
-                    boxShadow: '0 8px 32px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-                <span className="relative z-10">{link.label}</span>
-              </motion.a>
-            ))}
-          </motion.div>
-          
-                <AdaptiveMagneticButton
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.6,
-              type: "spring",
-              stiffness: 200,
-              damping: 15,
-              delay: 0.8
-            }}
-            whileHover={{ 
-              scale: 1.05,
-            }}
-            whileTap={{ scale: 0.95 }}
-            magneticStrength={0.4}
-            magneticDistance={80}
-            className="relative px-6 py-2 rounded-full text-white font-medium transition-all duration-300 overflow-hidden"
-            style={{
-              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(37, 99, 235, 0.9))',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
-              border: '1px solid rgba(59, 130, 246, 0.3)',
-              boxShadow: '0 8px 32px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-            }}
-          >
-            <motion.div
-              className="absolute inset-0 rounded-full"
-              whileHover={{
-                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(37, 99, 235, 1))',
-                boxShadow: '0 12px 40px rgba(59, 130, 246, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3)'
-              }}
-              transition={{ duration: 0.3 }}
+    <main className="min-h-screen bg-white">
+      {/* Navigation - Zapier Style */}
+      <nav className="fixed top-0 w-full z-40 bg-white border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo/vrvo_wordmark_black.png"
+              alt="Vrvo"
+              width={120}
+              height={32}
+              priority
+              className="h-8 w-auto"
             />
-            <span className="relative z-10">Get Started</span>
-          </AdaptiveMagneticButton>
+          </Link>
+          
+          {/* Nav Links */}
+          <div className="hidden md:flex items-center gap-8">
+            <Link href="/services" className="text-gray-900 hover:text-orange-500 transition-colors duration-200 font-medium">
+              Services
+            </Link>
+            <Link href="/about" className="text-gray-900 hover:text-orange-500 transition-colors duration-200 font-medium">
+              About
+            </Link>
+            <Link href="/contact" className="text-gray-900 hover:text-orange-500 transition-colors duration-200 font-medium">
+              Contact
+            </Link>
+          </div>
+          
+          {/* CTA Button */}
+          <Link href="/contact">
+            <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors duration-200">
+              Get Started
+            </button>
+          </Link>
         </div>
-      </motion.nav>
+      </nav>
 
-      {/* Hero Section */}
-      <SectionTransition sectionId="hero" className="relative pt-20 md:pt-32 pb-20 px-4 md:px-6 overflow-hidden z-10">
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Floating Triangles */}
-          <motion.div
-            animate={{ y: [-20, 20, -20], rotate: [0, 180, 360] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-20 left-10 w-4 h-4 border-l-2 border-t-2 border-blue-400/30 rotate-45"
-          />
-          <motion.div
-            animate={{ y: [20, -20, 20], rotate: [360, 180, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute top-40 right-20 w-3 h-3 border-l-2 border-t-2 border-cyan-400/20 rotate-45"
-          />
-          <motion.div
-            animate={{ y: [-15, 15, -15], rotate: [0, 360, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-            className="absolute bottom-40 left-1/4 w-2 h-2 border-l-2 border-t-2 border-blue-500/25 rotate-45"
-          />
-          
-          {/* Floating Circles */}
-          <motion.div
-            animate={{ y: [-10, 10, -10], scale: [1, 1.2, 1] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/3 right-1/3 w-6 h-6 border border-cyan-400/20 rounded-full"
-          />
-          <motion.div
-            animate={{ y: [10, -10, 10], scale: [1.2, 1, 1.2] }}
-            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-            className="absolute bottom-1/4 right-1/4 w-4 h-4 border border-blue-400/15 rounded-full"
-          />
-          
-          {/* Diagonal Lines */}
-          <div className="absolute top-1/4 left-0 w-32 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent transform -rotate-12" />
-          <div className="absolute bottom-1/3 right-0 w-24 h-px bg-gradient-to-l from-transparent via-cyan-500/15 to-transparent transform rotate-12" />
+      {/* Hero Section - Zapier Style */}
+      <section className="relative bg-white py-32 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Eyebrow */}
+          <div className="text-eyebrow mb-6">
+            Digital Marketing & Business Transformation
         </div>
-        {/* 3D Particle Network Background */}
-        <LazyParticleNetwork />
-        
-        <div className="relative z-10 max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ 
-              duration: 1.2,
-              type: "spring",
-              stiffness: 80,
-              damping: 25
-            }}
-            className="text-center"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ 
-                delay: 0.3,
-                duration: 0.8,
-                type: "spring",
-                stiffness: 200,
-                damping: 15
-              }}
-              className="inline-block mb-6"
-            >
-              <span className="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full text-sm font-medium border border-blue-500/20 backdrop-blur-sm">
-                Digital Marketing & Business Transformation
-              </span>
-            </motion.div>
-            
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tight text-balance">
-              <TextReveal 
-                delay={0.5}
-                staggerDelay={0.04}
-                duration={0.7}
-                className="text-white"
-              >
-                Transform Your Business Through Strategic Digital Marketing
-              </TextReveal>
+          
+          {/* Main Headline */}
+          <h1 className="text-hero text-gray-900 mb-8 leading-tight">
+            Transform Your Business Through Strategic Digital Marketing
             </h1>
             
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                delay: 2.0,
-                duration: 0.8,
-                type: "spring",
-                stiffness: 100,
-                damping: 20
-              }}
-              className="text-xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed"
-            >
-              Vrvo is your end-to-end digital growth partner. We combine advanced programmatic advertising, integrated marketing strategy, and business transformation consulting to help ambitious SMBs build scalable, data-driven growth engines.
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                delay: 2.3,
-                duration: 0.8,
-                type: "spring",
-                stiffness: 100,
-                damping: 20
-              }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <Link href="/contact">
-                <AdaptiveMagneticButton
-                  whileHover={{ 
-                    scale: 1.05,
-                    boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)"
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  magneticStrength={0.3}
-                  magneticDistance={100}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300"
-                >
-                  Start Your Transformation
-                  <AdaptiveFloatingElement
-                    amplitude={5}
-                    duration={2.8}
-                    delay={3}
-                  >
-                    <AnimatedIcon animationType="bounce">
-                  <ArrowRight className="w-5 h-5" strokeWidth={1.5} />
-                    </AnimatedIcon>
-                  </AdaptiveFloatingElement>
-                </AdaptiveMagneticButton>
-              </Link>
-              <Link href="/services">
-                <AdaptiveMagneticButton
-                  whileHover={{ 
-                    scale: 1.05,
-                    borderColor: "rgb(59, 130, 246)",
-                    boxShadow: "0 10px 30px rgba(59, 130, 246, 0.2)"
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  magneticStrength={0.3}
-                  magneticDistance={100}
-                  className="border border-slate-700 hover:border-blue-500 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300"
-                >
-                  Explore Services
-                </AdaptiveMagneticButton>
-              </Link>
-            </motion.div>
-          </motion.div>
+          {/* Subheadline */}
+          <p className="text-body-large text-gray-600 mb-12 max-w-2xl mx-auto">
+            Vrvo is your end-to-end digital growth partner. We combine advanced programmatic advertising, integrated marketing strategy, and business transformation consulting to help ambitious SMBs build scalable, data-driven growth engines.
+          </p>
+          
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <Link href="/contact">
+              <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
+                Get Started
+                <ArrowRight className="w-5 h-5" strokeWidth={1.5} />
+              </button>
+            </Link>
+            <Link href="/services">
+              <button className="border border-gray-300 hover:border-gray-400 text-gray-900 px-8 py-4 rounded-lg font-semibold transition-colors duration-200">
+                View Services
+              </button>
+            </Link>
+          </div>
+          
+          {/* Trust Line */}
+          <p className="text-sm text-gray-500">
+            Trusted by 200+ growing businesses
+          </p>
+        </div>
 
-          {/* Floating Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              delay: 2.6,
-              duration: 1,
-              type: "spring",
-              stiffness: 80,
-              damping: 20
-            }}
-            className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
-          >
-            {[
-              { label: '360° Digital Strategies Deployed', value: 240, suffix: '+' },
-              { label: 'Average Client Growth Rate', value: 94, suffix: '%' },
-              { label: 'Marketing Systems Transformed', value: 156, suffix: '+' }
-            ].map((stat, index) => (
-              <SpotlightCard
-                key={index}
-                spotlightColor="rgba(59, 130, 246, 0.15)"
-                className="rounded-xl"
-              >
-                <motion.div 
-                  initial={{ opacity: 0, y: 40, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ 
-                    delay: 1.6 + index * 0.2,
-                    duration: 0.8,
-                    type: "spring",
-                    stiffness: 120,
-                    damping: 20
-                  }}
-                  whileHover={{ 
-                    y: -8,
-                    scale: 1.02
-                  }}
-                  className="relative rounded-xl p-6 text-center overflow-hidden"
-                  style={{
-                    background: 'rgba(30, 41, 59, 0.3)',
-                    backdropFilter: 'blur(15px)',
-                    WebkitBackdropFilter: 'blur(15px)',
-                    border: '1px solid rgba(148, 163, 184, 0.2)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                  }}
-                >
-                {/* Glassmorphism overlay */}
-                <motion.div
-                  className="absolute inset-0 rounded-xl"
-                  initial={{ opacity: 0 }}
-                  whileHover={{
-                    opacity: 1,
-                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(34, 197, 94, 0.1))',
-                    boxShadow: '0 20px 40px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-                
-                <div className="relative z-10">
-                  <AnimatedCounter
-                    end={stat.value}
-                    suffix={stat.suffix}
-                    duration={2.5}
-                    className="text-3xl font-bold text-blue-400 mb-2 block"
-                  />
-                <div className="text-slate-400 text-sm">{stat.label}</div>
+      </section>
+
+      {/* Logo Cloud / Trust Bar */}
+      <section className="bg-gray-50 py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-center text-sm text-gray-500 mb-8">
+            Trusted by 200+ growing businesses
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
+            {/* Placeholder logos - replace with actual client logos */}
+            {['Client A', 'Client B', 'Client C', 'Client D', 'Client E', 'Client F'].map((client, index) => (
+              <div key={index} className="text-gray-400 font-medium">
+                {client}
               </div>
-              </motion.div>
-              </SpotlightCard>
             ))}
-          </motion.div>
         </div>
-      </SectionTransition>
+        </div>
+      </section>
 
-      {/* Social Proof Section */}
-      <SectionTransition sectionId="social-proof" className="py-16 px-6 bg-slate-950/50 relative z-10">
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{
-              duration: 0.8,
-              type: "spring",
-              stiffness: 100,
-              damping: 20
-            }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-12">
-              Trusted by Forward-Thinking Businesses
+      {/* Services Section - Clean & Editorial */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="text-eyebrow mb-4">
+              Our Services
+            </div>
+            <h2 className="text-section text-gray-900 mb-6">
+              Full-Stack Digital Growth Solutions
             </h2>
-            
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-8"
-            >
-              {[
-                { icon: <Heart className="w-8 h-8" strokeWidth={1.5} />, name: 'Healthcare' },
-                { icon: <ShoppingCart className="w-8 h-8" strokeWidth={1.5} />, name: 'E-commerce' },
-                { icon: <Briefcase className="w-8 h-8" strokeWidth={1.5} />, name: 'Professional Services' },
-                { icon: <BarChart3 className="w-8 h-8" strokeWidth={1.5} />, name: 'B2B SaaS' },
-                { icon: <Building className="w-8 h-8" strokeWidth={1.5} />, name: 'Retail' },
-                { icon: <Banknote className="w-8 h-8" strokeWidth={1.5} />, name: 'Financial Services' }
-              ].map((industry, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ 
-                    delay: 0.4 + i * 0.1,
-                    duration: 0.6,
-                    type: "spring",
-                    stiffness: 120,
-                    damping: 20
-                  }}
-                  whileHover={{ 
-                    scale: 1.1,
-                    filter: 'brightness(1.2)'
-                  }}
-                  className="flex flex-col items-center gap-3 p-4 rounded-lg transition-all duration-300 cursor-pointer group"
-                  style={{
-                    background: 'rgba(30, 41, 59, 0.3)',
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(148, 163, 184, 0.2)',
-                  }}
-                >
-                  <div className="text-4xl opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                    {industry.icon}
-                  </div>
-                  <span className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors duration-300">
-                    {industry.name}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 1.2 }}
-              className="text-slate-400 text-lg"
-            >
-              Join innovative companies that trust Vrvo to transform their digital presence
-            </motion.p>
-          </motion.div>
-        </div>
-      </SectionTransition>
-
-      {/* Services Section */}
-      <SectionTransition sectionId="services" className="py-20 px-6 bg-slate-900/50 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{
-              duration: 0.8,
-              type: "spring",
-              stiffness: 100,
-              damping: 20
-            }}
-            className="text-center mb-16"
-          >
-            <ParallaxText speed={0.6} className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight text-balance relative">
-              {/* Decorative Accent Lines */}
-              <div className="absolute -left-8 top-1/2 w-6 h-px bg-gradient-to-r from-transparent to-blue-400/30" />
-              <div className="absolute -right-8 top-1/2 w-6 h-px bg-gradient-to-l from-transparent to-cyan-400/30" />
-              <motion.span 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{
-                  duration: 0.6,
-                  type: "spring",
-                  stiffness: 200,
-                  damping: 15,
-                  delay: 0.4
-                }}
-                className="text-blue-400"
-              >
-                <ShimmerText shimmerColors={['#60a5fa', '#34d399', '#14b8a6']}>
-                  Full-Stack Digital Growth Solutions
-                </ShimmerText>
-              </motion.span>
-            </ParallaxText>
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                duration: 0.8,
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-                delay: 0.6
-              }}
-              className="text-slate-400 text-lg max-w-2xl mx-auto"
-            >
+            <p className="text-body-large text-gray-600 max-w-2xl mx-auto">
               End-to-end capabilities that work together to accelerate your business
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="grid md:grid-cols-3 gap-8"
-          >
+          {/* Service Cards */}
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: <AnimatedIcon animationType="glow"><TrendingUp className="w-16 h-16" strokeWidth={1.5} /></AnimatedIcon>,
+                icon: <TrendingUp className="w-10 h-10" strokeWidth={1.5} />,
                 title: 'Strategic Marketing',
                 subtitle: 'Integrated campaigns that build brands and drive revenue',
                 features: [
@@ -588,11 +164,10 @@ export default function Home() {
                   'Content marketing & SEO that establishes authority',
                   'Performance marketing (Paid Social, Search, Display)',
                   'Marketing analytics & attribution modeling'
-                ],
-                outcome: 'Predictable pipeline. Measurable ROI. Sustainable growth.'
+                ]
               },
               {
-                icon: <AnimatedIcon animationType="glow"><Target className="w-16 h-16" strokeWidth={1.5} /></AnimatedIcon>,
+                icon: <Target className="w-10 h-10" strokeWidth={1.5} />,
                 title: 'Programmatic Advertising',
                 subtitle: 'Precision audience targeting at enterprise scale',
                 features: [
@@ -600,11 +175,10 @@ export default function Home() {
                   'Cross-platform DSP management',
                   'Advanced audience segmentation & retargeting',
                   'Real-time bid optimization & budget allocation'
-                ],
-                outcome: 'Reach your ideal customers at the right moment, every time.'
+                ]
               },
               {
-                icon: <AnimatedIcon animationType="glow"><Lightbulb className="w-16 h-16" strokeWidth={1.5} /></AnimatedIcon>,
+                icon: <Lightbulb className="w-10 h-10" strokeWidth={1.5} />,
                 title: 'Business Transformation',
                 subtitle: 'Build the infrastructure for scalable growth',
                 features: [
@@ -613,176 +187,38 @@ export default function Home() {
                   'Data warehouse & analytics infrastructure',
                   'Process optimization & team enablement',
                   'Fractional CMO & strategic advisory'
-                ],
-                outcome: 'Transform marketing from a cost center to a growth engine.'
+                ]
               }
             ].map((service, index) => (
-              <SpotlightCard
+              <div
                 key={index}
-                spotlightColor="rgba(34, 197, 94, 0.1)"
-                className="rounded-2xl"
+                className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 60, scale: 0.9, filter: "blur(5px)" }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ 
-                    delay: index * 0.15,
-                    duration: 0.8,
-                    type: "spring",
-                    stiffness: 80,
-                    damping: 25
-                  }}
-                  whileHover={{ 
-                    y: -12,
-                    scale: 1.02,
-                    rotateY: 5,
-                    rotateX: 5
-                  }}
-                  className="relative rounded-2xl p-8 perspective-1000 overflow-hidden"
-                  style={{ 
-                    transformStyle: "preserve-3d",
-                    background: 'rgba(30, 41, 59, 0.6)',
-                    backdropFilter: 'blur(24px)',
-                    WebkitBackdropFilter: 'blur(24px)',
-                    border: '1px solid transparent',
-                    backgroundImage: 'linear-gradient(rgba(30, 41, 59, 0.6), rgba(30, 41, 59, 0.6)), linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))',
-                    backgroundOrigin: 'border-box',
-                    backgroundClip: 'padding-box, border-box',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 20px rgba(59, 130, 246, 0.05)'
-                  }}
-                >
-                {/* Glassmorphism overlay */}
-                <motion.div
-                  className="absolute inset-0 rounded-2xl"
-                  initial={{ opacity: 0 }}
-                  whileHover={{
-                    opacity: 1,
-                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(34, 197, 94, 0.15))',
-                    boxShadow: '0 25px 50px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 30px rgba(6, 182, 212, 0.2)'
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-                
-                <div className="relative z-10">
-                  <motion.div 
-                    initial={{ scale: 0, rotate: -180 }}
-                    whileInView={{ scale: 1, rotate: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ 
-                      delay: 0.5 + index * 0.2,
-                      duration: 0.6,
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 15
-                    }}
-                    className="text-blue-400 mb-6 transition-colors duration-300"
-                  >
-                    <AdaptiveFloatingElement
-                      amplitude={8}
-                      duration={3 + index * 0.5}
-                      delay={1 + index * 0.3}
-                    >
-                      <AnimatedIcon animationType="rotate">
-                        {service.icon}
-                      </AnimatedIcon>
-                    </AdaptiveFloatingElement>
-                  </motion.div>
-                
-                <motion.h3 
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ 
-                    delay: 0.7 + index * 0.2,
-                    duration: 0.6,
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 20
-                  }}
-                  className="text-2xl font-bold text-white mb-2"
-                >
-                  <ShimmerText>
-                    {service.title}
-                  </ShimmerText>
-                </motion.h3>
-                
-                <motion.p 
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ 
-                    delay: 0.8 + index * 0.2,
-                    duration: 0.6,
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 20
-                  }}
-                  className="text-blue-300 text-sm mb-6 font-medium"
-                >
-                  {service.subtitle}
-                </motion.p>
-                
-                <motion.ul 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ 
-                    delay: 0.9 + index * 0.2,
-                    duration: 0.6
-                  }}
-                  className="space-y-3 mb-6"
-                >
-                  {service.features.map((feature, i) => (
-                    <motion.li 
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ 
-                        delay: 1 + index * 0.2 + i * 0.1,
-                        duration: 0.4
-                      }}
-                      whileHover={{ x: 5 }}
-                      className="text-slate-400 flex items-start gap-2 transition-all duration-200"
-                    >
-                      <AdaptiveFloatingElement
-                        amplitude={3}
-                        duration={2 + i * 0.2}
-                        delay={4 + i * 0.3}
-                      >
-                        <AnimatedIcon animationType="pulse" className="mt-1 flex-shrink-0">
-                          <Zap className="w-4 h-4 text-blue-400" />
-                        </AnimatedIcon>
-                      </AdaptiveFloatingElement>
-                      <span>{feature}</span>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-                
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ 
-                    delay: 1.2 + index * 0.2,
-                    duration: 0.6,
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 20
-                  }}
-                  className="pt-6 border-t border-slate-700/50"
-                >
-                  <p className="text-sm text-slate-500 mb-2">Outcome:</p>
-                  <p className="text-slate-300 font-medium">{service.outcome}</p>
-                </motion.div>
+                <div className="text-gray-900 mb-6">
+                  {service.icon}
                 </div>
-              </motion.div>
-              </SpotlightCard>
+                
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {service.title}
+                </h3>
+                
+                <p className="text-gray-600 mb-6">
+                  {service.subtitle}
+                </p>
+                
+                <ul className="space-y-3">
+                  {service.features.map((feature, i) => (
+                    <li key={i} className="text-gray-600 text-sm leading-relaxed">
+                      • {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </motion.div>
           </div>
-      </SectionTransition>
+        </div>
+      </section>
+
 
       {/* Capabilities Section */}
       <SectionTransition sectionId="capabilities" className="py-20 px-6 bg-slate-900/30 relative z-10">
@@ -843,7 +279,7 @@ export default function Home() {
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-50px" }}
                       transition={{ 
                         delay: index * 0.1,
@@ -868,8 +304,8 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
               duration: 0.8,
               type: "spring",
               stiffness: 100,
@@ -944,8 +380,8 @@ export default function Home() {
                       viewport={{ once: true, margin: "-50px" }}
                       transition={{ 
                         delay: 0.5 + index * 0.1,
-                        duration: 0.6,
-                        type: "spring",
+                  duration: 0.6,
+                  type: "spring",
                         stiffness: 200,
                         damping: 15
                       }}
@@ -966,10 +402,10 @@ export default function Home() {
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-50px" }}
-                      transition={{ 
+                transition={{
                         delay: 0.7 + index * 0.1,
-                        duration: 0.6,
-                        type: "spring",
+                  duration: 0.6,
+                  type: "spring",
                         stiffness: 100,
                         damping: 20
                       }}
@@ -984,10 +420,10 @@ export default function Home() {
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-50px" }}
-                      transition={{ 
+                transition={{
                         delay: 0.9 + index * 0.1,
-                        duration: 0.6,
-                        type: "spring",
+                  duration: 0.6,
+                  type: "spring",
                         stiffness: 100,
                         damping: 20
                       }}
@@ -1215,25 +651,25 @@ export default function Home() {
                   {phase.bullets.map((bullet, i) => (
                     <motion.li 
                       key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ 
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ 
                         delay: 1.1 + index * 0.15 + i * 0.1,
                         duration: 0.4
-                      }}
+                    }}
                       whileHover={{ x: 5 }}
                       className="text-slate-400 flex items-start gap-2 text-xs"
-                    >
-                      <AdaptiveFloatingElement
+                  >
+                    <AdaptiveFloatingElement
                         amplitude={3}
                         duration={2 + i * 0.2}
                         delay={4 + i * 0.3}
                       >
                         <AnimatedIcon animationType="pulse" className="mt-1 flex-shrink-0">
                           <Zap className="w-3 h-3 text-blue-400" />
-                        </AnimatedIcon>
-                      </AdaptiveFloatingElement>
+                      </AnimatedIcon>
+                    </AdaptiveFloatingElement>
                       <span>{bullet}</span>
                     </motion.li>
                   ))}
