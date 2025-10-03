@@ -4,12 +4,12 @@ import { motion } from 'framer-motion'
 import { ArrowRight, TrendingUp, Target, Lightbulb, CheckCircle, BarChart3, Users, Zap } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import SectionTransition from '../../../components/SectionTransition'
-import ParallaxText from '../../../components/ParallaxText'
-import ShimmerText from '../../../components/ShimmerText'
-import SpotlightCard from '../../../components/SpotlightCard'
-import AnimatedIcon from '../../../components/AnimatedIcon'
-import AdaptiveFloatingElement from '../../../components/AdaptiveFloatingElement'
+import SectionTransition from '../../components/SectionTransition'
+import ParallaxText from '../../components/ParallaxText'
+import ShimmerText from '../../components/ShimmerText'
+import SpotlightCard from '../../components/SpotlightCard'
+import AnimatedIcon from '../../components/AnimatedIcon'
+import AdaptiveFloatingElement from '../../components/AdaptiveFloatingElement'
 
 export default function StrategicMarketingPage() {
   return (
