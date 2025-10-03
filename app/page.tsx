@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { ArrowRight, Zap, Target, TrendingUp, Lightbulb, Users, Heart, ShoppingCart, Briefcase, BarChart3, Building, Banknote } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import LazyParticleNetwork from './components/LazyParticleNetwork'
 import AdaptiveCursor from './components/AdaptiveCursor'
 import AnimatedCounter from './components/AnimatedCounter'
@@ -138,9 +139,9 @@ export default function Home() {
             className="hidden md:flex gap-8 text-slate-300"
           >
             {[
-              { href: "#services", label: "Services" },
-              { href: "#approach", label: "Approach" },
-              { href: "#about", label: "About" }
+              { href: "/services", label: "Services" },
+              { href: "/about", label: "About" },
+              { href: "/contact", label: "Contact" }
             ].map((link, index) => (
               <motion.a 
                 key={link.href}
@@ -279,31 +280,19 @@ export default function Home() {
               className="inline-block mb-6"
             >
               <span className="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full text-sm font-medium border border-blue-500/20 backdrop-blur-sm">
-                Next-Generation Marketing
+                Digital Marketing & Business Transformation
               </span>
             </motion.div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight text-balance">
-              <div className="block mb-4">
-                <TextReveal 
-                  delay={0.5}
-                  staggerDelay={0.04}
-                  duration={0.7}
-                  className="text-white"
-                >
-                  Programmatic Advertising
-                </TextReveal>
-              </div>
-              <div className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
-                <TextReveal 
-                  delay={1.2}
-                  staggerDelay={0.035}
-                  duration={0.8}
-                  className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent"
-                >
-                That Drives Sustainable Business Growth
-                </TextReveal>
-              </div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tight text-balance">
+              <TextReveal 
+                delay={0.5}
+                staggerDelay={0.04}
+                duration={0.7}
+                className="text-white"
+              >
+                Transform Your Business Through Strategic Digital Marketing
+              </TextReveal>
             </h1>
             
             <motion.p 
@@ -318,7 +307,7 @@ export default function Home() {
               }}
               className="text-xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed"
             >
-              Vrvo is your strategic partner in digital transformation. Combining cutting-edge programmatic technology with integrated marketing strategy, we help ambitious SMBs create demand, drive conversions, and scale efficiently—all while you focus on what you do best: running your business.
+              Vrvo is your end-to-end digital growth partner. We combine advanced programmatic advertising, integrated marketing strategy, and business transformation consulting to help ambitious SMBs build scalable, data-driven growth engines.
             </motion.p>
             
             <motion.div 
@@ -333,40 +322,44 @@ export default function Home() {
               }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <AdaptiveMagneticButton
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)"
-                }}
-                whileTap={{ scale: 0.95 }}
-                magneticStrength={0.3}
-                magneticDistance={100}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300"
-              >
-                Start Your Transformation
-                <AdaptiveFloatingElement
-                  amplitude={5}
-                  duration={2.8}
-                  delay={3}
+              <Link href="/contact">
+                <AdaptiveMagneticButton
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  magneticStrength={0.3}
+                  magneticDistance={100}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300"
                 >
-                  <AnimatedIcon animationType="bounce">
-                <ArrowRight className="w-5 h-5" strokeWidth={1.5} />
-                  </AnimatedIcon>
-                </AdaptiveFloatingElement>
-              </AdaptiveMagneticButton>
-              <AdaptiveMagneticButton
-                whileHover={{ 
-                  scale: 1.05,
-                  borderColor: "rgb(59, 130, 246)",
-                  boxShadow: "0 10px 30px rgba(59, 130, 246, 0.2)"
-                }}
-                whileTap={{ scale: 0.95 }}
-                magneticStrength={0.3}
-                magneticDistance={100}
-                className="border border-slate-700 hover:border-blue-500 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300"
-              >
-                Explore Services
-              </AdaptiveMagneticButton>
+                  Start Your Transformation
+                  <AdaptiveFloatingElement
+                    amplitude={5}
+                    duration={2.8}
+                    delay={3}
+                  >
+                    <AnimatedIcon animationType="bounce">
+                  <ArrowRight className="w-5 h-5" strokeWidth={1.5} />
+                    </AnimatedIcon>
+                  </AdaptiveFloatingElement>
+                </AdaptiveMagneticButton>
+              </Link>
+              <Link href="/services">
+                <AdaptiveMagneticButton
+                  whileHover={{ 
+                    scale: 1.05,
+                    borderColor: "rgb(59, 130, 246)",
+                    boxShadow: "0 10px 30px rgba(59, 130, 246, 0.2)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  magneticStrength={0.3}
+                  magneticDistance={100}
+                  className="border border-slate-700 hover:border-blue-500 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300"
+                >
+                  Explore Services
+                </AdaptiveMagneticButton>
+              </Link>
             </motion.div>
           </motion.div>
 
@@ -384,9 +377,9 @@ export default function Home() {
             className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
           >
             {[
-              { label: 'Average ROI Increase', value: 340, suffix: '%' },
-              { label: 'Client Retention Rate', value: 94, suffix: '%' },
-              { label: 'Campaigns Optimized', value: 500, suffix: '+' }
+              { label: '360° Digital Strategies Deployed', value: 240, suffix: '+' },
+              { label: 'Average Client Growth Rate', value: 94, suffix: '%' },
+              { label: 'Marketing Systems Transformed', value: 156, suffix: '+' }
             ].map((stat, index) => (
               <SpotlightCard
                 key={index}
@@ -542,7 +535,7 @@ export default function Home() {
               {/* Decorative Accent Lines */}
               <div className="absolute -left-8 top-1/2 w-6 h-px bg-gradient-to-r from-transparent to-blue-400/30" />
               <div className="absolute -right-8 top-1/2 w-6 h-px bg-gradient-to-l from-transparent to-cyan-400/30" />
-              Three Pillars of <motion.span 
+              <motion.span 
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -556,7 +549,7 @@ export default function Home() {
                 className="text-blue-400"
               >
                 <ShimmerText shimmerColors={['#60a5fa', '#34d399', '#14b8a6']}>
-                  Digital Excellence
+                  Full-Stack Digital Growth Solutions
                 </ShimmerText>
               </motion.span>
             </ParallaxText>
@@ -573,7 +566,7 @@ export default function Home() {
               }}
               className="text-slate-400 text-lg max-w-2xl mx-auto"
             >
-              Comprehensive solutions that drive measurable business growth
+              End-to-end capabilities that work together to accelerate your business
             </motion.p>
           </motion.div>
 
@@ -586,40 +579,42 @@ export default function Home() {
           >
             {[
               {
-                icon: <AnimatedIcon animationType="glow"><Target className="w-16 h-16" strokeWidth={1.5} /></AnimatedIcon>,
-                title: 'Programmatic Advertising',
-                subtitle: 'Reach your ideal customers at the right moment, on the right platform',
+                icon: <AnimatedIcon animationType="glow"><TrendingUp className="w-16 h-16" strokeWidth={1.5} /></AnimatedIcon>,
+                title: 'Strategic Marketing',
+                subtitle: 'Integrated campaigns that build brands and drive revenue',
                 features: [
-                  'AI-powered audience targeting across display, video, and native',
-                  'Real-time bid optimization to maximize every dollar',
-                  'Cross-device campaigns that follow your customer journey',
-                  'Transparent reporting with actionable insights'
+                  'Brand positioning & messaging architecture',
+                  'Multi-channel campaign strategy & execution',
+                  'Content marketing & SEO that establishes authority',
+                  'Performance marketing (Paid Social, Search, Display)',
+                  'Marketing analytics & attribution modeling'
                 ],
-                outcome: 'Pay only for the results that matter. Scale efficiently as you grow.'
+                outcome: 'Predictable pipeline. Measurable ROI. Sustainable growth.'
               },
               {
-                icon: <AnimatedIcon animationType="glow"><TrendingUp className="w-16 h-16" strokeWidth={1.5} /></AnimatedIcon>,
-                title: 'Digital Marketing Strategy',
-                subtitle: 'Integrated campaigns designed to convert browsers into customers',
+                icon: <AnimatedIcon animationType="glow"><Target className="w-16 h-16" strokeWidth={1.5} /></AnimatedIcon>,
+                title: 'Programmatic Advertising',
+                subtitle: 'Precision audience targeting at enterprise scale',
                 features: [
-                  'Custom strategies tailored to your business goals',
-                  'SEO and content that actually ranks and engages',
-                  'Social media that builds community and drives action',
-                  'Email automation that nurtures leads on autopilot'
+                  'AI-powered programmatic display, video & native',
+                  'Cross-platform DSP management',
+                  'Advanced audience segmentation & retargeting',
+                  'Real-time bid optimization & budget allocation'
                 ],
-                outcome: 'Build a predictable pipeline of qualified leads, month after month.'
+                outcome: 'Reach your ideal customers at the right moment, every time.'
               },
               {
                 icon: <AnimatedIcon animationType="glow"><Lightbulb className="w-16 h-16" strokeWidth={1.5} /></AnimatedIcon>,
                 title: 'Business Transformation',
-                subtitle: 'Transform your marketing from cost center to growth engine',
+                subtitle: 'Build the infrastructure for scalable growth',
                 features: [
-                  'MarTech stack audit and optimization',
-                  'CRM setup and integration (HubSpot, Salesforce, etc.)',
-                  'Custom dashboards for real-time performance tracking',
-                  'Team training and ongoing strategic support'
+                  'Marketing technology stack design & implementation',
+                  'CRM & marketing automation (HubSpot, Salesforce, Marketo)',
+                  'Data warehouse & analytics infrastructure',
+                  'Process optimization & team enablement',
+                  'Fractional CMO & strategic advisory'
                 ],
-                outcome: 'Make data-driven decisions with confidence. Scale without chaos or complexity.'
+                outcome: 'Transform marketing from a cost center to a growth engine.'
               }
             ].map((service, index) => (
               <SpotlightCard
@@ -789,6 +784,274 @@ export default function Home() {
           </div>
       </SectionTransition>
 
+      {/* Capabilities Section */}
+      <SectionTransition sectionId="capabilities" className="py-20 px-6 bg-slate-900/30 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100,
+              damping: 20
+            }}
+            className="text-center mb-16"
+          >
+            <ParallaxText speed={0.5} className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+              Integrated Capabilities Across The Digital Spectrum
+            </ParallaxText>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl overflow-hidden">
+              <div className="grid md:grid-cols-5 border-b border-slate-700">
+                {[
+                  { id: 'paid-media', label: 'Paid Media', icon: <Target className="w-5 h-5" /> },
+                  { id: 'organic-content', label: 'Organic & Content', icon: <TrendingUp className="w-5 h-5" /> },
+                  { id: 'martech-data', label: 'MarTech & Data', icon: <BarChart3 className="w-5 h-5" /> },
+                  { id: 'creative-brand', label: 'Creative & Brand', icon: <Lightbulb className="w-5 h-5" /> },
+                  { id: 'advisory-transformation', label: 'Advisory & Transformation', icon: <Users className="w-5 h-5" /> }
+                ].map((tab, index) => (
+                  <button
+                    key={tab.id}
+                    className="flex items-center justify-center gap-2 px-6 py-4 text-sm font-medium text-slate-400 hover:text-white transition-colors duration-300 border-b-2 border-transparent hover:border-blue-500"
+                  >
+                    <span>{tab.icon}</span>
+                    <span className="hidden sm:inline">{tab.label}</span>
+                  </button>
+                ))}
+              </div>
+              
+              <div className="p-8">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {[
+                    'Programmatic Display & Video',
+                    'Paid Search (Google Ads, Microsoft Ads)',
+                    'Paid Social (Meta, LinkedIn, TikTok, Pinterest)',
+                    'Native Advertising',
+                    'Connected TV & Audio',
+                    'Retargeting & Remarketing'
+                  ].map((capability, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ 
+                        delay: index * 0.1,
+                        duration: 0.6
+                      }}
+                      className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors duration-300 cursor-pointer group"
+                    >
+                      <div className="w-2 h-2 bg-blue-400 rounded-full group-hover:bg-blue-300 transition-colors duration-300"></div>
+                      <span className="text-sm">{capability}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </SectionTransition>
+
+      {/* Why Vrvo Is Different Section */}
+      <SectionTransition sectionId="why-vrvo" className="py-20 px-6 bg-slate-900/30 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100,
+              damping: 20
+            }}
+            className="text-center mb-16"
+          >
+            <ParallaxText speed={0.5} className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+              Why Vrvo Is Different
+            </ParallaxText>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              Clear differentiators that set us apart from traditional agencies
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {[
+              {
+                icon: <Users className="w-12 h-12" strokeWidth={1.5} />,
+                title: "No Long-Term Contracts",
+                description: "Month-to-month partnerships. Stay because we deliver, not because you're locked in."
+              },
+              {
+                icon: <Target className="w-12 h-12" strokeWidth={1.5} />,
+                title: "Complete Transparency",
+                description: "Real-time dashboard access. Know exactly where your budget goes and what's working."
+              },
+              {
+                icon: <Zap className="w-12 h-12" strokeWidth={1.5} />,
+                title: "Strategic + Execution",
+                description: "We don't just plan—we do. Full-service from strategy through implementation and optimization."
+              },
+              {
+                icon: <TrendingUp className="w-12 h-12" strokeWidth={1.5} />,
+                title: "Built for Growth",
+                description: "Scalable solutions that grow with you. Start small, scale as you see results."
+              }
+            ].map((differentiator, index) => (
+              <SpotlightCard
+                key={index}
+                spotlightColor="rgba(34, 197, 94, 0.1)"
+                className="rounded-xl"
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 60, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ 
+                    delay: index * 0.1,
+                    duration: 0.8,
+                    type: "spring",
+                    stiffness: 80,
+                    damping: 25
+                  }}
+                  whileHover={{ 
+                    y: -8,
+                    scale: 1.02
+                  }}
+                  className="relative rounded-xl p-6 text-center overflow-hidden"
+                  style={{
+                    background: 'rgba(30, 41, 59, 0.3)',
+                    backdropFilter: 'blur(15px)',
+                    WebkitBackdropFilter: 'blur(15px)',
+                    border: '1px solid rgba(148, 163, 184, 0.2)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                  }}
+                >
+                  <div className="relative z-10">
+                    <motion.div 
+                      initial={{ scale: 0, rotate: -180 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ 
+                        delay: 0.5 + index * 0.1,
+                        duration: 0.6,
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 15
+                      }}
+                      className="text-blue-400 mb-4 mx-auto w-fit"
+                    >
+                      <AdaptiveFloatingElement
+                        amplitude={8}
+                        duration={3 + index * 0.5}
+                        delay={1 + index * 0.3}
+                      >
+                        <AnimatedIcon animationType="rotate">
+                          {differentiator.icon}
+                        </AnimatedIcon>
+                      </AdaptiveFloatingElement>
+                    </motion.div>
+                    
+                    <motion.h3 
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ 
+                        delay: 0.7 + index * 0.1,
+                        duration: 0.6,
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 20
+                      }}
+                      className="text-xl font-bold text-white mb-3"
+                    >
+                      <ShimmerText>
+                        {differentiator.title}
+                      </ShimmerText>
+                    </motion.h3>
+                    
+                    <motion.p 
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ 
+                        delay: 0.9 + index * 0.1,
+                        duration: 0.6,
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 20
+                      }}
+                      className="text-slate-400 text-sm leading-relaxed"
+                    >
+                      {differentiator.description}
+                    </motion.p>
+                  </div>
+                </motion.div>
+              </SpotlightCard>
+            ))}
+          </div>
+
+          {/* Comparison Table */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8"
+          >
+            <h3 className="text-2xl font-bold text-white mb-8 text-center">
+              Traditional Agency vs Vrvo
+            </h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-red-400 mb-4">Traditional Agency</h4>
+                <div className="space-y-3">
+                  {[
+                    'Long contracts',
+                    'Black box reporting',
+                    'Strategy only',
+                    'One-size-fits-all',
+                    'Minimum $50K+/mo'
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center gap-3 text-slate-400">
+                      <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-green-400 mb-4">Vrvo</h4>
+                <div className="space-y-3">
+                  {[
+                    'Month-to-month',
+                    'Full transparency',
+                    'Strategy + execution',
+                    'Customized approach',
+                    'Starts at $10K/mo'
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center gap-3 text-slate-300">
+                      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </SectionTransition>
+
       {/* Animated Divider */}
       <AnimatedDivider />
 
@@ -808,50 +1071,23 @@ export default function Home() {
             className="text-center mb-16"
           >
             <ParallaxText speed={0.5} className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-              <motion.span
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{
-                  duration: 0.6,
-                  type: "spring",
-                  stiffness: 120,
-                  damping: 20,
-                  delay: 0.4
-                }}
-              >
-                Data-Driven.
-              </motion.span>{' '}
-              <motion.span
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{
-                  duration: 0.6,
-                  type: "spring",
-                  stiffness: 120,
-                  damping: 20,
-                  delay: 0.6
-                }}
-              >
-                Human-Centered.
-              </motion.span>{' '}
-              <motion.span 
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{
-                  duration: 0.6,
-                  type: "spring",
-                  stiffness: 200,
-                  damping: 15,
-                  delay: 0.8
-                }}
-                className="text-blue-400"
-              >
-                Results-Obsessed.
-              </motion.span>
+              The Vrvo Growth Framework
             </ParallaxText>
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+                delay: 0.2
+              }}
+              className="text-slate-400 text-lg max-w-2xl mx-auto"
+            >
+              A proven methodology that aligns technology, strategy, and execution
+            </motion.p>
           </motion.div>
 
           <motion.div 
@@ -859,14 +1095,33 @@ export default function Home() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
-            className="grid md:grid-cols-5 gap-4"
+            className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto"
           >
             {[
-              { step: '01', title: 'Discovery', desc: 'Deep-dive into your business, audience, and goals' },
-              { step: '02', title: 'Strategy', desc: 'Custom roadmap blending programmatic, marketing, and transformation' },
-              { step: '03', title: 'Execution', desc: 'Launch campaigns with precision and agility' },
-              { step: '04', title: 'Optimization', desc: 'Continuous testing, learning, and scaling' },
-              { step: '05', title: 'Growth', desc: 'Long-term partnership for sustained results' }
+              { 
+                icon: <Zap className="w-8 h-8" strokeWidth={1.5} />,
+                title: 'Discover', 
+                desc: 'Business & market analysis, competitive intelligence, audience research & segmentation, technology audit, growth opportunity mapping',
+                bullets: ['Business & market analysis', 'Competitive intelligence', 'Audience research & segmentation', 'Technology audit', 'Growth opportunity mapping']
+              },
+              { 
+                icon: <Lightbulb className="w-8 h-8" strokeWidth={1.5} />,
+                title: 'Architect', 
+                desc: 'Strategic roadmap development, channel & tactic prioritization, technology stack design, KPI framework & measurement plan, budget allocation modeling',
+                bullets: ['Strategic roadmap development', 'Channel & tactic prioritization', 'Technology stack design', 'KPI framework & measurement plan', 'Budget allocation modeling']
+              },
+              { 
+                icon: <Target className="w-8 h-8" strokeWidth={1.5} />,
+                title: 'Execute', 
+                desc: 'Campaign development & launch, platform implementation & integration, content production & distribution, continuous testing & optimization, cross-functional coordination',
+                bullets: ['Campaign development & launch', 'Platform implementation & integration', 'Content production & distribution', 'Continuous testing & optimization', 'Cross-functional coordination']
+              },
+              { 
+                icon: <TrendingUp className="w-8 h-8" strokeWidth={1.5} />,
+                title: 'Evolve', 
+                desc: 'Performance analysis & reporting, strategic pivots & adjustments, scaling successful initiatives, team training & knowledge transfer, long-term partnership & growth',
+                bullets: ['Performance analysis & reporting', 'Strategic pivots & adjustments', 'Scaling successful initiatives', 'Team training & knowledge transfer', 'Long-term partnership & growth']
+              }
             ].map((phase, index) => (
               <motion.div
                 key={index}
@@ -884,7 +1139,7 @@ export default function Home() {
                   y: -8,
                   scale: 1.05
                 }}
-                className="relative rounded-xl p-6 overflow-hidden"
+                className="relative rounded-xl p-8 overflow-hidden"
                 style={{
                   background: 'rgba(30, 41, 59, 0.3)',
                   backdropFilter: 'blur(15px)',
@@ -917,7 +1172,7 @@ export default function Home() {
                       stiffness: 200,
                       damping: 15
                     }}
-                    className="text-blue-400 font-bold text-sm mb-3 inline-block"
+                    className="text-blue-400 mb-4 flex items-center gap-3"
                   >
                     <AdaptiveFloatingElement
                       amplitude={6}
@@ -925,12 +1180,13 @@ export default function Home() {
                       delay={2 + index * 0.4}
                     >
                       <AnimatedIcon animationType="scale">
-                        {phase.step}
+                        {phase.icon}
                       </AnimatedIcon>
                     </AdaptiveFloatingElement>
+                    <span className="font-bold text-lg">{phase.title}</span>
                   </motion.div>
                 
-                <motion.h3 
+                <motion.p 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
@@ -941,49 +1197,47 @@ export default function Home() {
                     stiffness: 100,
                     damping: 20
                   }}
-                  className="text-xl font-bold text-white mb-2"
-                >
-                  {phase.title}
-                </motion.h3>
-                
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ 
-                    delay: 0.9 + index * 0.15,
-                    duration: 0.6,
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 20
-                  }}
-                  className="text-slate-400 text-sm"
+                  className="text-slate-300 text-sm mb-4"
                 >
                   {phase.desc}
                 </motion.p>
                 
-                {index < 4 && (
-                  <motion.div 
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ 
-                      delay: 1.1 + index * 0.15,
-                      duration: 0.6
-                    }}
-                    className="hidden md:block absolute -right-2 top-1/2 transform -translate-y-1/2"
-                  >
-                    <AdaptiveFloatingElement
-                      amplitude={4}
-                      duration={3 + index * 0.2}
-                      delay={3 + index * 0.5}
+                <motion.ul 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ 
+                    delay: 0.9 + index * 0.15,
+                    duration: 0.6
+                  }}
+                  className="space-y-2"
+                >
+                  {phase.bullets.map((bullet, i) => (
+                    <motion.li 
+                      key={i}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ 
+                        delay: 1.1 + index * 0.15 + i * 0.1,
+                        duration: 0.4
+                      }}
+                      whileHover={{ x: 5 }}
+                      className="text-slate-400 flex items-start gap-2 text-xs"
                     >
-                      <AnimatedIcon animationType="bounce">
-                    <ArrowRight className="w-4 h-4 text-blue-400" />
-                      </AnimatedIcon>
-                    </AdaptiveFloatingElement>
-                  </motion.div>
-                )}
+                      <AdaptiveFloatingElement
+                        amplitude={3}
+                        duration={2 + i * 0.2}
+                        delay={4 + i * 0.3}
+                      >
+                        <AnimatedIcon animationType="pulse" className="mt-1 flex-shrink-0">
+                          <Zap className="w-3 h-3 text-blue-400" />
+                        </AnimatedIcon>
+                      </AdaptiveFloatingElement>
+                      <span>{bullet}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
                 </div>
               </motion.div>
             ))}
