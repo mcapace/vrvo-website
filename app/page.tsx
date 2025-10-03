@@ -8,7 +8,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
+      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="text-2xl font-bold text-gray-900">vrvo</div>
           <div className="hidden md:flex items-center space-x-8">
@@ -18,7 +18,7 @@ export default function HomePage() {
           </div>
           <Link 
             href="/contact" 
-            className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+            className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md"
           >
             Get Started
           </Link>
@@ -37,7 +37,7 @@ export default function HomePage() {
               Digital Marketing & Business Transformation
         </div>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight tracking-tight mb-8">
+            <h1 className="text-6xl md:text-7xl lg:text-[80px] font-bold text-[#2C2C2C] leading-tight tracking-[-0.02em] mb-8 text-balance">
               Transform Your Business Through Strategic Digital Marketing
             </h1>
             
@@ -48,13 +48,13 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link 
                 href="/contact" 
-                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-medium transition-colors"
+                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95"
               >
                 Get Started
               </Link>
               <Link 
                 href="/work" 
-                className="border border-gray-300 hover:border-gray-400 text-gray-700 px-8 py-4 rounded-lg font-medium transition-colors"
+                className="border border-gray-300 hover:border-gray-400 text-gray-700 px-8 py-4 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md hover:bg-gray-50"
               >
                 View Our Work
               </Link>
@@ -68,7 +68,7 @@ export default function HomePage() {
       </section>
 
       {/* Platform Section */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-50 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -77,10 +77,10 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="text-orange-500 text-sm font-medium uppercase tracking-wider mb-4">
+              <div className="text-[#F97316] text-sm font-medium uppercase tracking-wider mb-4">
                 Platform
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#2C2C2C] leading-tight tracking-[-0.02em] mb-6 text-balance">
                 Real-Time Visibility Into Your Marketing Performance
             </h2>
               <div className="space-y-6">
@@ -104,7 +104,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm"
+              className="bg-white border border-gray-200 rounded-xl p-8 shadow-lg"
             >
               <div className="space-y-6">
                 <div className="grid grid-cols-3 gap-4">
@@ -146,7 +146,7 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="bg-white py-20">
+      <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -155,10 +155,10 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="text-orange-500 text-sm font-medium uppercase tracking-wider mb-4">
+            <div className="text-[#F97316] text-sm font-medium uppercase tracking-wider mb-4">
               Our Services
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#2C2C2C] leading-tight tracking-[-0.02em] mb-6 text-balance">
               Full-Stack Digital Growth Solutions
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -172,12 +172,12 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-shadow"
+              className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 hover:-translate-y-1 transition-all duration-300 ease-out"
             >
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
                 <TrendingUp className="w-6 h-6 text-orange-500" />
                 </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Strategic Marketing</h3>
+              <h3 className="text-2xl font-bold text-[#2C2C2C] mb-4">Strategic Marketing</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Integrated campaigns that build brands and drive revenue through multi-channel strategy and execution.
               </p>
@@ -206,12 +206,12 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-shadow"
+              className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 hover:-translate-y-1 transition-all duration-300 ease-out"
             >
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
                 <Target className="w-6 h-6 text-orange-500" />
                     </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Programmatic Advertising</h3>
+              <h3 className="text-2xl font-bold text-[#2C2C2C] mb-4">Programmatic Advertising</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Enterprise-grade audience targeting and automation that maximizes reach and ROI at scale.
               </p>
@@ -240,12 +240,12 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-shadow"
+              className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md hover:border-gray-300 hover:-translate-y-1 transition-all duration-300 ease-out"
             >
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
                 <Lightbulb className="w-6 h-6 text-orange-500" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Business Transformation</h3>
+              <h3 className="text-2xl font-bold text-[#2C2C2C] mb-4">Business Transformation</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Build the marketing infrastructure and systems needed to scale efficiently and make data-driven decisions.
               </p>
@@ -273,7 +273,7 @@ export default function HomePage() {
       </section>
 
       {/* Capabilities Section */}
-      <section className="bg-gray-900 py-20">
+      <section className="bg-gradient-to-b from-gray-900 to-black py-24">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -282,7 +282,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight tracking-[-0.02em] mb-6 text-balance">
               Integrated Capabilities Across The Digital Spectrum
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -343,7 +343,7 @@ export default function HomePage() {
       </section>
 
       {/* Why Vrvo Section */}
-      <section className="bg-white py-20">
+      <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -352,7 +352,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#2C2C2C] leading-tight tracking-[-0.02em] mb-6 text-balance">
               Why Vrvo Is Different
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -371,7 +371,7 @@ export default function HomePage() {
               <div className="w-16 h-16 bg-orange-100 rounded-lg mx-auto mb-6 flex items-center justify-center">
                 <Handshake className="w-8 h-8 text-orange-500" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">No Long-Term Contracts</h3>
+              <h3 className="text-xl font-bold text-[#2C2C2C] mb-4">No Long-Term Contracts</h3>
               <p className="text-gray-600">
                 Month-to-month partnerships. Stay because we deliver, not because you're locked in.
               </p>
@@ -387,7 +387,7 @@ export default function HomePage() {
               <div className="w-16 h-16 bg-orange-100 rounded-lg mx-auto mb-6 flex items-center justify-center">
                 <Eye className="w-8 h-8 text-orange-500" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Complete Transparency</h3>
+              <h3 className="text-xl font-bold text-[#2C2C2C] mb-4">Complete Transparency</h3>
               <p className="text-gray-600">
                 Real-time dashboard access. Know exactly where your budget goes and what's working.
               </p>
@@ -403,7 +403,7 @@ export default function HomePage() {
               <div className="w-16 h-16 bg-orange-100 rounded-lg mx-auto mb-6 flex items-center justify-center">
                 <Zap className="w-8 h-8 text-orange-500" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Strategy + Execution</h3>
+              <h3 className="text-xl font-bold text-[#2C2C2C] mb-4">Strategy + Execution</h3>
               <p className="text-gray-600">
                 We don't just plan—we do. Full-service from strategy through implementation.
             </p>
@@ -419,7 +419,7 @@ export default function HomePage() {
               <div className="w-16 h-16 bg-orange-100 rounded-lg mx-auto mb-6 flex items-center justify-center">
                 <TrendingUp className="w-8 h-8 text-orange-500" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Built for Growth</h3>
+              <h3 className="text-xl font-bold text-[#2C2C2C] mb-4">Built for Growth</h3>
               <p className="text-gray-600">
                 Scalable solutions that grow with you. Start small, scale as you see results.
               </p>
@@ -429,7 +429,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gray-900 py-20">
+      <section className="bg-gradient-to-b from-gray-900 to-black py-24">
         <div className="max-w-7xl mx-auto px-6 text-center">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -437,7 +437,7 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight tracking-[-0.02em] mb-6 text-balance">
               Ready to Transform Your Marketing?
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
@@ -445,7 +445,7 @@ export default function HomePage() {
             </p>
             <Link 
               href="/contact" 
-              className="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-medium transition-colors"
+              className="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95"
             >
               Contact Us
                       <ArrowRight className="w-5 h-5 ml-2" />
@@ -455,7 +455,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 py-16">
+      <footer className="bg-gradient-to-b from-gray-900 to-black py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div>

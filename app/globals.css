@@ -6,22 +6,22 @@
 
 :root {
   /* Backgrounds */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F8F7F5;
+  --bg-primary: #FAFAF9;
+  --bg-secondary: #F5F5F4;
   --bg-tertiary: #F1F0ED;
-  --bg-dark: #1A1A1A;
-  --bg-darker: #0D0D0D;
+  --bg-dark: #0F0F0F;
+  --bg-darker: #0A0A0A;
   
   /* Text Colors */
-  --text-primary: #1A1A1A;
+  --text-primary: #2C2C2C;
   --text-secondary: #6B6B6B;
   --text-tertiary: #999999;
   --text-on-dark: #FFFFFF;
   --text-on-dark-secondary: #B8B8B8;
   
   /* Accent Colors */
-  --accent-primary: #FF5C35;
-  --accent-primary-hover: #E54D2A;
+  --accent-primary: #F97316;
+  --accent-primary-hover: #EA580C;
   --accent-secondary: #2E2E2E;
   
   /* Borders */
