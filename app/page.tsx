@@ -12,41 +12,61 @@ export default function Home() {
       <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
+            
+            {/* Logo */}
             <div className="flex items-center">
               <span className="text-2xl font-bold text-gray-900">vrvo</span>
-        </div>
+            </div>
+            
+            {/* Center Links */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-sm font-medium text-gray-700 hover:text-gray-900">
+              <a href="#services" className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors">
                 Services
               </a>
-              <a href="#approach" className="text-sm font-medium text-gray-700 hover:text-gray-900">
+              <a href="#approach" className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors">
                 Approach
               </a>
-              <a href="#about" className="text-sm font-medium text-gray-700 hover:text-gray-900">
+              <a href="#about" className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors">
                 About
               </a>
-              <button className="px-5 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold rounded-lg transition-colors">
+            </div>
+            
+            {/* Right CTA */}
+            <div className="hidden md:block">
+              <button className="px-6 py-2 bg-orange-600 hover:bg-orange-700 text-white text-base font-semibold rounded-lg transition-colors">
                 Get Started
               </button>
+            </div>
+            
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button className="text-gray-700 hover:text-gray-900">
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
         </div>
-          </div>
+            
+        </div>
         </div>
       </nav>
 
       {/* HERO SECTION */}
-      <section className="relative bg-white">
-        <div className="max-w-7xl mx-auto px-6 py-20 md:py-28">
+      <section className="bg-white py-24">
+        <div className="max-w-7xl mx-auto px-6">
           
-          <div className="text-center max-w-5xl mx-auto">
+          <div className="text-center">
             {/* Badge */}
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 border border-gray-200 mb-8">
-              <span className="text-sm font-medium text-gray-700">
-                Digital Marketing & Business Transformation
-              </span>
+            <div className="inline-block mb-6">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 border border-gray-200">
+                <span className="text-sm font-medium text-gray-700">
+                  Digital Marketing & Business Transformation
+                </span>
+              </div>
               </div>
             
             {/* Headline */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight tracking-tight max-w-5xl mx-auto">
               Transform Your Business Through Strategic Digital Marketing
             </h1>
             
@@ -56,7 +76,7 @@ export default function Home() {
             </p>
             
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="flex flex-row gap-4 justify-center mb-12">
               <button className="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-colors text-lg">
                 Get Started
               </button>
@@ -77,19 +97,19 @@ export default function Home() {
       <section className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-6">
           
-          <div className="mb-12">
+          <div className="mb-16">
             <p className="text-sm font-semibold text-orange-600 uppercase tracking-wide mb-2">
               PLATFORM
             </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight tracking-tight">
               Real-Time Visibility Into Your Marketing Performance
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl">
+            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl">
               Track every campaign, channel, and conversion in one unified dashboard. Make data-driven decisions with confidence.
             </p>
                   </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             
             {/* Left: Features */}
             <div className="space-y-6">
@@ -97,7 +117,7 @@ export default function Home() {
                 <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Unified Dashboard</h3>
-                  <p className="text-gray-600">See all channels in one place with real-time performance metrics</p>
+                  <p className="text-gray-600 leading-relaxed">See all channels in one place with real-time performance metrics</p>
                 </div>
           </div>
               
@@ -105,7 +125,7 @@ export default function Home() {
                 <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Custom Reporting</h3>
-                  <p className="text-gray-600">Build reports that matter to your business with drag-and-drop simplicity</p>
+                  <p className="text-gray-600 leading-relaxed">Build reports that matter to your business with drag-and-drop simplicity</p>
                 </div>
           </div>
               
@@ -113,34 +133,34 @@ export default function Home() {
                 <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Transparent Spend</h3>
-                  <p className="text-gray-600">Know exactly where every dollar goes with detailed attribution tracking</p>
+                  <p className="text-gray-600 leading-relaxed">Know exactly where every dollar goes with detailed attribution tracking</p>
                     </div>
                   </div>
             </div>
 
             {/* Right: Dashboard Mockup */}
             <div className="bg-white rounded-lg border border-gray-200 p-8">
-              <div className="mb-6">
+              <div>
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                   <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                  <span className="ml-4 text-xs text-gray-500">vrvo-dashboard.com</span>
+                  <span className="ml-4 text-sm text-gray-500">vrvo-dashboard.com</span>
             </div>
                 
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   <div>
                     <div className="text-3xl font-bold text-gray-900">340%</div>
-                    <div className="text-xs text-gray-500">Avg ROI</div>
+                    <div className="text-sm text-gray-500">Avg ROI</div>
         </div>
                   <div>
                     <div className="text-3xl font-bold text-gray-900">$2.4M</div>
-                    <div className="text-xs text-gray-500">Revenue</div>
+                    <div className="text-sm text-gray-500">Revenue</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-gray-900">94%</div>
-                    <div className="text-xs text-gray-500">Retention</div>
+                    <div className="text-sm text-gray-500">Retention</div>
                   </div>
                 </div>
                 
@@ -149,7 +169,7 @@ export default function Home() {
 
                 {/* Campaign List */}
                 <div className="space-y-3">
-                  <div className="text-xs font-semibold text-gray-500 mb-2">Active Campaigns</div>
+                  <div className="text-sm font-semibold text-gray-500 mb-2">Active Campaigns</div>
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-gray-700">Strategic Marketing Campaign</span>
                     <span className="text-green-600 font-medium">+12%</span>
@@ -177,15 +197,15 @@ export default function Home() {
             <p className="text-sm font-semibold text-orange-600 uppercase tracking-wide mb-3">
               OUR SERVICES
             </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight tracking-tight">
               Full-Stack Digital Growth Solutions
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
               End-to-end capabilities that work together to accelerate your business
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             {/* Service 1 */}
             <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow">
@@ -281,15 +301,15 @@ export default function Home() {
       <section className="bg-gray-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight tracking-tight">
               Integrated Capabilities Across The Digital Spectrum
             </h2>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-gray-400 leading-relaxed">
               Enterprise technology. SMB accessibility.
             </p>
         </div>
 
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
               <h3 className="text-sm font-semibold text-orange-500 uppercase tracking-wide mb-4">Paid Media</h3>
               <ul className="space-y-2 text-gray-300 text-sm">
@@ -330,15 +350,15 @@ export default function Home() {
       <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight tracking-tight">
               Why Vrvo Is Different
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-600 leading-relaxed">
               Transparent partnerships built on results, not contracts
             </p>
         </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -346,7 +366,7 @@ export default function Home() {
                 </svg>
         </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">No Long-Term Contracts</h3>
-              <p className="text-gray-600 text-sm">Month-to-month partnerships. Stay because we deliver, not because you're locked in.</p>
+              <p className="text-gray-600 text-sm leading-relaxed">Month-to-month partnerships. Stay because we deliver, not because you're locked in.</p>
             </div>
 
             <div className="text-center">
@@ -354,7 +374,7 @@ export default function Home() {
                 <Eye className="w-8 h-8 text-orange-600" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Complete Transparency</h3>
-              <p className="text-gray-600 text-sm">Real-time dashboard access. Know exactly where your budget goes and what's working.</p>
+              <p className="text-gray-600 text-sm leading-relaxed">Real-time dashboard access. Know exactly where your budget goes and what's working.</p>
             </div>
 
             <div className="text-center">
@@ -362,7 +382,7 @@ export default function Home() {
                 <Zap className="w-8 h-8 text-orange-600" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Strategy + Execution</h3>
-              <p className="text-gray-600 text-sm">We don't just plan—we do. Full-service from strategy through implementation.</p>
+              <p className="text-gray-600 text-sm leading-relaxed">We don't just plan—we do. Full-service from strategy through implementation.</p>
             </div>
 
             <div className="text-center">
@@ -370,7 +390,7 @@ export default function Home() {
                 <TrendingUp className="w-8 h-8 text-orange-600" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Built for Growth</h3>
-              <p className="text-gray-600 text-sm">Scalable solutions that grow with you. Start small, scale as you see results.</p>
+              <p className="text-gray-600 text-sm leading-relaxed">Scalable solutions that grow with you. Start small, scale as you see results.</p>
             </div>
           </div>
         </div>
@@ -395,10 +415,10 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="bg-gray-900 border-t border-gray-800 py-12">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="text-2xl font-bold text-white mb-4">Vrvo</div>
-              <p className="text-gray-400 text-sm">Strategic digital marketing for ambitious businesses</p>
+              <p className="text-gray-400 text-sm leading-relaxed">Strategic digital marketing for ambitious businesses</p>
                   </div>
             
             <div>
@@ -421,7 +441,7 @@ export default function Home() {
 
             <div>
               <h3 className="text-white font-semibold mb-4">Get Started</h3>
-              <p className="text-gray-400 text-sm mb-4">Ready to transform your marketing?</p>
+              <p className="text-gray-400 text-sm mb-4 leading-relaxed">Ready to transform your marketing?</p>
               <button className="px-6 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold rounded-lg transition-colors">
                 Contact Us
               </button>
